@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.health.dao.PtroutineoneDAO" >
+
+<insert  id="insertptroutineone" parameterType="ptroutineonedto">
+	insert into ptroutineone_table(pr_num,et_ename,pr_count)values(#{pr_num},#{et_ename},#{pr_count})
+</insert> 
+
+<select id="ptroutinepick" resultType="ptroutineonedto">
+	 select * from ptroutineone_table where pr_num=#{pr_num};
+</select>
+
+<select id="ptroutinepickjoin" resultType="hashmap" >
+	 select *
+	 from ptroutineone_table
+	 inner join exercisetype_table
+	 on ptroutineone_table.et_ename = healthdb.exercisetype_table.et_ename
+	 and ptroutineone_table.pr_num=#{pr_num};
+</select> 
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 각 sql 태그 태그 id와 ProductDAO 메소드 이름 동일 자동 호출 -->
+<mapper namespace="com.health.dao.ProductDAO" >
+
+<select id="selectProductCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from(select prod_num, prod_title, prod_price from
+ 		product_table )prod where prod_title like'%${search_text}%' or prod_price like'%${search_text}%' 
+ 		]]>
+	</select>
+	
+	<select id="selectList" resultType="productDTO">
+	<![CDATA[
+		select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select * from product_table where prod_title like'%${search_text}%' or prod_price like'%${search_text}%' 
+ 		order by prod_num asc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+        ]]>
+	</select>
+	
+	<select id="product" resultType="productDTO" parameterType="int">
+ 		<![CDATA[
+ 			select * from product_table where prod_num = #{num}
+ 		]]>
+	</select>
+	
+	<select id="selectPrice"  resultType="int" parameterType="int" > 
+		<![CDATA[
+			select prod_price from product_table where prod_num = #{prod_num}
+		]]>	
+	</select>
+	
+	<select id="productDetail" resultType="ProductDTO"
+		parameterType="integer">
+      <![CDATA[
+		select * from product_table where prod_num=#{prod_num}
+ 		]]>
+	</select>
+	
+	<select id="testlist" resultType="productdto">
+		select * from product_table order by prod_num limit #{pagenum}, #{contentnum}
+	</select>
+	
+	
+	<select id="testlist2" resultType="admindto">
+		select * from product_table where category_num=#{categorynum} limit #{pagenum}, #{contentnum}
+	</select>
+	
+	<select id="testcount" resultType="int">
+		select count(*) from product_table
+	</select>
+	
+	<select id="testcount2" resultType="int">
+		select count(*) from
+		product_table where category_num = #{categorynum}
+	</select>
+	
+	<select id="categorylist" resultType="categorydto"><!-- mybatis-config.xml -->
+		select * from category_table where category_num = #{categorynum}
+	</select>
+</mapper>

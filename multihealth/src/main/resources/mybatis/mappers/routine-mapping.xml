@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.health.dao.PtroutineDAO" >
+
+<insert  id="insertptroutine" parameterType="ptroutinedto">
+insert into ptroutine_table(pr_info,pu_num,pr_allkcal,pr_alltime)values(#{pr_info},#{pu_num},#{pr_allkcal},#{pr_alltime})
+</insert> 
+<select id="ptroutine" resultType="ptroutinedto">
+ select * from ptroutine_table where pu_num=#{pu_num}
+</select>
+<select id="ptroutineprnum_info" resultType="ptroutinedto">
+select * from ptroutine_table where pr_num=#{pr_num}
+</select>
+<select id="ptroutine_info" resultType="ptroutinedto">
+select * from ptroutine_table where pr_info = #{pr_info} and pu_num=#{pu_num} order by pr_info,pr_num desc limit 1
+</select>
+<delete id="deleteptroutine" parameterType="int" >
+	delete from ptroutine_table where pr_num=#{pr_num}
+</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -29,23 +29,23 @@ Table of contents
 
 
 /* Typography */
-body, ul, li, p, a, label, input, div {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px !important;
+/* body, ul, li, p, a, label, input, div {
+  font-family: 'Aldrich';
+  font-size: 17px !important;
   font-weight: 300 !important;
-}
+} */
 .h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'SpoqaHanSans','Helvetica','Arial','¾ÖÇÃSD °íµñ³×¿À','Apple SD Gothic Neo','¸¼Àº °íµñ','Malgun Gothic','µ¸¿ò','Dotum',sans-serif;
   font-size: 48px !important;
   font-weight: 200 !important;
 }
 .h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'SpoqaHanSans','Helvetica','Arial','¾ÖÇÃSD °íµñ³×¿À','Apple SD Gothic Neo','¸¼Àº °íµñ','Malgun Gothic','µ¸¿ò','Dotum',sans-serif;
   font-size: 30px !important;
   font-weight: 300;
 }
 .h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'SpoqaHanSans','Helvetica','Arial','¾ÖÇÃSD °íµñ³×¿À','Apple SD Gothic Neo','¸¼Àº °íµñ','Malgun Gothic','µ¸¿ò','Dotum',sans-serif;
   font-size: 22px !important;
 }
 /* General */
@@ -68,12 +68,12 @@ body, ul, li, p, a, label, input, div {
   color: #fff;
 }
 /* Nav */
-#templatemo_nav_top { min-height: 40px;}
+/* #templatemo_nav_top { min-height: 40px;}
 #templatemo_nav_top * { font-size: .9em !important;}
 #templatemo_main_nav a { color: #212934;}
 #templatemo_main_nav a:hover { color: #69bb7e;}
 #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
-
+ */
 /* Hero Carousel */
 #template-mo-zay-hero-carousel { background: #efefef !important;}
 /* Accordion */

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slide.css" />
+    
     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/main.js"></script>
     <!--flugin-->
@@ -16,13 +17,42 @@
     <script src="<%=request.getContextPath() %>/resources/js/slide.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/jquery.counterup.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/templatemo.js"></script>
+    
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+/* modal */
+.modal_wrap {
+    display: none;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top:0;
+    left:0;
+    background:#fff;
+    z-index: 2;
+}
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.text{width:80%;margin:10% auto;}
+.text input{width:50%; height:30px;}
+
+.modal_close .closeImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.searchbtn{width:5%;background:black;}
+
 * {margin:0; padding:0;}
 ul li {list-style:none;}
 .clearfix:after{content:'';display:block; clear:both;}
-body {overflow-y:scroll; padding-top:100px;}
+body {overflow-y:scroll; padding-top:150px;}
 header {	
 	background:linear-gradient(black 100px,rgba(33,41,51,0.7));
 	height:100px;
@@ -32,24 +62,26 @@ header {
 	top:0;
 	left:0;
 	right:0;
+	z-index: 1;
 }
 input {
     position: fixed;
     left: -9999px;
 }
-nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif; font-size:17px;}
+nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important; font-size:17px !important;}
 nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
 nav > ul > .side{float:left; width:26%;}
 nav > ul > .logo img{margin-top:20px; width:150px;}
 nav > ul > .logo #mobilebtn img{display:none;}
 nav > ul > .icon img{width:22px;margin:0 10px;}
-nav > ul > li ul{ width:100%;}
+nav > ul > li > input{ position: fixed;left: -9999px;}
+nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li a{text-decoration: none; color:#9c9c9c; text-decoration: none; background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 0.5s;}
-nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; background-image: linear-gradient(transparent 30%, #005ae2 40%);}
+nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; background-image: linear-gradient(transparent 80%, #777777 40%);}
 @media ( max-width: 720px ) {
     body {padding-top:0px;}
-    header{position: static;}
+ 	header{position: static;} 
 	nav{background:black;}
 	nav > ul > .side {width:100%;}
 	nav > ul > .logo img{float:left;margin-left:20px;}
@@ -68,35 +100,34 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 			<ul class="clearfix mainmenu">
 			<li  class="side logo">
 			
-				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png"></a>
-				<span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
+				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png" style="padding-bottom: 30px;"></a>
+			    <span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
 			</li>
-				<li class="menutitle"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
+				<li class="menutitle" style="padding-left: 100px;"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
 					    <ul class="submenu">
-							<li><a href="/productlist">상품보기</a></li>
+							<li><a href="/productlist">PRODUCT</a></li>
 						</ul>
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn2" name="menuBtn"><label for="menuBtn2">PT</label>
 						<ul class="submenu">
-							<li><a href="#">pt보기</a></li>
-							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">PT RUTIN</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
 						<ul class="submenu">
 							<li><a href="#">REVIEW</a></li>
-							<li><a href="#">2nd menu</a></li>
-							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
-				<li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<!-- <li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
+							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
-				</li>
+				</li> -->
 				<li class="side icon">
 				
 				<div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
@@ -111,28 +142,22 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
-				</li>											
+				</li>									
 			</ul>
 			
 	</nav>
 	
+	
 </header>
 <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
+<div class="modal_wrap">
+    <div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div>
+    <div class="text">
+    <form name="" action="/" method="get">
+       <input type="text">
+    </form>
     </div>
+</div>
  <!--contents-->
       <div class="fullPageWrap">
         <div id="fullpage">
@@ -144,27 +169,27 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
                 style="background-image: url(resources/img/main_visual_01_01.jpg)"
               >
                 <div class="textBox">
-                  <p class="tit">멀티 헬스</p>
+                  <p class="tit">MULTI HEALTH</p>
                   <p class="txt">Shopping & Fitness</p>
                   <p class="dot">멀티 헬스</p>
                 </div>
               </li>
               <li
                 class="list"
-                style="background-image: url(resources/img/main_visual_01_02.jpg)"
+                style="background-image: url(resources/img/main_visual_01_04.jpg)"
               >
                 <div class="textBox">
-                  <p class="tit"><span>마냥 막막하던</span>운동 루틴</p>
+                  <p class="tit"><span>SERVICE</span>PT RUTIN</p>
                   <p class="txt">멀티헬스를 통해 편하게 구성해보세요.</p>
                   <p class="dot">편하게 구성하는<br />나만의 루틴</p>
                 </div>
               </li>
               <li
                 class="list"
-                style="background-image: url(resources/img/main_visual_01_03.jpg)"
+                style="background-image: url(resources/img/main_visual_01_05.jpg)"
               >
                 <div class="textBox">
-                  <p class="tit"><span>전문적인</span>멀티헬스</p>
+                  <p class="tit"><span>PROFESSIONAL</span>MULTI HEALTH</p>
                   <p class="txt">
                     여러 전문가들의 데이터를 바탕으로 구성되었습니다.
                   </p>
@@ -186,7 +211,6 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
                     멀티헬스
                   </p>
                 </div>
-                <!--TODO : 슬라이드 시간간격 증가-->
               </li>
             </ul>
           </div>
@@ -207,10 +231,10 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
             <div class="inner">
               <div class="topBox">
                 <p class="tit">운동,<span>모두가 전문가가 되는 날까지</span></p>
-                <a href="#" class="btn">전체 상품 보기</a>
+                <a href="/productlist" class="btn" >전체 상품 보기</a>
               </div>
               <div class="bottomBox">
-                <ul>
+                <ul style="padding-top: 30px;padding-bottom: 60px;">
                   <li>
                     <p class="img">
                       <img src="<%=request.getContextPath()%>/resources/img/icon_01.png" alt="" />
@@ -283,21 +307,13 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
             </div>
           </div>
            <!--footer-->
-          <div class="section fp-auto-height">
+          <div class="section fp-auto-height" style="display:none">
             <div class="footer">
               <div class="topBox">
-                <ul>
-                  <li><a href="#">이용약관</a></li>
-                  <li><a href="#">개인정보 취급관리</a></li>
-                  <li><a href="#">고객의 소리</a></li>
-                </ul>
               </div>
               <div class="bottomBox">
-                <h2><img src="img/logo.png" alt="포메인" /></h2>
+                <h2><img src="img/logowhite.png" alt="" /></h2>
                 <ul class="add">
-                  <li>상호 : asdf | 주소 : asdf</li>
-                  <li>대표 전화 : 1234-5678 | 사업자등록번호 : 123-456-789</li>
-                  <li>ⓒ multihealth</li>
                 </ul>
               </div>
             </div>
@@ -332,7 +348,7 @@ const check = document.getElementsByName("menuBtn");
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {
-		header.style.height='320px';
+		header.style.height='250px';
     }
 });
 nav.addEventListener('mouseout', function(){
@@ -360,6 +376,21 @@ mobilebtn.addEventListener('click', () => {
     	
     }
 });
+
+function modalOpen() {
+    document.querySelector('.modal_wrap').style.display = 'block';
+}
+
+// 모달 끄기
+function modalClose() {
+    document.querySelector('.modal_wrap').style.display = 'none';
+}
+
+
+//버튼 클릭리스너 달기
+document.querySelector('#modal_btn').addEventListener('click', modalOpen);
+document.querySelector('.modal_close').addEventListener('click', modalClose);
+
 
 </script>
 </body>

@@ -10,16 +10,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
-
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
-    <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/custom.css"> --%>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/sub.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo:300,600,800&display=swap" rel="stylesheet">
     
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
 	
-
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
  
@@ -127,8 +128,8 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 						</ul>
 				</li>
 				<li class="side icon">
-				    <!-- <a href="#" style="padding-right: 20px;">log in</a>
-				    <a href="#" style="padding-right: 20px;">sign up</a> -->
+				    <a href="#" style="padding-right: 20px;">log in</a>
+				    <a href="#" style="padding-right: 20px;">sign up</a>
 					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
@@ -558,7 +559,7 @@ const check = document.getElementsByName("menuBtn");
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {
-		header.style.height='320px';
+		header.style.height='250px';
     }
 });
 nav.addEventListener('mouseout', function(){

@@ -19,9 +19,13 @@ import com.health.dto.ProductDTO;
 		
 		public List<ProductDTO> testlist(int pagenum, int contentnum)throws Exception;
 		public List<ProductDTO> testlist2(int pagenum, int contentnum, int categorynum)throws Exception;
+
+		
 		public int testcount()throws Exception;
 		public int testcount2(int categorynum)throws Exception;
+		public int testcount3(String search)throws Exception;  // search 아이템 개수
 		
+		public List<ProductDTO> searchlist(int pagenum, int contentnum, int categorynum, String search)throws Exception;
 		
 
 		public int selectPrice(int prod_num) throws Exception;

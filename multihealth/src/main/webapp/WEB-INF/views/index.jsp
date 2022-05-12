@@ -107,10 +107,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-				
+
 				
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>

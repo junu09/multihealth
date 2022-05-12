@@ -17,10 +17,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.health.filter.jwt.JwtAuthenticationFilter;
 import com.health.service.MemberService;
 
 @Configuration
@@ -33,22 +31,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
     public AuthenticationFailureHandler authenticationFailureHandler;
 
-//	@Autowired
-//	private OauthFilter filter;
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
-			
 			.antMatchers("/**", "/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
 			.antMatchers("/user/admin/**", "/admin/**").access("hasAuthority('ADMIN')")			
-			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정						
-			.anyRequest().authenticated()//permitAll()
+			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정				
+						
+			.anyRequest().permitAll()//authenticated()
 			.and()
-			.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class) // jwt 필터 설정
-			
 			
 			.formLogin().loginPage("/user/loginPage")
 			.loginProcessingUrl("/user/j_spring_security_check")			
@@ -59,7 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll() // 로그인 설정
 			.and()
 			
-			
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) // 로그아웃 설정
 			.logoutSuccessUrl("/user/loginPage").invalidateHttpSession(true) //user/logout/result
 			.and()
@@ -69,22 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable();
 	}
 
-	
-	
-	@Bean
-	public JwtAuthenticationFilter jwtFilter() {
-		return new JwtAuthenticationFilter();
-	}
-	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userService).passwordEncoder(userService.passwordEncoder());
 	}
-	
-//	@Bean
-//	public Filter ssoFilter(){
-//		return filter.ssoFilter();
-//	}
 	
 	
 	//j-sessionid 삭제

@@ -116,6 +116,7 @@ public class MemberController {
 		return "myinfo";
 	}
 
+
 	// 회원가입 비동기 이메일체크
 	@ResponseBody
 	@PostMapping("/checkEmail")
@@ -141,12 +142,17 @@ public class MemberController {
 	public @ResponseBody boolean update(@RequestBody Map<String, Object> param) {
 		boolean result = memberservice.updateUser(param);
 		return result;
-	}	
+	}
+	
+	
+	
+	
+	
 	
 	// 회원탈퇴
 	@GetMapping("/user/leave")
-	public String leave(String id, Model model) {
-		model.addAttribute("dto", memberservice.getInfo(id));		
+	public String leave(@AuthenticationPrincipal MemberDTO dto, Model model, HttpServletResponse response) {
+		model.addAttribute("dto", dto.getAuthorities());
 		return "leave";
 	}
 	
@@ -159,18 +165,11 @@ public class MemberController {
 		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out;
 		out = response.getWriter();
-		out.println("<script>alert('정상적으로 회원탈퇴 되었습니다. 감사합니다.'); location.href='/'; </script>");
+		out.println("<script> alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/'; </script>");
 		out.flush();
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
     // 아이디 찾기

@@ -24,6 +24,7 @@
 
 </head>
 <body>
+
 <%@include file ="../views/include/header.jsp" %>
 
 	<section class="container py-5">

@@ -17,4 +17,4 @@ public interface PtuserDAO {
 	public int updatepoint(int pu_num);
 	
 }
-
+/*test*/

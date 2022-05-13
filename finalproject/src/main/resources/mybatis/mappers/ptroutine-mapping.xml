@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.health.dao.ExercisetypeDAO" >
+
+<select id="exercisetypelist" resultType="exercisetypedto">
+ select * from exercisetype_table
+</select>
+
+<select id="exercisetypemain" resultType="exercisetypedto">
+select * from exercisetype_table order by rand() limit 3;
+</select>
+
+<select id="exercisetypesubpage" resultType="exercisetypedto">
+select * from exercisetype_table order by rand() limit 12;
+</select>
+
+<select id="exercisetyperesssearch" resultType="exercisetypedto" >
+select * from exercisetype_table where et_ename in 
+<foreach collection="array" item="add" open="("  close=")"  separator=",">
+	#{add}
+</foreach>
+</select>
+
+<select id="exercisetypename" resultType="exercisetypedto" parameterType="String">
+	select * from exercisetype_table where et_ename=#{et_ename} 
+</select>
+
+<select id="exercisetypenum" resultType="exercisetypedto" parameterType="int">
+	select * from exercisetype_table where et_num=#{et_num}
+</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

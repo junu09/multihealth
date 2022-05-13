@@ -42,16 +42,9 @@ public class CustomAuthFailureHandler implements AuthenticationFailureHandler{
     }
 	
     
-	// 비밀번호 3번 이상 틀릴 시 계정 잠금 처리
+	
 	protected void loginFailureCount(String username) {
-//        // 틀린 횟수 업데이트
-//        userDao.countFailure(username);
-//        // 틀린 횟수 조회
-//        int cnt = userDao.checkFailureCount(username);
-//        if(cnt == 3) {
-//            // 계정 잠금 처리
-//            userDao.disabledUsername(username);
-//        }
+
 	}
 
 

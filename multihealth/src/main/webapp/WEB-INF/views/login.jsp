@@ -65,7 +65,7 @@
 						 	${error_message }
 						</p>
 					</c:if>
-							<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+					
 		            <div class="form-label-group">
 		              <input type="text" id="id" name="username" class="form-control" placeholder="id" required autofocus>
 		            </div><br>
@@ -82,6 +82,9 @@
 		            	<span class="text-success">회원님들에게 제공되고 있습니다.</span>
 					</div>					
 	            </form>
+	            
+	            <a href="/user/facebook">페이스북</a>
+				<a href="/user/google">구글</a>
 	          </div>
 	        </div>
 	      </div>

@@ -25,27 +25,96 @@ Table of contents
 16. Extra large devices (large desktops, 1200px and up)
 --------------------------------------------- */
 
+/* 뷰표트 변환시 폰트크기 자동확대 방지 */
+   
+input[type='text'],
+input[type='password'],
+input[type='submit'],
+input[type='search'] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input:checked[type='checkbox'] {
+  background-color: #666;
+  -webkit-appearance: checkbox;
+}
+
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+input[type='file'] {
+  -webkit-appearance: button;
+  border-radius: 0;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+body {
+  background: #fff;
+}
+
+body,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  line-height: 1.5;
+  font-family: 'NanumSquareRound',sans-serif;
+  color: #333;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+button {
+  outline: 0;
+}
+
 
 
 
 /* Typography */
-body, ul, li, p, a, label, input, div {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px !important;
+/*  body, ul, li, p, a, label, input, div {
+  font-family: 'Aldrich';
+  font-size: 17px !important;
   font-weight: 300 !important;
-}
+}  */
 .h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'NanumSquareRound',sans-serif;
   font-size: 48px !important;
   font-weight: 200 !important;
 }
 .h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'NanumSquareRound',sans-serif;;
   font-size: 30px !important;
   font-weight: 300;
 }
 .h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'NanumSquareRound',sans-serif;;
   font-size: 22px !important;
 }
 /* General */
@@ -68,12 +137,12 @@ body, ul, li, p, a, label, input, div {
   color: #fff;
 }
 /* Nav */
-#templatemo_nav_top { min-height: 40px;}
+/* #templatemo_nav_top { min-height: 40px;}
 #templatemo_nav_top * { font-size: .9em !important;}
 #templatemo_main_nav a { color: #212934;}
 #templatemo_main_nav a:hover { color: #69bb7e;}
 #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
-
+ */
 /* Hero Carousel */
 #template-mo-zay-hero-carousel { background: #efefef !important;}
 /* Accordion */

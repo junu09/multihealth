@@ -145,15 +145,11 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
 	// 회원탈퇴
 	@GetMapping("/user/leave")
 	public String leave(@AuthenticationPrincipal MemberDTO dto, Model model, HttpServletResponse response) {
 		model.addAttribute("dto", dto.getAuthorities());
-		return "/user/leave";
+		return "leave";
 	}
 	
 	@PostMapping("/user/leave")
@@ -165,7 +161,7 @@ public class MemberController {
 		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out;
 		out = response.getWriter();
-		out.println("<script>alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/';<script>");
+		out.println("<script> alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/'; </script>");
 		out.flush();
 		
 		

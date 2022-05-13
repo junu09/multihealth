@@ -1,0 +1,199 @@
+#insertptuser{width:100%;}
+#saveasptuser{width:100%;}
+#pr_info{width:50%;}
+#insertptroutine{width:50%;margin-left:25%;}
+.bg-pt-information-image{background-image:url('/images/frank1.jpg');}
+
+
+/*pt_main*/
+.menu{border:2px solid #e6e6e6; margin:10px auto; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);}
+.ptuser{padding:1% 0; text-align:center; font-weight:normal;}
+.ptuser table{width:100%;}
+.ptuser td:first-child{width:10%; border-style:none;}
+.ptuser td:last-child{border-style:none;}
+.ptuser td{width:18%; border-right:1px solid #e6e6e6;}
+.ptuser img{border-radius:50px; margin-left:35%;}
+.ptuser span{font-size:15px; padding:0 3px;}
+.ptuser h1{font-size:23px;margin:0; line-height:10px; margin-top:10%;}
+.ptuser p{font-size:12px;color:#163184;margin:2% 0 3%  10%; text-align:left;}
+.ptuser a{font-size:15px; background:#dfdfdf; color:#fff; padding:0 2%;}
+.ptuser a:hover{background:#000;}
+.ptchart{width:100%;}
+.ptchart h3{font-size:15px;padding-top:10px; padding-left:10px;}
+.ptcharthead{border-bottom:1px solid #dfdfdf;}
+.bmi_hader{text-align:center; padding-top:35px; font-weight:normal;}
+.bmi_hader p{text-align:center;line-height:0px;}
+.bmi_hader span{font-size:15px; padding:0 3px;}
+/* 달력 */
+.dateHead div {
+  font-size:15px;
+  color:#c5c5c5;
+  text-align: center;
+}
+.dateTitle{font-size:10px;color:#c5c5c5;text-align:center;}
+.dateTitle span{font-size:40px;}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+}
+.date{padding:20px 10px;}
+.dateBoard div {
+  color: #222;
+  font-weight: bold;
+  font-size:10px;
+  text-align:center;
+  padding:15%;
+}
+
+.noColor {
+  background: #eee;
+}
+.dateBoard div.check{
+	color: #fff;
+	background:#232833;
+}
+
+/*=====*/
+/* 루틴생성 부분 */
+table.type06 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+  vertical-align: middle;
+}
+table.type06 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  vertical-align: top;
+}
+table.type06 td {
+  width: 350px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  vertical-align: top;
+}
+table.type06 .even {
+  background: #e9eef5;
+}
+/*===========*/
+
+/*===startpt====*/
+.startpt_count{
+	text-align:right;
+	color: #6d6d6d;
+}
+.start_pt{
+  padding-top:10%;
+  border-bottom: 1px solid #ccc;
+}
+/*=============*/
+/*=====타이머=======*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);body {
+	font: 24px/30px 'Noto Sans CJK KR', Noto Sans KR, sans-serif
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);
+
+ .headline {
+	 font-weight: 600;
+	 font-size: 24px;
+	 text-transform: uppercase;
+	 text-align: center;
+	 line-height: 22px;
+}
+ .headline .small {
+	 font-weight: 300;
+	 font-size: 16px;
+}
+ .circle-big {
+	 width: 114px;
+	 height: 114px;
+	 margin: 30px auto 25px auto;
+}
+ .circle-big svg {
+	 width: 114px;
+	 height: 114px;
+}
+ .circle-big .bg {
+	 fill: none;
+	 stroke-width: 10px;
+	 stroke: #1b2a33;
+}
+ .circle-big .progress {
+	 fill: none;
+	 stroke-width: 10px;
+	 stroke: #27e1ae;
+	 stroke-linecap: round;
+	 stroke-dasharray: 326.56;
+	 stroke-dashoffset: 327;
+	 transform: rotate(-90deg);
+	 transform-origin: 50% 50%;
+	 animation: big 1.5s ease-out;
+}
+ .circle-big .text {
+ 		margin-top:-65%;
+	 width: 100%;
+	 font-size: 24px;
+	 text-align: center;
+	 font-weight: 400;
+	 line-height: 22px;
+}
+ .circle-big .text .small {
+	 font-size: 14px;
+	 color: #648192;
+}
+ .circles-small {
+	 margin: 0 auto;
+	 width: 400px;
+	 height: 80px;
+	 text-align: center;
+}
+ .circle-small {
+	 display: inline-block;
+	 width: 80px;
+	 height: 80px;
+	 margin: 0 20px;
+}
+ .circle-small svg {
+	 width: 80px;
+	 height: 80px;
+}
+ .circle-small .bg {
+	 fill: none;
+	 stroke-width: 6px;
+	 stroke: #1b2a33;
+}
+ .circle-small .progress {
+	 fill: none;
+	 stroke-width: 6px;
+	 stroke: #5ce1ec;
+	 stroke-linecap: round;
+	 stroke-dasharray: 232.36;
+	 transform: rotate(-90deg);
+	 transform-origin: 50% 50%;
+}
+ .circle-small .progress.one {
+	 stroke-dashoffset: 80;
+	 animation: one 1.5s ease-out;
+}
+ .circle-small .progress.two {
+	 stroke-dashoffset: 140;
+	 animation: two 1.5s ease-out;
+}
+ .circle-small .text {
+	 width: 100%;
+	 font-size: 17px;
+	 text-align: center;
+	 font-weight: 400;
+	 line-height: 16px;
+}
+ .circle-small .text .small {
+	 font-size: 12px;
+	 color: #648192;
+}
+/*=============*/

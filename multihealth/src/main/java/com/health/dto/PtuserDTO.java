@@ -2,15 +2,41 @@ package com.health.dto;
 
 
 public class PtuserDTO{
-	int pu_num, pu_cm, pu_kg, pu_point, pu_target, m_num;	
+	int pu_num, pu_cm, pu_kg, pu_point, pu_target, m_num, pu_birthday;
+	String pu_img;
 	
 	public PtuserDTO(){};
 	
 	public PtuserDTO(int m_num, int pu_cm, int pu_kg, int pu_target){
+		
 		this.m_num = m_num;
 		this.pu_cm = pu_cm;
 		this.pu_kg = pu_kg;
 		this.pu_target = pu_target;
+	}
+	
+	public PtuserDTO(int m_num, int pu_cm, int pu_kg, int pu_target, int pu_birthday,String pu_img){	
+		this.m_num = m_num;
+		this.pu_cm = pu_cm;
+		this.pu_kg = pu_kg;
+		this.pu_target = pu_target;
+		this.pu_birthday = pu_birthday;
+		this.pu_img = pu_img;
+	}
+	public int getPu_birthday() {
+		return pu_birthday;
+	}
+
+	public void setPu_birthday(int pu_birthday) {
+		this.pu_birthday = pu_birthday;
+	}
+
+	public String getPu_img() {
+		return pu_img;
+	}
+
+	public void setPu_img(String pu_img) {
+		this.pu_img = pu_img;
 	}
 
 	public int getPu_num() {

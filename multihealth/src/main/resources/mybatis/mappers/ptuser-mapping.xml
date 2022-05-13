@@ -4,6 +4,11 @@
 
 <mapper namespace="com.health.dao.PtuserDAO" >
 
+<insert  id="insertptuser2" parameterType="ptuserdto">
+insert into ptuser_table(pu_cm,pu_kg,m_num,pu_target,pu_birthday,pu_img)
+values(#{pu_cm},#{pu_kg},#{m_num},#{pu_target},#{pu_birthday},#{pu_img})
+</insert>
+
 <insert  id="insertptuser" parameterType="ptuserdto">
 insert into ptuser_table(pu_cm,pu_kg,m_num,pu_target)values(#{pu_cm},#{pu_kg},#{m_num},#{pu_target})
 </insert> 
@@ -28,17 +33,3 @@ insert into ptuser_table(pu_cm,pu_kg,m_num,pu_target)values(#{pu_cm},#{pu_kg},#{
 	where pu_num=#{pu_num};
 </update>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

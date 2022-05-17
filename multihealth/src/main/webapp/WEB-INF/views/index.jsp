@@ -24,7 +24,7 @@
 .modal_wrap {
     display: none;
     width: 100%;
-    height: 30%;
+    height: 100%; /* 모달 내리는 높이 조절 */
     position: absolute;
     top:0;
     left:0;
@@ -61,15 +61,16 @@ header {
 	top:0;
 	left:0;
 	right:0;
-	z-index: 1;
+	z-index:1;
 }
-nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important; font-size:17px !important;}
-nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
+nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important;; font-size:17px !important;}
+nav > ul > li {float:left; line-height:100px; margin:0 auto; color:white;}
 nav > ul > .side{float:left; width:26%;}
 nav > ul > .logo img{margin-top:20px; width:150px;}
 nav > ul > .logo #mobilebtn img{display:none;}
 nav > ul > .icon img{width:22px;margin:0 10px;}
 nav > ul > li > input{ position: fixed;left: -9999px;}
+nav > ul > li ul{padding:0;}
 nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li a{text-decoration: none; color:#9c9c9c; text-decoration: none; background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 0.5s;}
@@ -97,15 +98,16 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png" style="padding-bottom: 30px;"></a>
 			    <span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
 			</li>
-				<li class="menutitle" style="padding-left: 100px;"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
+				<li class="menutitle"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
 					    <ul class="submenu">
 							<li><a href="/productlist">PRODUCT</a></li>
 						</ul>
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn2" name="menuBtn"><label for="menuBtn2">PT</label>
 						<ul class="submenu">
-							<li><a href="#">PT RUTIN</a></li>
-							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">PT ROUTIN</a></li>
+							<li><a href="#">SPECIALT ROUTIN</a></li>
+							<li><a href="#">MAKE ROUTIN</a></li>
 						</ul>
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
@@ -114,17 +116,17 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
-				<!-- <li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
-				</li> -->
-				<li class="side icon" style="padding-left: 84px;">
+				</li>
+				<li class="side icon">
 				    <a href="/user/loginPage" style="padding-right: 20px;">log in</a>
 				    <a href="/agreement" style="padding-right: 20px;">sign up</a>
 					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
-					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
+					<a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
 				</li>											
 			</ul>
@@ -161,7 +163,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
                 style="background-image: url(resources/img/main_visual_01_04.jpg)"
               >
                 <div class="textBox">
-                  <p class="tit"><span>SERVICE</span>PT RUTIN</p>
+                  <p class="tit"><span>SERVICE</span>PT ROUTIN</p>
                   <p class="txt">멀티헬스를 통해 편하게 구성해보세요.</p>
                   <p class="dot">편하게 구성하는<br />나만의 루틴</p>
                 </div>
@@ -186,7 +188,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
                 style="background-image: url(resources/img/main_visual_01_04.jpg)"
               >
                 <div class="textBox">
-                  <p class="tit"><span>엄격한</span>멀티헬스</p>
+                  <p class="tit"><span>VERIFIED PRODUCT</span>MULTI HEALTH</p>
                   <p class="txt">검증된 상품들만 엄선하였습니다.</p>
                   <p class="dot">
                     엄격한<br />
@@ -322,11 +324,24 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
       </div>
     </div>
 <script>
+const menutitles=document.querySelectorAll('.menutitle');
+const admin=document.querySelector('#admin');
 const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
 //웹상 메뉴 
+for(let i = 0; i < menutitles.length; i++)  {
+	let windowWidth = window.outerWidth;
+    if (windowWidth >720){
+		if(admin.style.display=="none"){
+			menutitles[i].style.width = 15+ '%';
+		}else{
+			menutitles[i].style.width = 12 + '%';
+		}
+    }
+  }
+  
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {

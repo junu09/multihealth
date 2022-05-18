@@ -32,12 +32,12 @@
                      </c:forEach>
                 </ul>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 rightlayout">
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3">Routine List</a>
+                                <a class="h3 text-dark text-decoration-none mr-3"><img src="<%=request.getContextPath()%>/resources/images/run.gif" width="30px" height="30px">Start PT</a>
                             </li>
                         </ul>
                     </div>
@@ -62,6 +62,30 @@
                 	</div>
                  </div>        
             </div>
+       			<div class="card mb-4">
+        	<div class="card-header">
+            	<i class="bi bi-grid-3x2-gap"></i>
+            	<h3 class="chart_title">운동기록 확인하기</h3>
+         	</div>
+         	<div class="card-body">
+				<table class="table table-hover">
+			  	<thead>
+				    <tr class="thead">
+				      <th scope="col">루틴이름</th>
+				      <th scope="col">적립포인트</th>
+				      <th scope="col">운동일자</th>
+				    </tr>
+			  	</thead>
+			  	<tbody id="workoutlist">  
+				    <tr class="tbody">
+				      <td colspan='3'>운동기록이 없습니다</td>
+				    </tr>
+			    </tbody>
+				</table>
+	         	<div id="pageing"> 
+				</div>
+         	</div>
+        </div>
         </div>
     </div>
 <%@include file ="../include/footerjsx.jsp" %> 

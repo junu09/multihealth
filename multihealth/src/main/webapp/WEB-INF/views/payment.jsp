@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ 
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/slick.css" />

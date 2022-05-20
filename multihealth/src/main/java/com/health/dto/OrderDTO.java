@@ -77,7 +77,7 @@ public class OrderDTO {
 	public String getO_state() {
 		return o_state;
 	}
-
+ 
 	public void setO_state(String o_state) {
 		this.o_state = o_state;
 	}

@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService{
 		mapParam.put("order", order);
 		mapParam.put("prod_num", prod_num);
 		orderDAO.cart_payment(mapParam);
-		
+		 
 	}
 	
 

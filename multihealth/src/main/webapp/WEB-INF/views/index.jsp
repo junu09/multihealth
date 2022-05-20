@@ -9,9 +9,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slide.css" />
-    
+     
     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/main.js"></script>
+    <!--flugin-->
     <script src="<%=request.getContextPath() %>/resources/js/jquery.fullpage.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/slide.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
@@ -63,8 +64,8 @@ header {
 	right:0;
 	z-index:1;
 }
-nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important;; font-size:17px !important;}
-nav > ul > li {float:left; line-height:100px; margin:0 auto; color:white;}
+nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important; font-size:17px !important;}
+nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
 nav > ul > .side{float:left; width:26%;}
 nav > ul > .logo img{margin-top:20px; width:150px;}
 nav > ul > .logo #mobilebtn img{display:none;}
@@ -86,6 +87,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li > input[type="radio"]:checked ~ .submenu {display: block; background:rgba(33,41,51,0.7);}
 	nav > ul > li > label{display:inline-block; width:100%;}
 	nav > ul > li ul{display:none;}
+	nav > ul > .icon {width:20%;margin:20px 10px 0 0; }
 }
 </style>
 </head>
@@ -112,13 +114,15 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
 						<ul class="submenu">
-							<li><a href="#">REVIEW</a></li>
+							<li><a href="/review/reviewlist">REVIEW</a></li>
 							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
 				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
+							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
 				</li>
@@ -132,6 +136,8 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 			</ul>
 			
 	</nav>
+	
+	
 </header>
 <!-- Modal -->
 <div class="modal_wrap">

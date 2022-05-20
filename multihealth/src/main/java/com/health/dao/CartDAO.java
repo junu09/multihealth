@@ -18,7 +18,7 @@ public interface CartDAO {
 
 	void insertCart(Map<String, Object> cartParam) throws Exception;
 
-	void deleteCartAll(int m_num)throws Exception;
+	void deleteCartAll(int m_num)throws Exception; 
 
 	
 	

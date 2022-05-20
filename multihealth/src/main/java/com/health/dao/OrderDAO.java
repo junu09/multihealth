@@ -22,7 +22,7 @@ public class OrderDAO {
 	}
 
 	public void cart_payment2(Map<String, Object> mapParam) {
-		
+		 
 	}
 
 }

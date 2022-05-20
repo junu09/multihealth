@@ -2,19 +2,20 @@ package com.health.dto;
 
 
 public class WorkoutDTO{
-	int workout_num, workout_point,pu_num;
+	int workout_num, workout_point,pu_num,pr_num;
 	String workout_time,pr_info;
 	
 	public WorkoutDTO(){};
 	
-	public WorkoutDTO(String pr_info , int workout_point, String workout_time, int pu_num){
+	public WorkoutDTO(int pr_num, String pr_info , int workout_point, String workout_time, int pu_num){
+		this.pr_num = pr_num;
 		this.pr_info = pr_info;
 		this.workout_point = workout_point;
 		this.workout_time = workout_time;
 		this.pu_num = pu_num;
 		
 	}
-
+	
 	public int getWorkout_num() {
 		return workout_num;
 	}
@@ -22,7 +23,14 @@ public class WorkoutDTO{
 	public void setWorkout_num(int workout_num) {
 		this.workout_num = workout_num;
 	}
+	
+	public int getPr_num() {
+		return pr_num;
+	}
 
+	public void setPr_num(int pr_num) {
+		this.pr_num = pr_num;
+	}
 
 	public String getPr_info() {
 		return pr_info;

@@ -122,6 +122,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 						</ul>
 				</li>
 				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<li  class="menutitle" id="admin"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
@@ -132,6 +133,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				    <a href="/agreement" style="padding-right: 20px;">sign up</a>
 					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 					<a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
+					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
 				</li>											
 			</ul>
@@ -557,6 +559,7 @@ const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
+<<<<<<< HEAD
 //웹상 메뉴 
 for(let i = 0; i < menutitles.length; i++)  {
 	let windowWidth = window.outerWidth;
@@ -568,6 +571,21 @@ for(let i = 0; i < menutitles.length; i++)  {
 		}
     }
   }
+
+
+//웹상 메뉴
+
+for(let i = 0; i < menutitles.length; i++)  {
+	let windowWidth = window.outerWidth;
+    if (windowWidth >720){
+		if(admin.style.display=="none"){
+			menutitles[i].style.width = 15 + '%';
+		}else{
+			menutitles[i].style.width = 12 + '%';
+		}
+    }
+  }
+  
   
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
@@ -600,6 +618,7 @@ mobilebtn.addEventListener('click', () => {
     	
     }
 });
+
 
 function modalOpen() {
     document.querySelector('.modal_wrap').style.display = 'block';

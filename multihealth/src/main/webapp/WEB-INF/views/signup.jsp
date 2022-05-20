@@ -11,10 +11,8 @@
     
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1039717282029-kskuqfbnv495sos97a10ccrlk5fegaco.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>    	
-    
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 
@@ -136,9 +134,7 @@ window.onload = function loadingSocial(){
         <div class="row py-5">
             <form class="col-md-9 m-auto" role="form" action="/user/signup" method="post" id="formsubmit">
                 <div class="row">
-                    <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-                    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-
+                    <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">                    
                         <label for="inputemail">이메일</label>
                         <input type="email" class="form-control mt-1" id="email" name="m_mail" placeholder="이메일을 입력해주세요"  onkeyup = "email_Check()" >
                         

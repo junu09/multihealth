@@ -242,6 +242,7 @@ public class PtController {
 		
 		//이미지파일 존재여부 확인 
 		MultipartFile pu_imgfile = dto.getPu_imgfile();
+
 		String savePath = "C:/upload/";
 
 		if(!pu_imgfile.isEmpty()) {

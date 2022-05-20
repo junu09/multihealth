@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slide.css" />
     

@@ -16,6 +16,8 @@
 	<typeAlias type="com.health.dto.CategoryDTO" alias="categorydto"/>
 	<typeAlias type="com.health.dto.MemberDTO" alias="memberdto"/>
 	<typeAlias type="com.health.dto.CartDTO" alias="cartdto"/>
+	<typeAlias type="com.health.dto.ReviewDTO" alias="reviewdto"/>
+	<typeAlias type="com.health.dto.AnnounceDTO" alias="announcedto"/>
 </typeAliases>
 </configuration>
 

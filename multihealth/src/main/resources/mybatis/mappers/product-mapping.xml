@@ -47,9 +47,7 @@
 	<select id="testlist2" resultType="admindto">
 		select * from product_table where category_num=#{categorynum} limit #{pagenum}, #{contentnum}
 	</select>
-	<select id="searchlist" resultType="admindto">
-		select * from product_table where prod_title like concat('%', #{search}, '%')
-	</select>
+	
 	<select id="testcount" resultType="int">
 		select count(*) from product_table
 	</select>
@@ -58,12 +56,8 @@
 		select count(*) from
 		product_table where category_num = #{categorynum}
 	</select>
-	<select id="testcount3" resultType="int">
-		select count(*) from
-		product_table where prod_title like concat('%', #{search}, '%')
-	</select>
+	
 	<select id="categorylist" resultType="categorydto"><!-- mybatis-config.xml -->
 		select * from category_table where category_num = #{categorynum}
 	</select>
-
 </mapper>

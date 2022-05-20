@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css"/>
+   <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
 <style>
 /*모달 */
 .modal_wrap {
@@ -82,16 +92,6 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li ul{display:none;}
 }
 </style>
-   <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fontawesome.min.css">
-    <!-- Load map styles -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
 </head>
 <body>
 <header>

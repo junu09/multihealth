@@ -12,6 +12,7 @@
     
     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/main.js"></script>
+    <!--flugin-->
     <script src="<%=request.getContextPath() %>/resources/js/jquery.fullpage.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/slide.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
@@ -86,6 +87,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li > input[type="radio"]:checked ~ .submenu {display: block; background:rgba(33,41,51,0.7);}
 	nav > ul > li > label{display:inline-block; width:100%;}
 	nav > ul > li ul{display:none;}
+	nav > ul > .icon {width:20%;margin:20px 10px 0 0; }
 }
 </style>
 </head>
@@ -119,6 +121,8 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">2nd menu</a></li>
+							<li><a href="#">2nd menu</a></li>
 						</ul>
 				</li>
 				<li class="side icon">
@@ -131,6 +135,8 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 			</ul>
 			
 	</nav>
+	
+	
 </header>
 <!-- Modal -->
 <div class="modal_wrap">

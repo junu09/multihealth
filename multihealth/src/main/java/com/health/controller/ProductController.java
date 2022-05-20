@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -47,7 +48,24 @@ public class ProductController {
 		return mv;
 	}
 
-	
+	@RequestMapping(value="/productlist", method=RequestMethod.POST)
+	public ModelAndView productsearch(Model model, 
+			@RequestParam(defaultValue = "1") String pagenum,
+			@RequestParam(defaultValue = "9") String contentnum,
+            @RequestParam(defaultValue = "category_num") String categorynum,
+            @RequestParam(defaultValue = "") String search) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		System.out.println("----productlist post---");
+		System.out.println(categorynum);
+		System.out.println(search);
+		service.search(model, pagenum, contentnum, categorynum, search);
+		List<ExercisetypeDTO> list = exercisetypeservice.exercisetypesubpage();
+		List<CategoryDTO> clist = cservice.categorylist();
+		mv.addObject("exerciselist", list);
+		mv.addObject("categorylist", clist);
+		mv.setViewName("/productlist");
+		return mv;
+	}
 	//상세정보 페이지
 	@GetMapping(value="productdetail")
 	public ModelAndView productdetail(@RequestParam(value="prod_num") int prod_num ) {		

@@ -93,7 +93,160 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li > label{display:inline-block; width:100%;}
 	nav > ul > li ul{display:none;}
 }
+/* modal style */
+html.modal-active,
+body.modal-active {
+  overflow: hidden;
+}
+#modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: table;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  /* hidden 처리 */
+  transform: scale(0);
+}
+#modal-container .modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, .8);
+  text-align: center;
+  vertical-align: middle;
+}
+#modal-container .modal-background .modal {
+  background: #fff;
+  padding: 50px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+}
+#modal-container .modal-background .modal h2 {
+  font-size: 25px;
+  line-height: 25px;
+  margin-bottom: 15px;
+  
+}
+#modal-container .modal-background .modal p {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+
+#modal-container.two {
+  transform: scale(1);
+}
+#modal-container.two .modal-background {
+  background: transparent;
+  animation: fadeIn .5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two .modal-background .modal {
+  /* 콘텐츠를 초기에 보여주지 않음 */
+  opacity: 0;
+  animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.content.two {
+  /* 콘텐츠 크기를 줄임 */
+  animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two.out {
+  /* 전체 모달 컨테이너를 숨김 처리(다른 애니메이션이 모두 끝난 0.5초 후에 처리하기 위해 0.5초 지연시킴 */
+  animation: quickScaleDown 0s .5s linear forwards;
+}
+#modal-container.two.out .modal-background {
+  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.two.out .modal-background .modal {
+  animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.content.two.out {
+  animation: scaleForward 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+/* Dimmed showing */
+@keyframes fadeIn {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: rgba(0, 0, 0, .7);
+  }
+}
+/* Show modal content from bottom to top */
+@keyframes scaleUp {
+  0% {
+    /* 모달 콘텐츠를 하단에 위치시킴 */
+    transform: scale(.8) translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    /* 모달 콘텐츠를 본래 위치로 돌려놓음 */
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+/* Shrink content */
+@keyframes scaleBack {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.8);
+  }
+}
+/* Hide modal container*/
+@keyframes quickScaleDown {
+  0% {
+    transform: scale(1);
+  }
+  99.9% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+/* Dimmed hiding */
+@keyframes fadeOut {
+  0% {
+    background: rgba(0, 0, 0, .7);
+  }
+  100% {
+    background: transparent;
+  }
+}
+/* modal content from top to bottom */
+@keyframes scaleDown {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(.8) translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleBack {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.85);
+  }
+}
+@keyframes scaleForward {
+  0% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
 </style>
+
 </head>
 <body>
 <header>
@@ -139,17 +292,50 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	</nav>
 </header>
 <!-- Modal -->
-<div class="modal_wrap">
-    <div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png" style="height: 30px;"></div>
-    <div class="text">
-    <form name="" action="/" method="get">
-       <input type="text">
-    </form>
-    </div>
-</div>
-	
+<!-- <div class="modal_wrap"> -->
+<%--     <div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png" style="height: 30px;"></div> --%>
+<!--     <div class="text"> -->
+<!--     <form name="" action="/" method="get"> -->
+<!--        <input type="text" placeholder="search"> -->
+<!--     </form> -->
+<!--     </div> -->
+<!-- </div> -->
 
-<%-- 	<%@include file ="../views/include/header.jsp" %> --%> <!-- 공통헤더 삽입 -->
+
+	<div class="modal_wrap">
+				<div class="modal_close">
+					<img src="<%=request.getContextPath()%>/resources/img/close.png"
+						style="height: 30px;">
+				</div>
+				<div class="text">
+					<form name="" action="/" method="get">
+						<input type="text" placeholder="search">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal-container">
+		<div class="modal-background">
+			<div class="modal">
+				<div class="modal_close">
+					<img id=imgClose
+						src="<%=request.getContextPath()%>/resources/img/close.png"
+						style="height: 30px;">
+				</div>
+				<h2>검색</h2>
+				<div class="text">
+					<form action="productlist" method="post">
+						<input type="text" placeholder="search" name="search">
+						<button type="submit" class="btn btn-primary">검색</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%-- 	<%@include file ="../views/include/header.jsp" %> --%> <!-- 공통헤더 삽입 -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 
     <!-- Start Content -->
@@ -622,7 +808,52 @@ document.querySelector('.modal_close').addEventListener('click', modalClose);
 
 
 </script>
-	
+		<script>
+	var $button         = $('.button'),
+    $modalContainer = $('#modal-container'),
+    $modalClose = $('.modal_close'),
+    $imgClose = $('#imgClose'),
+    $body           = $('body'),
+    $content        = $('.content'),
+    btnId;
+
+$button.on('click', function () {
+  btnId = $(this).attr('id');
+  
+  $modalContainer
+      .removeAttr('class')
+      .addClass(btnId);
+  $content
+      .removeAttr('class')
+      .addClass('content');
+  
+  $body.addClass('modal-active');
+  
+  if (btnId == 'two' || btnId == 'three'|| btnId == 'four') {
+    $content.addClass(btnId);
+  }
+  
+});
+
+$imgClose.on('click', function () {
+	$modalContainer.addClass('out');
+	  $body.removeClass('modal-active');
+	  if ($modalContainer.hasClass(btnId)) {
+	    
+	    $content.addClass('out');
+	    
+	  }
+	});
+// $modalContainer.on('click', function () {
+//   $(this).addClass('out');
+//   $body.removeClass('modal-active');
+//   if ($(this).hasClass(btnId)) {
+    
+//     $content.addClass('out');
+    
+//   }
+// });
+	</script>
 	<!-- End Script -->
 </body>
 </html>

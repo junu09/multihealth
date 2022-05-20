@@ -64,6 +64,7 @@ public class PtController {
 	
 //================ptservice 메인 페이지=========================== 
 	
+	
 	@RequestMapping(value="ptservice/ptmain", method = RequestMethod.GET)
 	public ModelAndView ptmain(){
 				

@@ -18,7 +18,6 @@ public interface ProductService {
 
 	public int execute(Model model, String pagenum, String contentnum, String categorynum)throws Exception;
 
-	public int search(Model model, String pagenum, String contentnum, String categorynum, String search)throws Exception;
 	public List<ProductDTO> selectList(String search_text)throws Exception;
 
 

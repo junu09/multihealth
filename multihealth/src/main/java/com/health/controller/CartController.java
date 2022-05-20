@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.health.dto.CartDTO;
-import com.health.dto.ExercisetypeDTO;
 import com.health.dto.MemberDTO;
+import com.health.dto.OrderDTO;
 import com.health.dto.ProductDTO;
 import com.health.service.CartService;
-import com.health.service.ExercisetypeService;
 import com.health.service.MemberService;
+import com.health.service.OrderService;
 import com.health.service.ProductService;
 		
 @Controller	
@@ -44,6 +44,10 @@ public class CartController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	OrderService orderService;
+	
 	
 		
 	@GetMapping("/payment")    // 유저 정보 가져오기
@@ -173,7 +177,7 @@ public class CartController {
 		System.out.println(m_num);
 		// m_num : 로그인된 유저 번호 
 		try {
-			List<CartDTO> cartList=cartService.cartQueryById(m_num); //list 안담기는걸 수정 하고  
+			List<CartDTO> cartList=cartService.cartQueryById(m_num); 
 			for(CartDTO cart:cartList) {
 				// 내가 장바구니에 담아 놓은 상품 정보들
 				if (cart.getProd_num() == prod_num) {
@@ -193,5 +197,36 @@ public class CartController {
 		
 	}
 	
+	@PostMapping("") //결제 후 장바구니 자동 비우기
+	public ModelAndView cartPayment() {
+		
 	
-}
+		ModelAndView mv = new ModelAndView("redirect/user/info");
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		try {
+			List<CartDTO> cartList = cartService.cartQueryById(m_num);
+			List<OrderDTO> orderList = new ArrayList<OrderDTO>();
+			for(CartDTO cart:cartList) {
+				OrderDTO order = new OrderDTO();
+				order.setProd_num(cart.getProd_num());
+				order.setO_num(cart.getCart_num());
+				order.setM_num(m_num);
+				orderList.add(order);
+			}
+			for(OrderDTO order: orderList) {
+				orderService.insertCartList(order);
+				orderService.cartPayment(order, order.getProd_num());
+			}
+			cartService.deleteCartAll(m_num);
+		}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		return mv;
+		}
+	}
+
+
+		
+	

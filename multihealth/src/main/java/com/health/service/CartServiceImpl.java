@@ -57,6 +57,12 @@ public class CartServiceImpl implements CartService {
 		cartDao.deleteCart(cartParam);
 	}
 
+	@Override
+	public void deleteCartAll(int m_num) throws Exception {
+		cartDao.deleteCartAll(m_num);
+		
+	}
+
 
 	}
 

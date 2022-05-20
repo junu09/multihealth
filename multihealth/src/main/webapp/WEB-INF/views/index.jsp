@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slide.css" />
-    
+     
     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/main.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/jquery.fullpage.js"></script>

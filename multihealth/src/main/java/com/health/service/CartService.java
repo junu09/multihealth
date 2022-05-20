@@ -16,7 +16,8 @@ public interface CartService {
 	void updateCart(int prod_num, int product_count, int m_num) throws Exception;
 
 	void insertCart(int prod_num, int product_count, int m_num) throws Exception;
-	/* , int product_count */
+ 
+	void deleteCartAll(int m_num)throws Exception;
 
 
 

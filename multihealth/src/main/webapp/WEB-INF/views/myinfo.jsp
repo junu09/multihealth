@@ -95,7 +95,7 @@ self.location ="/user/update";
             <form class="col-md-9 m-auto" method="post" role="form" action="/user/signup" method="post" id="formsubmit">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-                    <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
+                    <%-- <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/> --%>
                         <label for="inputemail">이메일</label>
                         <input type="email" class="form-control mt-1" id="email" name="m_mail" value="${user.username }" readonly="readonly">
                         <span id="email_result"></span>

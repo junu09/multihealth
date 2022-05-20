@@ -25,7 +25,7 @@
 .modal_wrap {
     display: none;
     width: 100%;
-    height: 30%;
+    height: 100%; /* 모달 내리는 높이 조절 */
     position: absolute;
     top:0;
     left:0;
@@ -62,11 +62,7 @@ header {
 	top:0;
 	left:0;
 	right:0;
-	z-index: 1;
-}
-input {
-    position: fixed;
-    left: -9999px;
+	z-index:1;
 }
 nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important; font-size:17px !important;}
 nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
@@ -75,6 +71,7 @@ nav > ul > .logo img{margin-top:20px; width:150px;}
 nav > ul > .logo #mobilebtn img{display:none;}
 nav > ul > .icon img{width:22px;margin:0 10px;}
 nav > ul > li > input{ position: fixed;left: -9999px;}
+nav > ul > li ul{padding:0;}
 nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li{white-space:nowrap;line-height:50px;}
 nav > ul > li ul li a{text-decoration: none; color:#9c9c9c; text-decoration: none; background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 0.5s;}
@@ -103,7 +100,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png" style="padding-bottom: 30px;"></a>
 			    <span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
 			</li>
-				<li class="menutitle" style="padding-left: 100px;"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
+				<li class="menutitle"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
 					    <ul class="submenu">
 							<li><a href="/productlist">PRODUCT</a></li>
 						</ul>
@@ -120,29 +117,21 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
-				<!-- <li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<li  class="menutitle"id="admin"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
-				</li> -->
+				</li>
 				<li class="side icon">
-				
-				<div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-
-				
+				    <a href="/user/loginPage" style="padding-right: 20px;">log in</a>
+				    <a href="/agreement" style="padding-right: 20px;">sign up</a>
+					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
-					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
-				</li>									
+					<a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
+				</li>										
 			</ul>
 			
 	</nav>
@@ -340,11 +329,28 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
       </div>
     </div>
 <script>
+const menutitles=document.querySelectorAll('.menutitle');
+const admin=document.querySelector('#admin');
 const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
-//웹상 메뉴 
+
+
+//웹상 메뉴
+
+for(let i = 0; i < menutitles.length; i++)  {
+	let windowWidth = window.outerWidth;
+    if (windowWidth >720){
+		if(admin.style.display=="none"){
+			menutitles[i].style.width = 15 + '%';
+		}else{
+			menutitles[i].style.width = 12 + '%';
+		}
+    }
+  }
+  
+  
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {

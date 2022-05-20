@@ -8,7 +8,7 @@
 insert into ptroutine_table(pr_info,pu_num,pr_allkcal,pr_alltime)values(#{pr_info},#{pu_num},#{pr_allkcal},#{pr_alltime})
 </insert> 
 <select id="ptroutine" resultType="ptroutinedto">
- select * from ptroutine_table where pu_num=#{pu_num}
+ select * from ptroutine_table where pr_delete=1 and pu_num=#{pu_num}
 </select>
 <select id="ptroutineprnum_info" resultType="ptroutinedto">
 select * from ptroutine_table where pr_num=#{pr_num}
@@ -16,9 +16,11 @@ select * from ptroutine_table where pr_num=#{pr_num}
 <select id="ptroutine_info" resultType="ptroutinedto">
 select * from ptroutine_table where pr_info = #{pr_info} and pu_num=#{pu_num} order by pr_info,pr_num desc limit 1
 </select>
-<delete id="deleteptroutine" parameterType="int" >
-	delete from ptroutine_table where pr_num=#{pr_num}
-</delete>
+
+<update id="deleteptroutine"  parameterType="int">
+update ptroutine_table set pr_delete = 0 WHERE pr_num=#{pr_num}
+</update>
+
 </mapper>
 
 

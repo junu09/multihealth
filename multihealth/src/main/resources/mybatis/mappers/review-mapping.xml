@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.health.dao.ReviewDAO">
+
+
+<select id="reviewlist" resultType="reviewdto">
+	select * from review_table
+</select>
+
+<select id="product" resultType="productDTO" parameterType="int">
+	select * from product_table where prod_num = #{code} 
+</select>
+<!-- <select id="testlist" resultType="reviewdto"> -->
+<!-- 	select * from product_table -->
+<!-- 	order by category_num limit #{pagenum}, #{contentnum} -->
+<!-- </select> -->
+
+<!-- <select id="testlist2" resultType="reviewdto"> -->
+<!-- 	select * from product_table -->
+<!-- 	where category_num=#{categorynum} order by prod_num limit #{pagenum}, -->
+<!-- 	#{contentnum} -->
+<!-- </select> -->
+
+<select id="testcount" resultType="int">
+	select count(*) from
+	review_table
+</select>
+<!-- <select id="testcount2" resultType="int"> -->
+<!-- 	select count(*) from -->
+<!-- 	product_table where category_num = #{categorynum} -->
+<!-- </select> -->
+
+</mapper>

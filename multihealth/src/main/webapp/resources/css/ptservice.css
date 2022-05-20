@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);body {
+	font: 24px/30px 'Noto Sans CJK KR', Noto Sans KR, sans-serif
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);
+
+/*=========insertptuser/saveasptuser================*/
+.ptinfortext{font-size:18px;}
+.ptinfortext2{font-size:18px; padding-bottom:20px;}
+.ptinfo_check{font-size:12px;margin-left:10px;color:#940000;}
+
+/*======================================*/
+
+
+
+/*=========pt_main================*/
+.ptuser{
+		padding:1% 0;
+		width:98%;
+		text-align:center;
+		font-weight:normal;
+		border:2px solid #e6e6e6; 
+		box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+		margin-bottom:3%;
+		margin-left:1%;}
+.ptuser table{width:100%;}
+.ptuser td:first-child{width:10%; border-style:none;}
+.ptuser td:last-child{border-style:none;}
+.ptuser td{width:15%; border-right:1px solid #e6e6e6;}
+.ptuser img{border-radius:50px; margin-left:35%;}
+.ptuser span{font-size:15px; padding:0 3px;}
+.ptuser h1{font-size:23px;margin:0; line-height:10px; margin-top:10%;}
+.ptuser p{font-size:12px;color:#163184;margin:2% 0 3%  10%; text-align:left;}
+.ptuser a{font-size:15px; background:#dfdfdf; color:#fff; padding:0 2%;}
+.ptuser a:hover{background:#000;}
+@media ( max-width: 720px ) {
+.ptuser td:first-child{width:30%;display:none;}
+	
+}
+
+/*차트*/
+.chart_title{font-size:15px;display:inline-block;}
+.bmicontent{text-align:center;padding:30px 0 50px 0;border-bottom:2px dashed #dfdfdf;}
+.bmitext{padding-left:10px;}
+.areachartbody{padding:7% 0;}
+.description1{font-size:12px; color:gray; margin-bottom:0;line-height:5px;}
+.description2{font-size:10px; color:gray;margin-left:10px; margin-top:10px;line-height:15px;}
+.barchartbody{padding:3% 0;}
+.bmititle{font-size:15px;padding-top:20px;}
+.bmititlesub{font-size:10px;margin:0; padding-left:5%;}
+.donutchart{text-align:center;border-bottom:2px dashed #dfdfdf;padding:9% 0;}
+.donutcharttext{font-size:15px;width:50%;line-height:5px;}
+.donutcharttext i{font-size:20px;}
+.donutchartbody{padding:14.5% 0;}
+/* 달력 */
+.date1{width:30%}
+.date2{padding-left:20px;}
+.date3{width:70%;}
+
+.dateHead div {
+  font-size:15px;
+  color:#c5c5c5;
+  text-align: center;
+}
+.dateTitle{font-size:18px;color:#222;text-align:center;}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+}
+.dateBoard div {
+  color: #222;
+  font-weight: bold;
+  font-size:15px;
+  text-align:center;
+  padding:15%;
+}
+
+.noColor {
+  background: #eee;
+}
+.dateBoard div.check{
+	border-radius:80px;
+	color: #fff;
+	background:#232833;
+}
+
+/*운동기록 확인하기*/
+.pagination_location{float:right; padding-right:30px;}
+.page-lint_style{color:black;}
+.thead{font-size:18px;text-align:center;}
+.tbody{font-size:15px;text-align:center;}
+/*=====================================*/
+
+
+
+/*=========Make Routine======================*/
+.exercise_part{font-size:15px;margin-left:2%;}
+
+table.type06 {
+  border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+  vertical-align: middle;
+}
+table.type06 td:nth-child(1){
+	width:10%;
+}
+table.type06 td:nth-child(7){
+	width:10%;
+}
+table.type06 th {
+  text-align: center;
+  font-size:15px;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  vertical-align: top;
+}
+table.type06 .even th{
+ border-top: 1px solid #e9eef5;	
+ border-bottom: 1px solid black;
+}
+table.type06 td {
+  text-align: center;
+  font-size:15px;	
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+table.type06 .even { background: #e9eef5;}
+.deletept{color:black;}
+/*=====================================*/
+
+/*=========Routine List============*/
+.ptroutinlist tr{font-size:15px; text-align:center;}
+.ptroutinelist_a{color:black;}
+#pr_info{margin-left:10px;}
+#ptroutinelist table tr td:nth-child(4){text-align:right;}
+.table-secondary2{background: #e9eef5;}
+.deletpt{text-align:right;}
+/*=====================================*/
+
+
+
+/*===startpt====*/
+.startpt_count{
+	text-align:right;
+	color: #6d6d6d;
+}
+.start_pt{
+  padding-top:10%;
+  border-bottom: 1px solid #ccc;
+  color:#6d6d6d;
+}
+#timer{font-family: 'Wallpoet', cursive;margin-left:10px; font-size:1.5rem;margin-left:85%;margin-bottom:0;}
+#startpt_btn{float:right;}
+.pt_btn{margin-right:10px;}
+.pt_description{padding:30px 0;}
+
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #e9eef5;
+}
+#myBar {
+    position: absolute;
+    width: 00%;
+    height: 100%;
+    background-color:#90CAF9;
+}
+/*=============*/
+
+
+
+
+/*=====타이머=======*/
+
+.start_spcialpt div{padding:20px 0; margin:0 auto;}
+.spcialpt_label{padding-bottom:20px;}
+
+ .headline {
+	 font-weight: 600;
+	 font-size: 24px;
+	 text-transform: uppercase;
+	 text-align: center;
+	 line-height: 22px;
+}
+ .headline .small {
+	 font-weight: 300;
+	 font-size: 16px;
+}
+ .circle-big {
+	 width: 114px;
+	 height: 114px;
+	 margin: 30px auto 25px auto;
+}
+ .circle-big svg {
+	 width: 114px;
+	 height: 114px;
+}
+ .circle-big .bg {
+	 fill: none;
+	 stroke-width: 10px;
+	 stroke: #1b2a33;
+}
+ .circle-big .progress {
+	 fill: none;
+	 stroke-width: 10px;
+	 stroke: #27e1ae;
+	 stroke-linecap: round;
+	 stroke-dasharray: 326.56;
+	 stroke-dashoffset: 327;
+	 transform: rotate(-90deg);
+	 transform-origin: 50% 50%;
+	 animation: big 1.5s ease-out;
+}
+ .circle-big .text .small {
+	 font-size: 14px;
+	 color: #648192;
+}
+ .circles-small {
+	 margin: 0 auto;
+	 width: 400px;
+	 height: 80px;
+	 text-align: center;
+}
+ .circle-small {
+	 display: inline-block;
+	 width: 80px;
+	 height: 80px;
+	 margin: 0 20px;
+}
+ .circle-small svg {
+	 width: 80px;
+	 height: 80px;
+}
+ .circle-small .bg {
+	 fill: none;
+	 stroke-width: 6px;
+	 stroke: #1b2a33;
+}
+ .circle-small .progress {
+	 fill: none;
+	 stroke-width: 6px;
+	 stroke: #5ce1ec;
+	 stroke-linecap: round;
+	 stroke-dasharray: 232.36;
+	 transform: rotate(-90deg);
+	 transform-origin: 50% 50%;
+}
+ .circle-small .progress.one {
+	 stroke-dashoffset: 80;
+	 animation: one 1.5s ease-out;
+}
+ .circle-small .progress.two {
+	 stroke-dashoffset: 140;
+	 animation: two 1.5s ease-out;
+}
+ .circle-small .text {
+	 width: 100%;
+	 font-size: 17px;
+	 text-align: center;
+	 font-weight: 400;
+}
+ .circle-small .text .small {
+	 font-size: 12px;
+	 color: #648192;
+}
+.text span{
+	font-size:18px;
+}
+#canvas{border:solid 5px #1b2a33;}
+.squat_counter{float:right;margin-right:50px;margin-top:20px;}
+.spicalpt_delete{float:right;padding:10px 0;}
+/*=============*/

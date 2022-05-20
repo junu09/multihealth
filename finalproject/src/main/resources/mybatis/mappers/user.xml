@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.health.dao.MemberDAO">
+	<select id="Userlist" resultType="memberdto">
+		SELECT * FROM member_table
+	</select>
+	
+	<select id="readUser" parameterType="String" resultType="memberdto">
+		SELECT * FROM member_table WHERE m_mail = #{m_mail}
+	</select>
+
+	<select id="readAuthority" parameterType="String" resultType="String">
+          SELECT authority_name FROM authority WHERE m_mail = #{m_mail}
+     </select>
+
+	<insert id="createUser" parameterType="MemberDTO">
+		INSERT INTO member_table (m_num, m_mail, m_pw, isAccountNonExpired,
+		isAccountNonLocked, isCredentialsNonExpired, isEnabled, m_name, m_hp, m_post, m_add1, m_add2, m_date)
+		
+		VALUES (#{m_num}, #{m_mail}, #{m_pw}, #{isAccountNonExpired},
+		#{isAccountNonLocked}, #{isCredentialsNonExpired}, #{isEnabled}, #{m_name}, #{m_hp}, #{m_post}, #{m_add1}, #{m_add2}, now())
+	</insert>
+
+	<insert id="createAuthority"
+		parameterType="org.springframework.security.core.GrantedAuthority">
+		INSERT INTO authority (m_mail, authority_name)
+		VALUES
+		<foreach item="item" collection="authorities" separator=",">
+			(#{m_mail}, #{item.authority})
+		</foreach>
+	</insert>
+
+		<!-- 이메일 중복체크 -->
+	<select id="checkEmail" resultType="int" parameterType="String">
+		select count(*)
+		from member_table
+		where m_mail=#{m_mail}
+	</select>
+	
+	<update id="updateMember" parameterType = "hashMap">
+		update member_table set m_mail=#{m_mail}, m_pw=#{m_pw}, m_hp=#{m_hp}, m_post=#{m_post}, m_add1=#{m_add1}, m_add2=#{m_add2}
+		where m_mail=#{m_mail}
+	</update>
+	<select id="queryUser" resultType="MemberDTO" parameterType="int">
+      <![CDATA[
+         select * from user where m_num = #{m_num}
+      ]]>
+	</select>
+	
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM member_table WHERE m_mail = #{m_mail}
+	</delete>
+
+	<delete id="deleteAuthority" parameterType="String">
+		DELETE FROM authority WHERE m_mail = #{m_mail}
+	</delete>
+	
+</mapper>

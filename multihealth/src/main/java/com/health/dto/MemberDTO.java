@@ -3,6 +3,8 @@ package com.health.dto;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.validation.constraints.Email;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +18,7 @@ public class MemberDTO implements UserDetails {
 	
 	private int m_num;
 
+	@Email
 	private String m_mail;
 	
 	private String m_pw;

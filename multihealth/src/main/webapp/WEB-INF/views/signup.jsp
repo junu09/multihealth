@@ -8,13 +8,20 @@
     <title>MultiHealth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1039717282029-kskuqfbnv495sos97a10ccrlk5fegaco.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>    	
+    
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-function email_Check() {
+
+
+ <script>
+ function email_Check() {
 	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	  var email = $('#email').val();
+	  var email = $('#email').val(); 	   
 	  
 	  if(!emailReg.test($("#email").val())) {
 		  // 0 : 이메일 길이 / 문자열 검사		  
@@ -23,7 +30,8 @@ function email_Check() {
 	  } else if(email == null) {
 		  $('#email_result').text('이메일을 입력해주세요.');
 		  $('#email_result').css('color', 'red');
-		}	  
+		}
+	  
 		$.ajax({
 			url: '/checkEmail',
 			data: {"m_mail" : $("#email").val()},
@@ -40,13 +48,52 @@ function email_Check() {
 			}
 		});	
 }
-</script>
 
+window.onload = function loadingSocial(){
+	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	  var email = $('#email').val(); 
+	var GName = sessionStorage.getItem("GName");
+	var GEmail = sessionStorage.getItem("GEmail");
+	var KEmail = sessionStorage.getItem("KEmail");
+	
+	
+	
+	if(GName != null){
+		document.getElementById('name').value = GName;
+	}else if(KEmail != null){
+		document.getElementById('name').value = "";
+	}
+	
+	if(GEmail != null){
+		document.getElementById('email').value = GEmail;
+	}
+	if(KEmail != null){
+		document.getElementById('email').value = KEmail;
+	}
+	
+	
+	$.ajax({
+		url: '/checkEmail',
+		data: {"m_mail" : $("#email").val()},
+		type: 'post',
+		dataType: 'json',
+		success: function(data) {
+			if(data == 1) {
+				$("#email_result").text("사용중인 이메일 입니다.");					
+				$("#email_result").css("color", "red");
+			} else if(data == 0 && emailReg.test($("#email").val())) {
+				$("#email_result").text("사용 가능한 이메일 입니다.");
+				$("#email_result").css("color", "blue");
+			}
+		}
+	});
+}
+</script>
 
 </head>
 
 	<script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
-
+	<script src="<%=request.getContextPath() %>/resources/js/social.js"></script>
 
     <!-- End Script -->
 
@@ -89,10 +136,10 @@ function email_Check() {
         <div class="row py-5">
             <form class="col-md-9 m-auto" role="form" action="/user/signup" method="post" id="formsubmit">
                 <div class="row">
-                    <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-                    <input type="hidden" name="_csrf" value="{{_csrf.token}}"
+                    <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">                    
                         <label for="inputemail">이메일</label>
-                        <input type="email" class="form-control mt-1" id="email" name="m_mail" placeholder="이메일을 입력해주세요" oninput = "email_Check()">
+                        <input type="email" class="form-control mt-1" id="email" name="m_mail" placeholder="이메일을 입력해주세요"  onkeyup = "email_Check()" >
+                        
                         <span id="email_result"></span>
                         <span text="${valid_m_mail}"></span>                        
                     </div>
@@ -171,7 +218,8 @@ function email_Check() {
     </div>
     <!-- End Sign Up -->
 
-
+    
+    
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
 
 </body>

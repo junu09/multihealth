@@ -119,18 +119,18 @@ function infoupdate (){
                         
                     </div>
                     <div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-                        <label for="inputpassword">비밀번호</label>
+                        <label for="inputpassword">기존 비밀번호</label>
                         <input type="password" class="form-control mt-1" id="password" name="m_pw" placeholder="8자 이상 20자 이내" maxlength="20">                        
                      </div>                    
                 </div>
 				<div class="row">
 					<div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-						<label for="inputpasswordcon">비밀번호 변경</label> <input
+						<label for="inputpasswordcon">신규 비밀번호</label> <input
 							type="password" class="form-control mt-1" id="password_change" name="m_pw">
 					</div>
 				</div>
 				<div class="form-group col-md-6 mb-3" style="padding-bottom: 30px;">
-                    <label for="inputpasswordcon">비밀번호 확인</label>
+                    <label for="inputpasswordcon">신규 비밀번호 확인</label>
                     <input type="password" class="form-control mt-1" id="password_con" onfocusout="update_check()" placeholder="비밀번호 확인">                        
                 </div>
 

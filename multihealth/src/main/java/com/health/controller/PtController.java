@@ -305,6 +305,7 @@ public class PtController {
 			updateUser.setPu_img(ptuser.getPu_img());	
 		}	
 		
+		
 
 		updateUser.setPu_target(dto.getPu_target());
 		updateUser.setPu_cm(dto.getPu_cm());

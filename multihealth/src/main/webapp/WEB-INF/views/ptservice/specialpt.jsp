@@ -101,13 +101,13 @@
 						  <tbody id="workoutlist">
 						  	<tr class="tbody">
 						      <th scope="col">1</th>
-						      <th scope="col"><img src="<%=request.getContextPath()%>/upload2/user3.png" width="50px" height="50px"></th>
+						      <th scope="col"><i class="bi bi-award" style="font-size:30px; color:#FFD700;"></i><img src="<%=request.getContextPath()%>/upload2/user3.png" width="50px" height="50px"></th>
 						      <th scope="col">유저이름</th>
 						      <th scope="col">1회당 소요시간</th>
 						    </tr>
 						    <tr class="tbody">
 						      <th scope="col">2</th>
-						      <th scope="col">유저이미지</th>
+						      <th scope="col"><i class="bi bi-award" style="font-size:30px; color:#FFD700;"></i>유저이미지</th>
 						      <th scope="col">유저이름</th>
 						      <th scope="col">1회당 소요시간</th>
 						    </tr>

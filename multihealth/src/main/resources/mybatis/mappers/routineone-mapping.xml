@@ -20,6 +20,13 @@
 	 and ptroutineone_table.pr_num=#{pr_num};
 </select> 
 
+<select id="ptroutinonesearch" resultType="ptroutineonedto" >
+select * from ptroutineone_table where pr_num in 
+<foreach collection="array" item="add" open="("  close=")"  separator=",">
+	#{num}
+</foreach>
+</select>
+
 </mapper>
 
 

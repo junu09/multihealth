@@ -19,10 +19,6 @@ public class PtuserServiceImpl implements PtuserService {
 		return dao.insertptuser(dto);
 	};
 	
-	public int insertptuser2(PtuserDTO dto){
-		return dao.insertptuser(dto);
-	};
-	
 	public PtuserDTO ptuser(int m_num){
 		return dao.ptuser(m_num);
 	};

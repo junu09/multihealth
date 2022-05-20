@@ -1,6 +1,7 @@
 package com.health.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,19 @@ public class WorkoutServiceImpl implements WorkoutService {
 	
 	public List<String> pu_targetday(int pu_num){
 		return dao.pu_targetday(pu_num);
+	};
+	
+	public List<Integer> pr_numall(int pu_num){
+		return dao.pr_numall(pu_num);
 	}
+	
+	public int workoutpagelistcheck(int pu_num) {
+		return dao.workoutpagelistcheck(pu_num);
+	}
+	
+	public List<WorkoutDTO> workoutpagelist(HashMap<String, Object> map){
+		return dao.workoutpagelist(map);
+	}
+	
 	
 }

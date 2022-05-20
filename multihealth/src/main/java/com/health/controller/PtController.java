@@ -243,6 +243,7 @@ public class PtController {
 		//이미지파일 존재여부 확인 
 		MultipartFile pu_imgfile = dto.getPu_imgfile();
 		String savePath = "C:/upload/";
+
 		if(!pu_imgfile.isEmpty()) {
 			String originname = pu_imgfile.getOriginalFilename();
 			//확장자 이후
@@ -292,8 +293,9 @@ public class PtController {
 		updateUser.setM_num(m_num);
 		//이미지파일 존재여부 확인 
 		MultipartFile pu_imgfile = dto.getPu_imgfile();
+
 		String savePath = "C:/upload/";
-		
+
 		if(!pu_imgfile.isEmpty()) {
 			String originname = pu_imgfile.getOriginalFilename();
 			//확장자 이후

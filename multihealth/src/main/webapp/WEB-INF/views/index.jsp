@@ -382,9 +382,9 @@ function modalOpen() {
 function modalClose() {
     document.querySelector('.modal_wrap').style.display = 'none';
 }
+ 
 
-
-//버튼 클릭리스너 달기
+//버튼 클릭리스너 달
 document.querySelector('#modal_btn').addEventListener('click', modalOpen);
 document.querySelector('.modal_close').addEventListener('click', modalClose);
 

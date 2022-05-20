@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);body {
+	font: 24px/30px 'Noto Sans CJK KR', Noto Sans KR, sans-serif
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);
+
 /*=========insertptuser/saveasptuser================*/
 .ptinfortext{font-size:18px;}
 .ptinfortext2{font-size:18px; padding-bottom:20px;}
@@ -131,6 +137,7 @@ table.type06 .even { background: #e9eef5;}
 /*=========Routine List============*/
 .ptroutinlist tr{font-size:15px; text-align:center;}
 .ptroutinelist_a{color:black;}
+#pr_info{margin-left:10px;}
 #ptroutinelist table tr td:nth-child(4){text-align:right;}
 .table-secondary2{background: #e9eef5;}
 .deletpt{text-align:right;}
@@ -146,13 +153,34 @@ table.type06 .even { background: #e9eef5;}
 .start_pt{
   padding-top:10%;
   border-bottom: 1px solid #ccc;
+  color:#6d6d6d;
+}
+#timer{font-family: 'Wallpoet', cursive;margin-left:10px; font-size:1.5rem;margin-left:85%;margin-bottom:0;}
+#startpt_btn{float:right;}
+.pt_btn{margin-right:10px;}
+.pt_description{padding:30px 0;}
+
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #e9eef5;
+}
+#myBar {
+    position: absolute;
+    width: 00%;
+    height: 100%;
+    background-color:#90CAF9;
 }
 /*=============*/
+
+
+
+
 /*=====타이머=======*/
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);body {
-	font: 24px/30px 'Noto Sans CJK KR', Noto Sans KR, sans-serif
-}
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,400,300);
+
+.start_spcialpt div{padding:20px 0; margin:0 auto;}
+.spcialpt_label{padding-bottom:20px;}
 
  .headline {
 	 font-weight: 600;
@@ -189,14 +217,6 @@ table.type06 .even { background: #e9eef5;}
 	 transform: rotate(-90deg);
 	 transform-origin: 50% 50%;
 	 animation: big 1.5s ease-out;
-}
- .circle-big .text {
- 		margin-top:-65%;
-	 width: 100%;
-	 font-size: 24px;
-	 text-align: center;
-	 font-weight: 400;
-	 line-height: 22px;
 }
  .circle-big .text .small {
 	 font-size: 14px;
@@ -245,10 +265,15 @@ table.type06 .even { background: #e9eef5;}
 	 font-size: 17px;
 	 text-align: center;
 	 font-weight: 400;
-	 line-height: 16px;
 }
  .circle-small .text .small {
 	 font-size: 12px;
 	 color: #648192;
 }
+.text span{
+	font-size:18px;
+}
+#canvas{border:solid 5px #1b2a33;}
+.squat_counter{float:right;margin-right:50px;margin-top:20px;}
+.spicalpt_delete{float:right;padding:10px 0;}
 /*=============*/

@@ -8,7 +8,7 @@
 insert into workout_table(pr_num,pr_info ,workout_point, workout_time, pu_num)values(#{pr_num},#{pr_info},#{workout_point},#{workout_time},#{pu_num})
 </insert> 
 <select id="oneweek" resultType="int">
-select count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and workout_time between date_add(now(),interval -1 week ) and now()
+select count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and day(workout_time) != date_format(now(), '%d') and workout_time between date_add(now(),interval -1 week ) and now() 
 </select>
 <select id="point" resultType="int">
 select  count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and workout_point>0 and workout_time between date_add(now(),interval -1 week ) and now();

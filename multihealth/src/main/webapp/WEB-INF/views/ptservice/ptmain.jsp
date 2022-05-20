@@ -452,6 +452,11 @@ $(".dateTitle").html(nowYear+"년"+" "+nowMonth+"월");
 /*====================== 차트부분 ===================================*/
 
 //한달 목표 횟수 달성률
+
+const getFloatFixed = (value, fixed) => {
+	return parseFloat(Math.round(value * 100) / 100).toFixed(fixed);
+};
+let percent = getFloatFixed(${percent}, 1);
 var areachart = c3.generate({
 	bindto: "#areachart",
     data: {
@@ -472,7 +477,7 @@ var areachart = c3.generate({
 });
 setTimeout(function () {
 	areachart.load({
-        columns: [['달성률', ${percent}]]
+        columns: [['달성률', percent]]
     });
 }, 1000);
 

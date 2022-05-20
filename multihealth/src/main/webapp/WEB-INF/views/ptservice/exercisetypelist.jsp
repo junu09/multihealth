@@ -55,6 +55,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
+                        	<li class="list-inline-item">
+                        		<img src="<%=request.getContextPath()%>/resources/images/run.gif" width="30px" height="30px">
+                        	</li>
                             <li class="list-inline-item">
                                 <a class="h3 text-dark text-decoration-none mr-3 category" id="c1">맨몸 운동</a>
                             </li>
@@ -119,7 +122,7 @@
 		}else{
 			 $("#picklist").html("");
 		}
-		alert(delete_pt+" 운동이 목록에서 삭제되었습니다.");
+		alert("운동이 목록에서 삭제되었습니다.");
 	});
 	$(document).on("click", ".click", function(){
 			pick_pt = $(this).attr("id");
@@ -161,7 +164,7 @@
 					+ "<td>"+list[i].et_part+"</td>"
 					+ "<input type='hidden' name='pr_count' value="+pick[list[i].et_ename]+"><td>"+pick[list[i].et_ename] + "</td>"
 					+ "<td>"+kcal+ "kcal</td>"
-					+ "<td>"+list[i].et_time * pick[list[i].et_ename]+"분</td><td><a class='deletept' id='d-"+list[i].et_name+"'>삭제 <i class='bi bi-x-circle'></i></a></td>";
+					+ "<td>"+list[i].et_time * pick[list[i].et_ename]+"분</td><td><a class='deletept' id='d-"+list[i].et_ename+"'>삭제 <i class='bi bi-x-circle'></i></a></td>";
 				}
 				table +="</tr>"
 					+"<input type='hidden' name='pr_allkcal' value="+add_kcal+"><tr><td></td><td></td><td></td><th>total</th><th>"+add_kcal+"kcal</th>"

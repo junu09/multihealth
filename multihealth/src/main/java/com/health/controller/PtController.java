@@ -467,7 +467,7 @@ public class PtController {
 			workout.setWorkout_point(50);
 			workoutservice.insertworkout(workout);
 			ptuserservice.updatepoint(pu_num);
-			return "{\"ms\":\"50 포인트가 적립되었습니다.\"}";
+			return "{\"ms\":\"포인트가 적립되었습니다.\"}";
 		}else{
 			workout.setWorkout_point(0);
 			workoutservice.insertworkout(workout);

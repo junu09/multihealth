@@ -8,13 +8,12 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 </head>
 
 
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
+<%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

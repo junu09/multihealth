@@ -100,7 +100,7 @@
                       <img src="<%=request.getContextPath()%>/resources/img/icon_02.png" alt="" />
                     </p>
                     <p class="data"><span class="count2">5,000</span></p>
-                    <p class="txt">주문 가구 수</p>
+                    <p class="txt">총 주문수</p>
                   </li>
                   <li>
                     <p class="img">
@@ -148,28 +148,6 @@
               </ul>
             </div>
           </div>
-
-          <!--section6-->
-          <div class="section" id="section5">
-            <div class="inner">
-              <div class="topBox">
-                <p class="tit">멀티헬스 <span>HOT</span></p>
-              </div>
-              <div class="bottomBox">
-                <ul class="snsList">
-                  <li>
-                    <a href="#"><img src="<%=request.getContextPath()%>/resources/img/product_1.jpg" alt="" /></a>
-                  </li>
-                  <li>
-                    <a href="#"><img src="<%=request.getContextPath()%>/resources/img/product_1.jpg" alt="" /></a>
-                  </li>
-                  <li>
-                    <a href="#"><img src="<%=request.getContextPath()%>/resources/img/product_1.jpg" alt="" /></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
            <!--footer-->
           <div class="section fp-auto-height" style="display:none">
             <div class="footer">
@@ -196,9 +174,6 @@
           </li>
           <li data-menuanchor="fourthPage">
             <a href="#fourthPage"><span>서비스</span></a>
-          </li>
-          <li data-menuanchor="fifthPage">
-            <a href="#fifthPage"><span>HOT</span></a>
           </li>
         </ul>
       </div>

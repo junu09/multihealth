@@ -53,7 +53,7 @@ function email_Check() {
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
  
     <!-- Modal -->

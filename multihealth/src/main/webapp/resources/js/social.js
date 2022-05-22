@@ -3,6 +3,9 @@ function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
 	var googleName = profile.getName();
 	var googleEmail = profile.getEmail();
+	var id_token = googleUser.getAuthResponse().id_token;
+	//console.log("ID Token: " + id_token);
+	
 	
 	if(googleEmail != null && googleName != null){
 		sessionStorage.setItem("GEmail", googleEmail);
@@ -35,29 +38,33 @@ function onSignIn(googleUser) {
     				success: res => {
     					const kakao_account = res.kakao_account;
     					var kakaoEmail = kakao_account.email;
-    					sessionStorage.setItem("KEmail", kakaoEmail);	
+    					sessionStorage.setItem("KEmail", kakaoEmail);
+    					sessionStorage.setItem("KEmailCon", kakaoEmail);	
     				}
     				
     			});    				
+    	kakaoEmail = sessionStorage.getItem("KEmailCon");
+    	
+    	$.ajax({
+			url: '/checkEmail',
+			data: {"m_mail" : kakaoEmail},
+			type: 'post',
+			dataType: 'json',
+			success: function(data) {
+				if(data == 1){
+					$('#id').val(kakaoEmail);
+									
+				}
+				else if(data == 0){
+					location.href = '/agreement';
+				}
+			}
+		});
     		}
     	});
-    	var kakaoEmail = sessionStorage.getItem("KEmail");
-    	if(kakaoEmail != null){
-    	$.ajax({
-		url: '/checkEmail',
-		data: {"m_mail" : kakaoEmail},
-		type: 'post',
-		dataType: 'json',
-		success: function(data) {
-			if(data == 1) {
-				$('#id').val(kakaoEmail);
-				console.log(kakaoEmail);
-			}else if(data == 0){
-				location.href = "/agreement";
-
-			}
-		}
-	});
-	}
 }
+
+
+
+
 

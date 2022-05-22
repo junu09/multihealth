@@ -62,13 +62,13 @@ function infoupdate (){
 
 </script>
 
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
 </head>
 	<script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +93,7 @@ function infoupdate (){
         <div class="col-md-6 m-auto text-center text-dark">
             <h1 class="h1">My Information</h1>
             <p>
-               etc
+               Change Your MemberShip Information
             </p>
         </div>
     </div>

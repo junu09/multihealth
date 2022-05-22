@@ -44,6 +44,8 @@ INSERT INTO `authority` (`m_mail`, `authority_name`) VALUES ('user@user.com', 'U
 ##DDL
 CREATE TABLE IF NOT EXISTS ptuser_table (
 	pu_num int NOT NULL AUTO_INCREMENT,
+    pu_img  VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci  DEFAULT "userbasic.jpg",
+	pu_birthday int DEFAULT 0,
 	pu_cm int NOT NULL ,
     pu_kg int NOT NULL ,
     pu_target int NOT NULL DEFAULT 0,
@@ -68,7 +70,8 @@ CREATE TABLE IF NOT EXISTS exercisetype_table (
     et_met int NOT NULL,
     et_time int NOT NULL,
     et_lv int not NULL,
-    et_img1 VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	et_part VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	et_img1 VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
     et_img2 VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	et_img3 VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
     et_description VARCHAR(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -85,6 +88,7 @@ CREATE TABLE IF NOT EXISTS ptroutine_table (
     pu_num int NOT NULL,
     pr_allkcal int not null,
     pr_alltime int not null,
+    pr_delete int NOT NULL DEFAULT 1,
 	PRIMARY KEY (pr_num),
     FOREIGN KEY (pu_num) REFERENCES ptuser_table(pu_num) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -103,11 +107,23 @@ CREATE TABLE IF NOT EXISTS ptroutineone_table (
 ##DDL
 CREATE TABLE IF NOT EXISTS workout_table(
     workout_num int NOT NULL AUTO_INCREMENT,
+    pr_num int NOT NULL,
     pr_info VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
     workout_point int NOT NULL DEFAULT 0,
     workout_time  datetime,
     pu_num int,
     PRIMARY KEY (workout_num),
+    FOREIGN KEY (pu_num) REFERENCES ptuser_table(pu_num) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (pr_num) REFERENCES ptroutine_table(pr_num) ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; 
+
+##DDL
+CREATE TABLE IF NOT EXISTS specialpt_table(
+    specialpt_num int NOT NULL AUTO_INCREMENT,
+    specialpt_score int NOT NULL,
+    m_name VARCHAR(28) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+    pu_num int,
+    PRIMARY KEY (specialpt_num ),
     FOREIGN KEY (pu_num) REFERENCES ptuser_table(pu_num) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; 
 
@@ -116,6 +132,20 @@ CREATE TABLE IF NOT EXISTS category_table (
     category_num int NOT NULL primary key,
     category_name VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+##DDL
+CREATE TABLE IF NOT EXISTS bmi_table (
+	bmi_num int NOT NULL AUTO_INCREMENT,
+	bmi_startage int NOT NULL,
+    bmi_endage int NOT NULL,
+	bmi_gender VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+    bmi_lv1 double not null,
+    bmi_lv2 double not null,
+    bmi_lv3 double not null,
+    bmi_lv4 double not null,
+    bmi_lv5 double not null,
+    PRIMARY KEY (bmi_num)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ##DDL
 CREATE TABLE IF NOT EXISTS healthdb.product_table (

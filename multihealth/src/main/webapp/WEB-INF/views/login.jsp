@@ -16,13 +16,15 @@
     <script src="<%=request.getContextPath() %>/resources/js/logincustom.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/social.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
     
+
     
-    <script>
-    window.Kakao.init("dcaf625769f18ac154f6ece14d82898e")
-    
-    </script>
-    
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 	
 </head>
 
@@ -30,7 +32,6 @@
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,12 +61,12 @@
 
     <!-- Start login or sighup -->
 
-	<div class="container" style="margin-bottom: 250px">
+	<div class="container" style="margin-bottom: 255px">
 		<div class="row">
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body"
-						style="height: 450px; padding: 55px 20px 0px 20px;">
+						style="height: 400px; padding: 55px 20px 0px 20px;">
 						<h5 class="card-title text-center">Log In</h5>
 						<br>
 						<c:url value="j_spring_security_check" var="loginUrl" />
@@ -98,14 +99,21 @@
 									class="text-success">회원님들에게 제공되고 있습니다.</span>
 							</div>
 							<br>
-							<br>
+
 						</form>
-						
-						<div class="container-fluid bg-white py-5">
-							<div class="col-md-8 m-auto text-center text-dark">
-								<div class="g-signin2" data-width="300" data-height="50" data-longtitle="true" data-onsuccess="onSignIn" data-theme="dark"></div>
+						<br>
+						<br>
+						<div class="container-fluid bg-white py-6" >
+							<div class="col-md-8 m-auto text-center text-dark" style="text-align: center;">
+								<div style="display: inline-block;">
+									<a href="javascript:kakaoLogin();"><img src="<%=request.getContextPath() %>/resources/img/kakao_login_large_narrow.png"/></a>
+								</div>								
 								<br>
-								<a href="javascript:kakaoLogin();"><img src="<%=request.getContextPath() %>/resources/img/kakao_login_medium_wide.png"/></a>
+								<br>								
+								<div style="display: inline-block;" class="g-signin2" data-width="254" data-height="50" data-longtitle="true" data-onsuccess="onSignIn" data-theme="dark"></div>
+								<br>
+								<br>
+								<div style="display: inline-block;" id="naver_id_login"></div>
 							</div>
 						</div>
 						
@@ -114,16 +122,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-</body>
-</html>
-  
   
   
 
@@ -132,7 +130,19 @@
 
 <%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
 
-
+    <script type="text/javascript">    
+    window.Kakao.init("dcaf625769f18ac154f6ece14d82898e")
+    </script>
+    
+    <script type="text/javascript">
+	var naver_id_login = new naver_id_login("tcXEacKMYpVdyCFaBEkX", "http://localhost:8081/user/naverLogin");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 4,55);
+	naver_id_login.setDomain("http://localhost:8081");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+    </script>
 
 </body>
 </html>

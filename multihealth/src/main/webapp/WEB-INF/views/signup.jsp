@@ -53,22 +53,27 @@ window.onload = function loadingSocial(){
 	var GName = sessionStorage.getItem("GName");
 	var GEmail = sessionStorage.getItem("GEmail");
 	var KEmail = sessionStorage.getItem("KEmail");
-	
-	
-	
-	if(GName != null){
-		document.getElementById('name').value = GName;
-	}else if(KEmail != null){
-		document.getElementById('name').value = "";
-	}
+	var NName = localStorage.getItem("NName");
+	var NEmail = localStorage.getItem("NEmail");
+	alert(NEmail);
+	alert(NName);
 	
 	if(GEmail != null){
 		document.getElementById('email').value = GEmail;
 	}
 	if(KEmail != null){
 		document.getElementById('email').value = KEmail;
+	}	
+	if(NEmail != null){			
+		document.getElementById('email').value = NEmail;		
 	}
 	
+	if(GName != null){		
+		document.getElementById('name').value = GName;
+	}	
+	if(NName != null){		
+		document.getElementById('name').value = NName;
+	}
 	
 	$.ajax({
 		url: '/checkEmail',
@@ -85,6 +90,7 @@ window.onload = function loadingSocial(){
 			}
 		}
 	});
+	
 }
 </script>
 
@@ -95,10 +101,10 @@ window.onload = function loadingSocial(){
 
     <!-- End Script -->
 
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
 
  
     <!-- Modal -->

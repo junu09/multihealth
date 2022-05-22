@@ -21,11 +21,11 @@
 	});
 </script>
 
+<%@include file ="../views/include/sub_header.jsp" %>
 
 </head>
 <body>
 
-<%@include file ="../views/include/header.jsp" %>
 
 	<section class="container py-5">
 		<div class="row text-center pt-3">

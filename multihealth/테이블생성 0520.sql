@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS workout_table(
 ##DDL
 CREATE TABLE IF NOT EXISTS specialpt_table(
     specialpt_num int NOT NULL AUTO_INCREMENT,
-    specialpt_score int NOT NULL,
+    specialpt_score double NOT NULL,
     m_name VARCHAR(28) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
     pu_num int,
     PRIMARY KEY (specialpt_num ),

@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+   
+    
+    
     <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/img/favicon.ico">
 

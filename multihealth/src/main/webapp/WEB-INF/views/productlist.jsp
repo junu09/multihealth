@@ -93,6 +93,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li ul{display:none;}
 }
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 </head>
 <body style="padding-top: 100px;">
 <header>
@@ -152,6 +153,9 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 <%-- 	<%@include file ="../views/include/header.jsp" %> --%> <!-- 공통헤더 삽입 -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 
+<body>
+<%@include file ="../views/include/sub_header.jsp" %>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css"> 
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">

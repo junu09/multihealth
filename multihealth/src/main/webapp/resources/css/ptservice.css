@@ -8,7 +8,7 @@
 .ptinfortext{font-size:18px;}
 .ptinfortext2{font-size:18px; padding-bottom:20px;}
 .ptinfo_check{font-size:12px;margin-left:10px;color:#940000;}
-
+#saveasptuser{width:100%; margin-bottom:15%;}
 /*======================================*/
 
 
@@ -32,17 +32,17 @@
 .ptuser h1{font-size:23px;margin:0; line-height:10px; margin-top:10%;}
 .ptuser p{font-size:12px;color:#163184;margin:2% 0 3%  10%; text-align:left;}
 .ptuser a{font-size:15px; background:#dfdfdf; color:#fff; padding:0 2%;}
-.ptuser a:hover{background:#000;}
+.ptuser a:hover{background:#000; color:#fff;}
 @media ( max-width: 720px ) {
 .ptuser td:first-child{width:30%;display:none;}
 	
 }
 
 /*차트*/
-.chart_title{font-size:15px;display:inline-block;}
+.chart_title{font-size:15px;display:inline-block;font-weight:bold;}
 .bmicontent{text-align:center;padding:30px 0 50px 0;border-bottom:2px dashed #dfdfdf;}
 .bmitext{padding-left:10px;}
-.areachartbody{padding:7% 0;}
+.areachartbody{padding:7% 0 !important;}
 .description1{font-size:12px; color:gray; margin-bottom:0;line-height:5px;}
 .description2{font-size:10px; color:gray;margin-left:10px; margin-top:10px;line-height:15px;}
 .barchartbody{padding:3% 0;}
@@ -98,12 +98,12 @@
 .exercise_part{font-size:15px;margin-left:2%;}
 
 table.type06 {
+  width:100%;
   border-collapse: collapse;
   text-align: center;
   line-height: 1.5;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  margin: 20px 10px;
   vertical-align: middle;
 }
 table.type06 td:nth-child(1){
@@ -132,12 +132,15 @@ table.type06 td {
 }
 table.type06 .even { background: #e9eef5;}
 .deletept{color:black;}
+#pr_info{width:50%; margin-bottom:20px;}
+#insertptroutine{width:80%;	margin-left:10%;margin-bottom:5%;}
+.ex_result{font-weight:bold;}
 /*=====================================*/
 
 /*=========Routine List============*/
+/* .ptroutinlist{margin-bottom:100px;} */
 .ptroutinlist tr{font-size:15px; text-align:center;}
 .ptroutinelist_a{color:black;}
-#pr_info{margin-left:10px;}
 #ptroutinelist table tr td:nth-child(4){text-align:right;}
 .table-secondary2{background: #e9eef5;}
 .deletpt{text-align:right;}
@@ -155,10 +158,13 @@ table.type06 .even { background: #e9eef5;}
   border-bottom: 1px solid #ccc;
   color:#6d6d6d;
 }
+.startpt_name {font-size:20px;margin-left:5%;}
+.startpt_count{font-size:17px;}
 #timer{font-family: 'Wallpoet', cursive;margin-left:10px; font-size:1.5rem;margin-left:85%;margin-bottom:0;}
 #startpt_btn{float:right;}
 .pt_btn{margin-right:10px;}
-.pt_description{padding:30px 0;}
+.pt_description div{padding:30px 0; font-size:18px;}
+
 
 #myProgress {
     position: relative;
@@ -176,7 +182,22 @@ table.type06 .even { background: #e9eef5;}
 
 
 
-
+/*=====Special PT=======*/
+#rankinglist{text-align:center;}
+.rankingtitle{
+ background: #e9eef5;
+ border-bottom: 1px solid black;
+}
+.ranker{
+	font-size:18px;
+	line-height: 40;
+}
+.ranker span{font-size:14px;}
+.ranker i{margin-right:10px;}
+#rankinglist td:nth-child(1){
+	width:30%;
+}
+/*=============*/
 /*=====타이머=======*/
 
 .start_spcialpt div{padding:20px 0; margin:0 auto;}
@@ -274,6 +295,7 @@ table.type06 .even { background: #e9eef5;}
 	font-size:18px;
 }
 #canvas{border:solid 5px #1b2a33;}
-.squat_counter{float:right;margin-right:50px;margin-top:20px;}
+.squat_counter{float:right;margin-right:50px;margin-top:20px; position:relative;}
+.text{position:absolute; text-align:center; top:51px; left:12px;}
 .spicalpt_delete{float:right;padding:10px 0;}
 /*=============*/

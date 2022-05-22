@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
 </head>
 <body>
-<%@include file ="../include/header.jsp" %> 
+<%@include file ="../include/sub_header.jsp" %> 
 	<div class="container py-5">
          <div class="row">
             <div class="col-lg-3 leftlayout">
@@ -24,7 +24,7 @@
 	                    <c:forEach items="${pick}" var="pickdto" varStatus="status">
 	                    	<li class="pb-3 start_pt">
 		                        <p class="collapsed d-flex justify-content-between h3 text-decoration-none" >
-		                        	<i class="fa fa-fw fa-chevron-circle-down mt-1 color${status.index}"></i>${pickdto.et_name}<span class="startpt_count">[${pickdto.pr_count}회  ${pickdto.et_time*pickdto.pr_count}분]</span>
+		                        	<i class="fa fa-fw fa-chevron-circle-down mt-1 color${status.index}"></i><span class="startpt_name">${pickdto.et_name}</span><span class="startpt_count">[${pickdto.pr_count}회  ${pickdto.et_time*pickdto.pr_count}분]</span>
 								</p>
 	                    	 </li>						
 	                     </c:forEach>

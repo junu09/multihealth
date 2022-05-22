@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
- <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
-	<div class="container  py-5">
+ <%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
+	<div class="container py-5">
 	  <div class="row">
 	     <div class="col-lg-3 leftlayout">
 		  	<div class="row">
@@ -54,15 +54,47 @@
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                         	<li class="list-inline-item"><img src="<%=request.getContextPath()%>/resources/images/run.gif" width="30px" height="30px"></li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3 spcial_menu" id="c1">운동시작하기</a>
+                                <a class="h3 text-dark text-decoration-none mr-3 spcial_menu" id="c1">랭킹확인하기</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none spcial_menu"id="c2">랭킹확인하기</a>
+                                <a class="h3 text-dark text-decoration-none spcial_menu"id="c2">운동시작하기</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="card mb-4 spcial_menuc" id="spcial_menuc1">
+        		<div class="card mb-4 spcial_menuc" id="spcial_menuc1">
+		        	<div class="card-header">
+		            	<i class="bi bi-award"></i>
+		            	<h3 class="chart_title">Special PT 랭킹확인하기</h3>
+		         	</div>
+		         	<div class="card-body start_spcialpt">
+		         	<div class="card-body">
+						<table class="table table-hover">
+						  <thead>
+						    <tr class="tbody rankingtitle">
+						      <th scope="col">등수</th>
+						      <th scope="col">회원명</th>
+						      <th scope="col">1회 평균소요시간</th>
+						    </tr>
+						  </thead>
+						  <c:if test="${page != 0}">
+						  	<tbody id="rankinglist">
+							</tbody>
+							</c:if>
+							<c:if test="${page == 0}"> 
+							 <tbody id="rankinglist">
+							    <tr class="tbody">
+							      <td colspan='3'>랭킹 기록이 없습니다</td>
+							    </tr>
+							</tbody>
+							</c:if>    
+							</table>
+				         	<div id="pageing"> 
+							</div>
+			         	</div>
+		         	</div>
+        		</div>
+        		<div class="card mb-4 spcial_menuc" id="spcial_menuc2">
 		        	<div class="card-header">
 		            	<i class="bi bi-check-all"></i>
 		            	<h3 class="chart_title">운동시작하기</h3>
@@ -81,74 +113,6 @@
 	                    </div>
 		         	</div>
         		</div>
-        		<div class="card mb-4 spcial_menuc" id="spcial_menuc2">
-		        	<div class="card-header">
-		            	<i class="bi bi-award"></i>
-		            	<h3 class="chart_title">TOP100 랭킹확인하기</h3>
-		         	</div>
-		         	<div class="card-body start_spcialpt">
-		         	<div class="card-body">
-			         	<c:if test="${page != 0}">
-						<table class="table table-hover">
-						  <thead>
-						    <tr class="thead">
-						      <th scope="col">등수</th>
-						      <th scope="col">유저이미지</th>
-						      <th scope="col">유저이름</th>
-						      <th scope="col">1회당 소요시간</th>
-						    </tr>
-						  </thead>
-						  <tbody id="workoutlist">
-						  	<tr class="tbody">
-						      <th scope="col">1</th>
-						      <th scope="col"><img src="<%=request.getContextPath()%>/upload2/user3.png" width="50px" height="50px"></th>
-						      <th scope="col">유저이름</th>
-						      <th scope="col">1회당 소요시간</th>
-						    </tr>
-						    <tr class="tbody">
-						      <th scope="col">2</th>
-						      <th scope="col">유저이미지</th>
-						      <th scope="col">유저이름</th>
-						      <th scope="col">1회당 소요시간</th>
-						    </tr>
-						    <tr class="tbody">
-						      <th scope="col">등수</th>
-						      <th scope="col">유저이미지</th>
-						      <th scope="col">유저이름</th>
-						      <th scope="col">1회당 소요시간</th>
-						    </tr>
-						  	<c:forEach items="${pagelist}" var="dto" >  
-							    <tr class="tbody">
-							      <td>${dto.pr_info}</td>
-							      <td>${dto.workout_point} point</td>
-							      <td>${dto.workout_time}</td>
-							    </tr>
-							</c:forEach>
-						    </tbody>
-							</table>
-							</c:if>
-							<c:if test="${page == 0}">
-							<table class="table table-hover">
-						  	<thead>
-							    <tr class="thead">
-							      <th scope="col">등수</th>
-							      <th scope="col">등수</th>
-							      <th scope="col">적립포인트</th>
-							      <th scope="col">운동일자</th>
-							    </tr>
-						  	</thead>
-						  	<tbody id="workoutlist">  
-							    <tr class="tbody">
-							      <td colspan='3'>운동기록이 없습니다</td>
-							    </tr>
-						    </tbody>
-							</table>
-							</c:if>
-				         	<div id="pageing"> 
-							</div>
-			         	</div>
-		         	</div>
-        		</div>
             </div>
         </div>
     </div>
@@ -157,6 +121,7 @@
 <script type="text/javascript">
 $("#spcial_menuc1").show();
 $("#spcial_menuc2").hide();
+updateranking(1);
 $(document).on("click", ".spcial_menu", function category(){
 	$(".spcial_menuc").hide();
 		var c_num = $(this).attr("id")[1];
@@ -171,11 +136,10 @@ $(document).on("click", ".spcial_menu", function category(){
   }
   
  //페이징처리 부분
- <%-- let pageing = document.getElementById('pageing');
-let workoutlistnone = document.getElementById('workoutlistnone');
+let pageing = document.getElementById('pageing');
  if(${page}!=0){
-	 let a = parseInt(${page}/5);
-	 let b = parseInt(${page}%5);
+	 let a = parseInt(${page}/20);
+	 let b = parseInt(${page}%20);
 	 let page_number = a;
 	 if(b !=0){
 		 page_number += 1;
@@ -188,27 +152,58 @@ let workoutlistnone = document.getElementById('workoutlistnone');
  	pageing.innerHTML = page; 
  }
  
- let workoutlist = document.getElementById( 'workoutlist' );
+let rankinglist = document.getElementById( 'rankinglist' );
  $(document).on("click", ".pagenumber", function(){
 		var page = $(this).text();
+		updateranking(page);
+ }); 
+ //유저정보 pu_num 가져옴 
+ var pu_num = ${pu_num};
+ 
+ function updateranking(page){
 		$.ajax({
-			url: '<%=request.getContextPath() %>/ptservice/ptmain',
+			url: '<%=request.getContextPath() %>/ptservice/specialptranking',
 			data : {'page':page} , 
 			type : 'post' ,
 			dataType: 'json',
 			success : function(dto){ //MemberDTO 객체를 json  변환 객체로
 				var newpage = "";
+				var ranking =(page-1) * 20+1;
 				for(var i = 0; i < dto.length; i++){
-					newpage += "<tr class='tbody'>"
-					+"<td>"+ dto[i].pr_info+"</td>"
-					+"<td>"+dto[i].workout_point+"point</td>"
-					+"<td>"+dto[i].workout_time+"</td></tr>"
-					
+					if((ranking+i)==1){
+						newpage += "<tr class='tbody ranker'>"
+						+"<td style='color:#FFD700'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+						+"<td>"+dto[i].m_name+"<span>님<span></td>"
+						+"<td>"+dto[i].specialpt_score+"<span>초<span></td></tr>"
+					}else if((ranking+i)==2){
+						newpage += "<tr class='tbody ranker'>"
+						+"<td style='color:#C0C0C0'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위</span></td>"
+						+"<td>"+dto[i].m_name+"<span>님</span></td>"
+						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						
+					}else if((ranking+i)==3){
+						newpage += "<tr class='tbody ranker'>"
+						+"<td style='color:#957745'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+						+"<td>"+dto[i].m_name+"<span>님</span></td>"
+						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+					}else if(dto[i].pu_num == pu_num){
+						newpage += "<tr class='tbody'style='background:rgba(0, 0, 0, 0.075)'>"
+						+"<td>"+(ranking+i)+"<span>위<span></td>"
+						+"<td>"+dto[i].m_name+"<span>님</span></td>"
+						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						
+					}
+					else{
+						newpage += "<tr class='tbody user'>"
+						+"<td>"+(ranking+i)+" 위</td>"
+						+"<td>"+dto[i].m_name+" 님</td>"
+						+"<td>"+dto[i].specialpt_score+" 초</td></tr>"
+					}
 				}
-				workoutlist.innerHTML = newpage; 
+				rankinglist.innerHTML = newpage; 
 			}
 		});
- });  --%>
+	}
  </script>
 </body>
 </html>

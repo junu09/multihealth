@@ -29,7 +29,7 @@
 .modal_wrap {
     display: none;
     width: 100%;
-    height: 100%; /* 모달 내리는 높이 조절 */
+    height: 30%; /* 모달 내리는 높이 조절 */
     position: absolute;
     top:0;
     left:0;
@@ -66,10 +66,10 @@ header {
 	top:0;
 	left:0;
 	right:0;
-	z-index:1;
+	z-index: 1;
 }
 nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important;; font-size:17px !important;}
-nav > ul > li {float:left; line-height:100px; margin:0 auto; color:white;}
+nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
 nav > ul > .side{float:left; width:26%;}
 nav > ul > .logo img{margin-top:20px; width:150px;}
 nav > ul > .logo #mobilebtn img{display:none;}
@@ -94,14 +94,14 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 }
 </style>
 </head>
-<body>
+<body style="padding-top: 100px;">
 <header>
 	<nav>
 			<ul class="clearfix mainmenu">
 			<li  class="side logo">
 			
 				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png" style="padding-bottom: 30px;"></a>
-			    <span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
+				<span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
 			</li>
 				<li class="menutitle"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
 					    <ul class="submenu">
@@ -121,21 +121,19 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
-				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
-				<li  class="menutitle" id="admin"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
 							<li><a href="#">2nd menu</a></li>
 						</ul>
-				</li>
-				<li class="side icon">
+				</li> 
+				<li class="side icon" style="padding-left: 84px;">
 				    <a href="/user/loginPage" style="padding-right: 20px;">log in</a>
 				    <a href="/agreement" style="padding-right: 20px;">sign up</a>
 					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 					<a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
-					<a href="#"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
-				</li>											
+				</li>													
 			</ul>
 			
 	</nav>
@@ -553,40 +551,11 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	
 	</script>
 <script>
-const menutitles=document.querySelectorAll('.menutitle');
-const admin=document.querySelector('#admin');
 const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
-<<<<<<< HEAD
 //웹상 메뉴 
-for(let i = 0; i < menutitles.length; i++)  {
-	let windowWidth = window.outerWidth;
-    if (windowWidth >720){
-		if(admin.style.display=="none"){
-			menutitles[i].style.width = 15+ '%';
-		}else{
-			menutitles[i].style.width = 12 + '%';
-		}
-    }
-  }
-
-
-//웹상 메뉴
-
-for(let i = 0; i < menutitles.length; i++)  {
-	let windowWidth = window.outerWidth;
-    if (windowWidth >720){
-		if(admin.style.display=="none"){
-			menutitles[i].style.width = 15 + '%';
-		}else{
-			menutitles[i].style.width = 12 + '%';
-		}
-    }
-  }
-  
-  
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {
@@ -618,7 +587,6 @@ mobilebtn.addEventListener('click', () => {
     	
     }
 });
-
 
 function modalOpen() {
     document.querySelector('.modal_wrap').style.display = 'block';

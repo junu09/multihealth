@@ -250,6 +250,7 @@ public class PtController {
 		//이미지파일 존재여부 확인 
 		MultipartFile pu_imgfile = dto.getPu_imgfile();
 		String savePath = "/Users/seoa/Desktop/upload/";
+		
 		if(!pu_imgfile.isEmpty()) {
 			String originname = pu_imgfile.getOriginalFilename();
 			//확장자 이후

@@ -67,6 +67,7 @@ function signup_check() {
 	};
 	alert("회원가입 완료 되셨어요. 환영합니다.")
 	
+	
 	document.getElementById("formsubmit").submit();
 };
 

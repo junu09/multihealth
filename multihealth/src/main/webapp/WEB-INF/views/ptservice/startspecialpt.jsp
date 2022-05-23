@@ -78,6 +78,7 @@
         var status = "stand";//처음 서있는 상태를 변수로
         var number = ${ptcount};//갯수를 변수로 만들어줌 
         var count = ${ptcount};//갯수를 변수로 만들어줌 
+        var count2 = ${ptcount};//갯수를 변수로 만들어줌 
         var progress = 327;
         
 		//기록관련 
@@ -133,9 +134,11 @@
                 if (status == "squat") {
                 	if(count != 0){
                     	count-- //스쿼트 상태였다가 스탠드 상태로 갔을때 카운터를 하나 올려준다
+                    	count2--
                     	progress = progress-(327/number);
                     	$('.progress').css('stroke-dashoffset', progress);
-	                	if(count == 0){
+	                	if(count2 == 0){
+	                		count2--
 	                		end = new Date();
 	    	   				$(".finish_btn").css('display','block');
 	    	   				$(".finishimg").css('display','block');

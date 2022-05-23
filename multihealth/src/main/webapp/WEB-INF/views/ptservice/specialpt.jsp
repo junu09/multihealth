@@ -77,17 +77,17 @@
 						      <th scope="col">1회 평균소요시간</th>
 						    </tr>
 						  </thead>
-						  <c:if test="${page != 0}">
-						  	<tbody id="rankinglist">
-							</tbody>
+						  	<c:if test="${page != 0}">
+							  	<tbody id="rankinglist">
+								</tbody>
 							</c:if>
-							<c:if test="${page == 0}"> 
-							 <tbody id="rankinglist">
-							    <tr class="tbody">
-							      <td colspan='3'>랭킹 기록이 없습니다</td>
-							    </tr>
-							</tbody>
-							</c:if>    
+						   	<c:if test="${page == 0}">
+								 <tbody id="rankinglist">
+								    <tr class="tbody user">
+								      <td colspan='3'>랭킹 기록이 없습니다</td>
+								    </tr>
+								</tbody>
+						    </c:if>    
 							</table>
 				         	<div id="pageing"> 
 							</div>
@@ -119,9 +119,14 @@
 <%@include file ="../include/footerjsx.jsp" %> 
 <script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+if (self.name != 'reload') {
+    self.name = 'reload';
+    self.location.reload(true);
+}
+else self.name = '';
 $("#spcial_menuc1").show();
 $("#spcial_menuc2").hide();
-updateranking(1);
+if(${page}!=0){updateranking(1);}
 $(document).on("click", ".spcial_menu", function category(){
 	$(".spcial_menuc").hide();
 		var c_num = $(this).attr("id")[1];
@@ -159,7 +164,6 @@ let rankinglist = document.getElementById( 'rankinglist' );
  }); 
  //유저정보 pu_num 가져옴 
  var pu_num = ${pu_num};
- 
  function updateranking(page){
 		$.ajax({
 			url: '<%=request.getContextPath() %>/ptservice/specialptranking',
@@ -191,7 +195,6 @@ let rankinglist = document.getElementById( 'rankinglist' );
 						+"<td>"+(ranking+i)+"<span>위<span></td>"
 						+"<td>"+dto[i].m_name+"<span>님</span></td>"
 						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
-						
 					}
 					else{
 						newpage += "<tr class='tbody user'>"

@@ -65,9 +65,6 @@ public class ReviewServiceImpl implements ReviewService {
             if(ccontentnum == 9){//선택 게시글 수
             	//testList = adao.testlist(pagemaker.getPagenum()*9,pagemaker.getContentnum());
             	testList = rdao.reviewlist();
-            	//System.out.println("-----ReviewServiceImpl------");
-            	//System.out.println(testList.get(0).getProd_num());
-            	//System.out.println(testList.size());
 
             	for(int i = 0; i < testList.size(); i++) {
             		prodList.add(new ProductDTO(rdao.product(Integer.parseInt(testList.get(i).getProd_num()))));

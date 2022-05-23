@@ -1,7 +1,7 @@
 package com.health.service;
 
 import com.health.dto.OrderDTO;
-
+ 
 public interface OrderService {
 
 	void insertCartList(OrderDTO order)throws Exception;

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.health.dto.MemberDTO;
-
+ 
 public interface MemberService extends UserDetailsService {
 	Collection<GrantedAuthority> getAuthorities(String m_mail);
 

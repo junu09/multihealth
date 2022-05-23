@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 	
 </head>
 
@@ -49,14 +48,20 @@
 					<div class="col-md-6">
 						<ul class="list-inline shop-top-menu pb-3 pt-1">
 							<li class="list-inline-item"><a
-								class="h3 text-dark text-decoration-none mr-3" href="#">공지사항
+								class="h3 text-dark text-decoration-none mr-3" href="#">${detail.a_title }
 									</a></li>
+							<!--                             <li class="list-inline-item"> -->
+							<!--                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a> -->
+							<!--                             </li> -->
+							<!--                             <li class="list-inline-item"> -->
+							<!--                                 <a class="h3 text-dark text-decoration-none" href="#">Women's</a> -->
+							<!--                             </li> -->
 						</ul>
 					</div>
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)" style="display:none">
+								onchange="chageLangSelect(1)" style="visibility:hidden;">
 								<c:forEach items="${categorylist }" var="cdto"
 									varStatus="status">
 									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
@@ -65,9 +70,9 @@
 						</div>
 					</div>
 					<div class="col-md-3 pb-4">
-						<div class="d-flex">
+						<div class="d-flex" style="display:none;">
 								<!-- 이거 9 18 27 -->
-							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)">
+							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)" style="visibility:hidden;">
 								<option value="9"
 									<c:if test="${page.getContentnum() == 9 }">selected="selected"</c:if>>9
 									개</option>
@@ -82,56 +87,22 @@
 					</div>
 				</div>
 
-				<div class="row">
-					
-						<div class="col-md-12">
-						<table class="table">
-							<thead>
-							<tr>
-								<th>제목</th>
-								<th>날짜</th>
-								<th>   </th>
-							</tr>
-							</thead>
-							<tbody>
-							<c:forEach items="${announcelist }" var="dto" varStatus="status">
-							<tr>
-								<td><a href="http://localhost:8081/announce/announcedetail?anum=${dto.a_num}" style="color:#000;">${dto.a_title }</a></td>
-								<td>${dto.a_date }</td>
-								<sec:authorize access="hasAuthority('ADMIN')"><td><button class="delete_btn btn btn-secondary" value="${dto.a_num }">삭제</button></td></sec:authorize>
+					<div class="row">
+						<div class="col-md-10">
+							<form class="form-horizontal" action="/admin/insertresult" method="post"
+								enctype="multipart/form-data">
+								<input type=hidden name=p_num value=null><br>
+								<div class="form-group">
+									<label for="prod_title" class="col-sm-5 control-label">${detail.a_date}</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="15" id=announce_content
+											name=announce_content style="resize: none; background-color: #fff;" readonly>${detail.a_content}</textarea><br>
+									</div>
+								</div>
 								
-							</tr>
-							</c:forEach>
-							</tbody>
-						</table>
-
+							</form>
 						</div>
-
-				</div>
-
-				<div div="row">
-					<ul class="pagination pagination-lg justify-content-end">
-						<c:if test="${page.prev}">
-							<li class="page-item"><a
-								class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-								href="javascript:page(${page.getStartPage()-1});">&laquo;</a></li>
-						</c:if>
-
-						<c:forEach begin="${page.getStartPage()}"
-							end="${page.getEndPage()}" var="idx">
-							<li class="page-item"><a
-								class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-								href="javascript:page(${idx});">${idx}</a></li>
-						</c:forEach>
-
-
-						<c:if test="${page.next}">
-							<li class="page-item"><a
-								class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-								href="javascript:page(${page.getEndPage()+1});">&raquo;</a></li>
-						</c:if>
-					</ul>
-				</div>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -178,12 +149,13 @@
 		}
 	</script>
 	<script>
-	$(document).on("click", ".delete_btn", function () {
-		
-		 var a_num = $(this).val();
-		 location.href="http://localhost:8081/announce/announcedelete?a_num="+a_num
+	$(document).on("click", ".delete_modal", function () {
+		 console.log($(this).data('num'));
+	     var prod_num = $(this).data('num');
+	     $("#productnum").val(prod_num);
 	});
 	</script>
+
 	<!-- End Script -->
 </body>
 </html>

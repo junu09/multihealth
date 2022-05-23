@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.health.dto.MemberDTO;
-
+ 
 @Mapper
 public interface MemberDAO {
 	

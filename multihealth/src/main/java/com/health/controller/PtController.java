@@ -485,81 +485,81 @@ public class PtController {
 	}
 	
 	//================Specialpt 스쿼드 갯수 카운트=========================== 
-	//목표 횟수를 받아옴 
-	@RequestMapping(value="ptservice/specialpt", method = RequestMethod.GET)
-	public ModelAndView speciaptstart(){
-		//유저 id
-		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		int m_num = principal.getM_num();
-		PtuserDTO user = ptuserservice.ptuser(m_num);
-		//		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("ptservice/specialpt");	
-		int page = specialptService.checkspecialptlist();
-		mv.addObject("pu_num", user.getPu_num());
-		mv.addObject("page", page);
-		return mv;
-	}
-	
-	
-	//랭킹 확인하기
-	@RequestMapping(value="ptservice/specialptranking", method=RequestMethod.POST , produces = {"application/json;charset=utf-8"} )
-	@ResponseBody
-	public List<SpecialptDTO> specialptrankingpage(String page) {
-		//유저 id
-		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		int m_num = principal.getM_num();
-		PtuserDTO user = ptuserservice.ptuser(m_num);
-		//
-		int paging = Integer.parseInt(page);
-		List<SpecialptDTO> rankinglist =  specialptService.specialptlis(paging);	
-		return rankinglist;
-	}
-	
-	//횟수를 뿌려주고 티처블 머신과 연결함
-	@RequestMapping(value="ptservice/specialpt", method = RequestMethod.POST)
-	public ModelAndView specialroutinestart(String ptcount){
-		int count = Integer.parseInt(ptcount);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("ptcount", count);
-		mv.setViewName("ptservice/startspecialpt");	
-		return mv;
-	}
-	
-	//스페셜 루틴 마친후 기록을 저장
-		@RequestMapping(value="ptservice/specialroutinesave", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
-		@ResponseBody
-		public void specialroutinesave(String time, String count){
+		//목표 횟수를 받아옴 
+		@RequestMapping(value="ptservice/specialpt", method = RequestMethod.GET)
+		public ModelAndView speciaptstart(){
 			//유저 id
 			MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			int m_num = principal.getM_num();
-			String m_name = principal.getM_name();
-					
 			PtuserDTO user = ptuserservice.ptuser(m_num);
-			int pu_num = user.getPu_num();
-			/**/
-			int checkspecialpt = specialptService.checkspecialpt(pu_num);
-			int ptcount = Integer.parseInt(count);
-			double setSpecialpt_score = ((Double.parseDouble(time)/ptcount))/1000;
-			setSpecialpt_score = Math.round(setSpecialpt_score * 100) / 100.0;
-		
-			if(checkspecialpt == 0) {
-				SpecialptDTO specialptdto = new SpecialptDTO();
-				specialptdto.setPu_num(pu_num);
-				specialptdto.setM_name(m_name);
-				specialptdto.setSpecialpt_score(setSpecialpt_score);
-				specialptService.insertspecialpt(specialptdto);
-			}else {
-				SpecialptDTO specialptdto = new SpecialptDTO();
-				specialptdto.setPu_num(pu_num);
-				specialptdto.setM_name(m_name);
-				specialptdto.setSpecialpt_score(setSpecialpt_score);
-				specialptService.updatescore(specialptdto);
-			}
+			//		
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("ptservice/specialpt");	
+			int page = specialptService.checkspecialptlist();
+			mv.addObject("pu_num", user.getPu_num());
+			mv.addObject("page", page);
+			return mv;
 		}
 		
-	
-}
+		
+		//랭킹 확인하기
+		@RequestMapping(value="ptservice/specialptranking", method=RequestMethod.POST , produces = {"application/json;charset=utf-8"} )
+		@ResponseBody
+		public List<SpecialptDTO> specialptrankingpage(String page) {
+			//유저 id
+			MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			int m_num = principal.getM_num();
+			PtuserDTO user = ptuserservice.ptuser(m_num);
+			//
+			int paging = Integer.parseInt(page);
+			List<SpecialptDTO> rankinglist =  specialptService.specialptlis(paging);	
+			return rankinglist;
+		}
+		
+		//횟수를 뿌려주고 티처블 머신과 연결함
+		@RequestMapping(value="ptservice/specialpt", method = RequestMethod.POST)
+		public ModelAndView specialroutinestart(String ptcount){
+			int count = Integer.parseInt(ptcount);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("ptcount", count);
+			mv.setViewName("ptservice/startspecialpt");	
+			return mv;
+		}
+		
+		//스페셜 루틴 마친후 기록을 저장
+			@RequestMapping(value="ptservice/specialroutinesave", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
+			@ResponseBody
+			public void specialroutinesave(String time, String count){
+				//유저 id
+				MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				int m_num = principal.getM_num();
+				String m_name = principal.getM_name();
+						
+				PtuserDTO user = ptuserservice.ptuser(m_num);
+				int pu_num = user.getPu_num();
+				/**/
+				int checkspecialpt = specialptService.checkspecialpt(pu_num);
+				int ptcount = Integer.parseInt(count);
+				double setSpecialpt_score = ((Double.parseDouble(time)/ptcount))/1000;
+				setSpecialpt_score = Math.round(setSpecialpt_score * 100) / 100.0;
+			
+				if(checkspecialpt == 0) {
+					SpecialptDTO specialptdto = new SpecialptDTO();
+					specialptdto.setPu_num(pu_num);
+					specialptdto.setM_name(m_name);
+					specialptdto.setSpecialpt_score(setSpecialpt_score);
+					specialptService.insertspecialpt(specialptdto);
+				}else {
+					SpecialptDTO specialptdto = new SpecialptDTO();
+					specialptdto.setPu_num(pu_num);
+					specialptdto.setM_name(m_name);
+					specialptdto.setSpecialpt_score(setSpecialpt_score);
+					specialptService.updatescore(specialptdto);
+				}
+			}
+			
+		
+	}
 
 
 

@@ -8,12 +8,13 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	
 </head>
 
 
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+<%@include file ="../include/sub_header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/review.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,10 +43,14 @@
 						href="#"> 리뷰 <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
 					</a>
 						<ul class="collapse show list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="admininsert">리뷰
-									등록</a></li>
-							<li><a class="text-decoration-none" href="adminselect">리뷰
-									조회 및 수정 삭제</a></li>
+							<li><a class="text-decoration-none" href="reviewlist">리뷰
+									조회</a></li>
+							<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewlist">리뷰
+										등록</a></li></sec:authorize>
+										<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewdel">리뷰
+										삭제</a></li></sec:authorize>
 						</ul></li>
 				</ul>
 			</div>
@@ -94,69 +99,96 @@
 					</div>
 				</div>
 
-								<div class="col-lg-9">
-					<div class="row">
-						<div class="col-md-10">
-							<form class="form-horizontal" action="/admin/insertresult" method="post"
-								enctype="multipart/form-data">
-								<input type=hidden name=p_num value=null><br>
-								<div class="form-group">
-									<label for="category_num" class="col-sm-2 control-label">카테고리</label>
-									<div class="col-sm-10">
-										<select class="form-control" id="category_num"
-											name="category_num" onchange="chageLangSelect(1)">
-											<c:forEach items="${categorylist }" var="cdto"
-												varStatus="status">
-												<option value="${cdto.category_num}"
-													<c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
-											</c:forEach>
-										</select>
+				<div class="row">
+					<c:forEach items="${ablereviewmod }" var="dto" varStatus="status">
+						<div class="col-md-4">
+							<div class="card mb-4 product-wap rounded-0">
+								<div class="card rounded-0">
+									${dto.r_image_name }
+									<div
+										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+										<ul class="list-unstyled">											
+											<li><a class="btn btn-success text-white mt-2"
+												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
+											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.prod_num }"
+											    ><i class="fas fa-trash"></i></a></li>
+										</ul>
 									</div>
 								</div>
-								<br>
-								<div class="form-group">
-									<label for="prod_title" class="col-sm-2 control-label">타이틀</label>
-									<div class="col-sm-10">
-										<input type=text class="form-control" id=prod_title
-											name=prod_title><br>
+								
+								<!-- Modal -->
+								<div class="modal fade bg-white" id="delete_modal"
+									tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+									aria-hidden="true">
+									<div class="modal-dialog modal-lg" role="document">
+	
+										
+										<form action="admindelete" method="get"
+											class="modal-content modal-body border-0 p-0" >
+											<h1 style="text-align: center;">삭제하시겠습니까?</h1>
+											<br>
+											<br>
+											<div>
+												<input type="hidden" name=productnum id=productnum value="" />
+												<div style="display: inline; float: left;">
+													<button type="submit"
+														class="input-group-text bg-primary text-light">
+														<i class="fa fa-fw fa-check text-white"></i>
+													</button>
+												</div>
+												<div style="display: inline-block; float:right;">
+													<button type="button"
+														class="input-group-text bg-primary text-light"
+														data-bs-dismiss="modal" aria-label="Close">
+														<i class="fa fa-fw fa-times text-white"></i>
+													</button>
+												</div>
+											</div>	
+										</form>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="prod_price" class="col-sm-2 control-label">가격</label>
-									<div class="col-sm-10">
-										<input type=text class="form-control" id=prod_price
-											name=prod_price><br>
-									</div>
+								<div class="card-body" style="display:inline-block; height:166px">
+									<a style="display:inline-block; height:70px" href="#" class="h3 text-decoration-none">${dto.r_content}</a>
+									<ul
+										class="w-100 list-unstyled d-flex justify-content-between mb-0">
+										<li class="pt-2"><span
+											class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+											<span
+											class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+											<span
+											class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+											<span
+											class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+											<span
+											class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+										</li>
+									</ul>
+									<ul class="list-unstyled d-flex justify-content-center mb-1">
+										<li>
+										<c:forEach var="i" begin="1" end="${dto.r_point}">
+											<i class="text-warning fa fa-star"></i>
+										</c:forEach> 
+										<c:forEach var="i" begin="${dto.r_point}" end="4">
+											<i class="text-muted fa fa-star"></i>
+										</c:forEach>
+										</li>
+									</ul>
+<%-- 									<p class="text-center mb-0">${dto.r_point }</p> --%>
+
 								</div>
-								<div class="form-group">
-									<label for="prod_inventory" class="col-sm-2 control-label">재고</label>
-									<div class="col-sm-10">
-										<input type=text class="form-control" id=prod_inventory
-											name=prod_inventory><br>
-									</div>
+									<div class="col-md-12" style="text-align: center;">
+										<div class="col-md-3" style="display:inline; overflow:hiddlen;">
+											${prodlist[status.index].prod_img_name}
+										</div>
+									<div class="col-md-9"
+										style="display:inline-block; white-space : nowrap; width: 100px; overflow:hidden; text-overflow : ellipsis;">
+										<a href="../productdetail?prod_num=${prodlist[status.index].prod_num }">${prodlist[status.index].prod_title}</a>
+										</div>
 								</div>
-								<div class="form-group">
-									<label for="prod_img" class="col-sm-2 control-label">이미지</label>
-									<div class="col-sm-10">
-										<input type=file class="form-control" id=prod_img
-											name="prod_img"><br>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="prod_description" class="col-sm-2 control-label">설명</label>
-									<div class="col-sm-10">
-										<input type=file class="form-control" id=prod_description
-											name=prod_description><br>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<button type=submit class="btn btn-primary">상품 등록</button>
-									</div>
-								</div>
-							</form>
+							</div>
 						</div>
-					</div>
+					</c:forEach>
+
 				</div>
 
 				<div div="row">

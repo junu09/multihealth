@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.health.dto.PtroutineoneDTO;
 
-
+ 
 public interface PtroutineoneService{
 	public int insertptroutineone(PtroutineoneDTO dto);
 	public List<PtroutineoneDTO> ptroutinepick(int pr_num);

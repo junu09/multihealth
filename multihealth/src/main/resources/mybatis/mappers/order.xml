@@ -7,5 +7,5 @@
 		insert into order_table values(null,#{prod_num},#{m_num},#{o_count})
 	]]>
 	</insert>
-
+ 
 </mapper>

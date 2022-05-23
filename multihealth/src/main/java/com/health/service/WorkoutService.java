@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.health.dto.WorkoutDTO;
-
+ 
 public interface WorkoutService{
 	public int insertworkout(WorkoutDTO dto);
 	public int oneweek(int pu_num);

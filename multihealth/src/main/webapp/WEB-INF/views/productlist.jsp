@@ -6,13 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>MultiHealth</title>
-
+ 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<%-- 	<%@include file ="../views/include/header.jsp" %> --%> <!-- 공통헤더 삽입 -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
-
+</head>
 <body>
 <%@include file ="../views/include/sub_header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css"> 
@@ -414,7 +411,10 @@
 	  };
 	
 	</script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/erioll1
 	<!-- End Script -->
 </body>
 </html>

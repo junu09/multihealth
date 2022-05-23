@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 
 import com.health.dto.ProductDTO;
-
+ 
 public interface ProductService {
 	
 	public int selectPrice(int prod_num) throws Exception;

@@ -1,5 +1,5 @@
 package com.health.dto;
-
+ 
 
 public class PtroutineDTO {
 	int pr_num, pu_num ,pr_allkcal ,pr_alltime,pr_delete;

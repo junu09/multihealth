@@ -1,6 +1,6 @@
 package com.health.dto;
 
-
+ 
 public class BmiDTO {
 	String bmi_gender;
 	double bmi_lv1, bmi_lv2, bmi_lv3, bmi_lv4, bmi_lv5;

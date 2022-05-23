@@ -1,7 +1,7 @@
 package com.health.dto;
 
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 public class PtuserDTO{
 	int pu_num, pu_cm, pu_kg, pu_point, pu_target, m_num, pu_birthday;
 	String pu_img;

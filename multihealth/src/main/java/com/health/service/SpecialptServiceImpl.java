@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.health.dao.SpecialptDAO;
 import com.health.dto.SpecialptDTO;
-
+ 
 @Service("specialptService")
 public class SpecialptServiceImpl implements SpecialptService {
 	@Autowired

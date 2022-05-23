@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+</head>  
 <body>
 <%@include file ="../views/include/index_header.jsp" %> <!-- 공통헤더 삽입 -->
  <!--contents-->
@@ -98,7 +100,7 @@
                     <p class="img">
                       <img src="<%=request.getContextPath()%>/resources/img/icon_02.png" alt="" />
                     </p>
-                    <p class="data"><span class="count2">70</span></p>
+                    <p class="data"><span class="count2">5,000</span></p>
                     <p class="txt">총 주문수</p>
                   </li>
                   <li>
@@ -147,7 +149,6 @@
               </ul>
             </div>
           </div>
-
            <!--footer-->
           <div class="section fp-auto-height" style="display:none">
             <div class="footer">
@@ -174,7 +175,6 @@
           </li>
           <li data-menuanchor="fourthPage">
             <a href="#fourthPage"><span>서비스</span></a>
-          </li>
           </li>
         </ul>
       </div>

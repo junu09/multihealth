@@ -8,30 +8,15 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 	
 </head>
 
 
 <body>
+
 <%@include file ="../include/sub_header.jsp" %>
+<%-- <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 --> --%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/review.css">
-        <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 	<!-- Start Content -->
 	<div class="container py-5">
 		<div class="row">
@@ -60,7 +45,7 @@
 					<div class="col-md-6">
 						<ul class="list-inline shop-top-menu pb-3 pt-1">
 							<li class="list-inline-item"><a
-								class="h3 text-dark text-decoration-none mr-3" href="#">리뷰
+								class="h3 text-dark text-decoration-none mr-3" href="#">작성가능한 리뷰 리스트
 									</a></li>
 							<!--                             <li class="list-inline-item"> -->
 							<!--                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a> -->
@@ -73,7 +58,7 @@
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)">
+								onchange="chageLangSelect(1)" style="display:none">
 								<c:forEach items="${categorylist }" var="cdto"
 									varStatus="status">
 									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
@@ -100,94 +85,97 @@
 				</div>
 
 				<div class="row">
-					<c:forEach items="${reviewlist }" var="dto" varStatus="status">
-						<div class="col-md-4">
-							<div class="card mb-4 product-wap rounded-0">
-								<div class="card rounded-0">
-									${dto.r_image_name }
-									<div
-										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-										<ul class="list-unstyled">											
-											<li><a class="btn btn-success text-white mt-2"
-												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
-											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.prod_num }"
-											    ><i class="fas fa-trash"></i></a></li>
-										</ul>
-									</div>
-								</div>
+						<input type=hidden id=mnum value=${m_num }/>
+						<div class="col-md-12">
+						<table class="table">
+							<thead>
+							<tr>
+								<th>상품명</th>
+								<th>mnum</th>
+								<th>prod_num</th>
+							</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${ablereviewlist }" var="dto" varStatus="status">
+							<tr>
+								<td><a href="http://localhost:8081/review/reviewinsertform?prod_num=${dto.prod_num}" style="color:#000;">${productlist[status.index].prod_title }</a></td>
+								<td>${dto.m_num}</td>
+								<td>${productlist[status.index].prod_num }</td>
+							</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+<!-- 							<div class="card mb-4 product-wap rounded-0"> -->
+<!-- 								<div class="card rounded-0"> -->
+<%-- 									${dto.a_title } --%>
+<!-- 									<div -->
+<!-- 										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center"> -->
+<!-- 										<ul class="list-unstyled">											 -->
+<!-- 											<li><a class="btn btn-success text-white mt-2" -->
+<%-- 												href="adminmodify?productnum=${dto.a_num }"><i class="fab fa-medium-m"></i></a></li> --%>
+<%-- 											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.a_num }" --%>
+<!-- 											    ><i class="fas fa-trash"></i></a></li> -->
+<!-- 										</ul> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 								
-								<!-- Modal -->
-								<div class="modal fade bg-white" id="delete_modal"
-									tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-									aria-hidden="true">
-									<div class="modal-dialog modal-lg" role="document">
+<!-- 								Modal -->
+<!-- 								<div class="modal fade bg-white" id="delete_modal" -->
+<!-- 									tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" -->
+<!-- 									aria-hidden="true"> -->
+<!-- 									<div class="modal-dialog modal-lg" role="document"> -->
 	
 										
-										<form action="admindelete" method="get"
-											class="modal-content modal-body border-0 p-0" >
-											<h1 style="text-align: center;">삭제하시겠습니까?</h1>
-											<br>
-											<br>
-											<div>
-												<input type="hidden" name=productnum id=productnum value="" />
-												<div style="display: inline; float: left;">
-													<button type="submit"
-														class="input-group-text bg-primary text-light">
-														<i class="fa fa-fw fa-check text-white"></i>
-													</button>
-												</div>
-												<div style="display: inline-block; float:right;">
-													<button type="button"
-														class="input-group-text bg-primary text-light"
-														data-bs-dismiss="modal" aria-label="Close">
-														<i class="fa fa-fw fa-times text-white"></i>
-													</button>
-												</div>
-											</div>	
-										</form>
-									</div>
-								</div>
-								<div class="card-body" style="display:inline-block; height:166px">
-									<a style="display:inline-block; height:70px" href="#" class="h3 text-decoration-none">${dto.r_content}</a>
-									<ul
-										class="w-100 list-unstyled d-flex justify-content-between mb-0">
-										<li class="pt-2"><span
-											class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-											<span
-											class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-										</li>
-									</ul>
-									<ul class="list-unstyled d-flex justify-content-center mb-1">
-										<li>
-										<c:forEach var="i" begin="1" end="${dto.r_point}">
-											<i class="text-warning fa fa-star"></i>
-										</c:forEach> 
-										<c:forEach var="i" begin="${dto.r_point}" end="4">
-											<i class="text-muted fa fa-star"></i>
-										</c:forEach>
-										</li>
-									</ul>
-<%-- 									<p class="text-center mb-0">${dto.r_point }</p> --%>
+<!-- 										<form action="admindelete" method="get" -->
+<!-- 											class="modal-content modal-body border-0 p-0" > -->
+<!-- 											<h1 style="text-align: center;">삭제하시겠습니까?</h1> -->
+<!-- 											<br> -->
+<!-- 											<br> -->
+<!-- 											<div> -->
+<!-- 												<input type="hidden" name=productnum id=productnum value="" /> -->
+<!-- 												<div style="display: inline; float: left;"> -->
+<!-- 													<button type="submit" -->
+<!-- 														class="input-group-text bg-primary text-light"> -->
+<!-- 														<i class="fa fa-fw fa-check text-white"></i> -->
+<!-- 													</button> -->
+<!-- 												</div> -->
+<!-- 												<div style="display: inline-block; float:right;"> -->
+<!-- 													<button type="button" -->
+<!-- 														class="input-group-text bg-primary text-light" -->
+<!-- 														data-bs-dismiss="modal" aria-label="Close"> -->
+<!-- 														<i class="fa fa-fw fa-times text-white"></i> -->
+<!-- 													</button> -->
+<!-- 												</div> -->
+<!-- 											</div>	 -->
+<!-- 										</form> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-body" style="display:inline-block; height:166px"> -->
+<%-- 									<a style="display:inline-block; height:70px" href="#" class="h3 text-decoration-none">${dto.a_content}</a> --%>
+<!-- 									<ul -->
+<!-- 										class="w-100 list-unstyled d-flex justify-content-between mb-0"> -->
+<!-- 										<li class="pt-2"><span -->
+<!-- 											class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span> -->
+<!-- 											<span -->
+<!-- 											class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span> -->
+<!-- 											<span -->
+<!-- 											class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span> -->
+<!-- 											<span -->
+<!-- 											class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span> -->
+<!-- 											<span -->
+<!-- 											class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span> -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<!-- 									<ul class="list-unstyled d-flex justify-content-center mb-1"> -->
+<!-- 										<li> -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<%--  									<p class="text-center mb-0">${dto.r_point }</p> --%>
 
-								</div>
-									<div class="col-md-12" style="text-align: center;">
-										<div class="col-md-3" style="display:inline; overflow:hiddlen;">
-											${prodlist[status.index].prod_img_name}
-										</div>
-									<div class="col-md-9"
-										style="display:inline-block; white-space : nowrap; width: 100px; overflow:hidden; text-overflow : ellipsis;">
-										<a href="../productdetail?prod_num=${prodlist[status.index].prod_num }">${prodlist[status.index].prod_title}</a>
-										</div>
-								</div>
-							</div>
+<!-- 								</div> -->
+<!-- 							</div> -->
 						</div>
-					</c:forEach>
+	
 
 				</div>
 
@@ -235,15 +223,15 @@
 	function page(idx){
 	  var pagenum = idx;
 	  var contentnum = $("#contentnum option:selected").val();
-	  var selectval = $("#selectbox option:selected").val();
+		var mnum = $("#mnum").val()
 	  if(contentnum == 9){
 // 	    location.href="${pageContext.request.contextPath}/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-		  location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+		  location.href="http://localhost:8081/review/ablereviewlist?pagenum="+pagenum+"&contentnum="+contentnum+"&m_num="+mnum
 	  }else if(contentnum == 18){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/ablereviewlist?pagenum="+pagenum+"&contentnum="+contentnum+"&m_num="+mnum
 	
 	  }else if(contentnum == 27){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/ablereviewlist?pagenum="+pagenum+"&contentnum="+contentnum+"&m_num="+mnum
 	
 	  }
 	}
@@ -253,6 +241,7 @@
 			var pagenum = idx;
 			var contentnum = $("#contentnum option:selected").val();
 			var selectval = $("#selectbox option:selected").val(); // select element에서 선택된 option의 value가 저장된다.
+
 			for(var i = 0; i < 22; i++){
 				if(selectval == i){
 					location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval

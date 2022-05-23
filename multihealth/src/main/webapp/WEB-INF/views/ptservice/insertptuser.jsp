@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome to PT Service</title>
-<head>
+<head> 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
     <meta charset="utf-8">

@@ -1,6 +1,6 @@
 package com.health.dto;
 
-
+ 
 public class PtroutineoneDTO{
 	int po_num, pr_count, pr_num;
 	String et_ename;

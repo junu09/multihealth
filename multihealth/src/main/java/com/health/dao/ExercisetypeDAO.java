@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.health.dto.ExercisetypeDTO;
 
-
+ 
 
 @Mapper //sql매핑파일 id명 동일 메소드 실행 가능
 @Repository("exercisetypedao")

@@ -1,6 +1,6 @@
 package com.health.dto;
 
-
+ 
 public class SpecialptDTO{
 	int specialpt_num, pu_num;
 	double specialpt_score;

@@ -4,32 +4,43 @@
   
 <mapper namespace="com.health.dao.ReviewDAO">
 
-
+ 
 <select id="reviewlist" resultType="reviewdto">
 	select * from review_table
 </select>
-
+<select id="reviewlist2" resultType="reviewdto" parameterType="int">
+	select * from review_table where m_num = #{m_num}
+</select>
 <select id="product" resultType="productDTO" parameterType="int">
 	select * from product_table where prod_num = #{code} 
 </select>
-<!-- <select id="testlist" resultType="reviewdto"> -->
-<!-- 	select * from product_table -->
-<!-- 	order by category_num limit #{pagenum}, #{contentnum} -->
-<!-- </select> -->
+<select id="ablereviewlist" resultType="orderdto">
+	select * from order_table where m_num = #{m_num} limit #{pagenum}, #{contentnum}
+</select>
+<select id="ablealllist" resultType="orderdto">
+	select * from order_table where m_num = #{m_num}
+</select>
+<insert id="insertreview" parameterType="reviewdto">
+	insert into review_table values(null, #{m_num}, #{prod_num}, #{r_image_name}, #{r_point}, #{r_content}, now())
+</insert>
 
-<!-- <select id="testlist2" resultType="reviewdto"> -->
-<!-- 	select * from product_table -->
-<!-- 	where category_num=#{categorynum} order by prod_num limit #{pagenum}, -->
-<!-- 	#{contentnum} -->
-<!-- </select> -->
 
 <select id="testcount" resultType="int">
 	select count(*) from
 	review_table
 </select>
-<!-- <select id="testcount2" resultType="int"> -->
-<!-- 	select count(*) from -->
-<!-- 	product_table where category_num = #{categorynum} -->
-<!-- </select> -->
 
+<select id="ablereviewcount" resultType="int">
+	select count(*) from
+	order_table where m_num = #{m_num}
+</select>
+<select id="ablereviewmod" resultType="reviewdto">
+	select * from review_table where m_num = #{m_num} limit #{pagenum}, #{contentnum}
+</select>
+<select id="ablereviewdel" resultType="reviewdto">
+	select * from review_table where m_num = #{m_num} limit #{pagenum}, #{contentnum}
+</select>
+<delete id="deletereview" parameterType="reviewdto">
+	delete from review_table where r_num= #{r_num}
+</delete>
 </mapper>

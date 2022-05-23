@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+ 
 	<!-- Start Footer -->
 			<footer class="bg-dark" id="tempaltemo_footer">
 				<div class="container">
@@ -75,8 +75,8 @@
 										class="fab fa-linkedin fa-lg fa-fw text-light"></i></a>
 								</li>
 							</ul>
-						</div>						
-					</div>
+						</div>
+					</div>				
 				</div>
 
 				<div class="w-100 bg-black py-3">

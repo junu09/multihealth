@@ -3,18 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	
 </head>
 
 
 <body>
 <%@include file ="../include/sub_header.jsp" %>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/review.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -35,17 +36,21 @@
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 class="h2 pb-4">Admin</h1>
+				<h1 class="h2 pb-4">Review</h1>
 				<ul class="list-unstyled templatemo-accordion">
 					<li class="pb-3"><a
 						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						href="#"> 상품 <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+						href="#"> 리뷰 <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
 					</a>
 						<ul class="collapse show list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="admininsert">상품
-									등록</a></li>
-							<li><a class="text-decoration-none" href="adminselect">상품
-									조회 및 수정 삭제</a></li>
+							<li><a class="text-decoration-none" href="reviewlist">리뷰
+									조회</a></li>
+							<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewlist">리뷰
+										등록</a></li></sec:authorize>
+										<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewdel">리뷰
+										삭제</a></li></sec:authorize>
 						</ul></li>
 				</ul>
 			</div>
@@ -55,8 +60,8 @@
 					<div class="col-md-6">
 						<ul class="list-inline shop-top-menu pb-3 pt-1">
 							<li class="list-inline-item"><a
-								class="h3 text-dark text-decoration-none mr-3" href="#">상품
-									조회</a></li>
+								class="h3 text-dark text-decoration-none mr-3" href="#">리뷰
+									</a></li>
 							<!--                             <li class="list-inline-item"> -->
 							<!--                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a> -->
 							<!--                             </li> -->
@@ -95,17 +100,17 @@
 				</div>
 
 				<div class="row">
-					<c:forEach items="${productlist }" var="dto">
+					<c:forEach items="${ablereviewdel }" var="dto" varStatus="status">
 						<div class="col-md-4">
 							<div class="card mb-4 product-wap rounded-0">
 								<div class="card rounded-0">
-									${dto.prod_img_name }
+									${dto.r_image_name }
 									<div
 										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 										<ul class="list-unstyled">											
 											<li><a class="btn btn-success text-white mt-2"
 												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
-											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.prod_num }"
+											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.r_num }"
 											    ><i class="fas fa-trash"></i></a></li>
 										</ul>
 									</div>
@@ -118,13 +123,13 @@
 									<div class="modal-dialog modal-lg" role="document">
 	
 										
-										<form action="admindelete" method="get"
+										<form action="reviewdelete" method="get"
 											class="modal-content modal-body border-0 p-0" >
 											<h1 style="text-align: center;">삭제하시겠습니까?</h1>
 											<br>
 											<br>
 											<div>
-												<input type="hidden" name=productnum id=productnum value="" />
+												<input type="hidden" name=rnum id=rnum value="" />
 												<div style="display: inline; float: left;">
 													<button type="submit"
 														class="input-group-text bg-primary text-light">
@@ -143,7 +148,7 @@
 									</div>
 								</div>
 								<div class="card-body" style="display:inline-block; height:166px">
-									<a style="display:inline-block; height:70px" href="#" class="h3 text-decoration-none">${dto.prod_title }</a>
+									<a style="display:inline-block; height:70px" href="#" class="h3 text-decoration-none">${dto.r_content}</a>
 									<ul
 										class="w-100 list-unstyled d-flex justify-content-between mb-0">
 										<li class="pt-2"><span
@@ -159,13 +164,26 @@
 										</li>
 									</ul>
 									<ul class="list-unstyled d-flex justify-content-center mb-1">
-										<li><i class="text-warning fa fa-star"></i> <i
-											class="text-warning fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i> <i
-											class="text-muted fa fa-star"></i></li>
+										<li>
+										<c:forEach var="i" begin="1" end="${dto.r_point}">
+											<i class="text-warning fa fa-star"></i>
+										</c:forEach> 
+										<c:forEach var="i" begin="${dto.r_point}" end="4">
+											<i class="text-muted fa fa-star"></i>
+										</c:forEach>
+										</li>
 									</ul>
-									<p class="text-center mb-0">${dto.prod_price }</p>
+<%-- 									<p class="text-center mb-0">${dto.r_point }</p> --%>
+
+								</div>
+									<div class="col-md-12" style="text-align: center;">
+										<div class="col-md-3" style="display:inline; overflow:hiddlen;">
+											${prodlist[status.index].prod_img_name}
+										</div>
+									<div class="col-md-9"
+										style="display:inline-block; white-space : nowrap; width: 100px; overflow:hidden; text-overflow : ellipsis;">
+										<a href="../productdetail?prod_num=${prodlist[status.index].prod_num }">${prodlist[status.index].prod_title}</a>
+										</div>
 								</div>
 							</div>
 						</div>
@@ -245,8 +263,8 @@
 	<script>
 	$(document).on("click", ".delete_modal", function () {
 		 console.log($(this).data('num'));
-	     var prod_num = $(this).data('num');
-	     $("#productnum").val(prod_num);
+	     var r_num = $(this).data('num');
+	     $("#rnum").val(r_num);
 	});
 	</script>
 	<!-- End Script -->

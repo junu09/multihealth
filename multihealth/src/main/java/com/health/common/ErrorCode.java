@@ -1,7 +1,7 @@
 package com.health.common;
 
 public enum ErrorCode {
-	
+	 
 	UNAUTHORIZED_PAGE("접근 권한이 없는 페이지 입니다.");
 
 	public final String MSG;

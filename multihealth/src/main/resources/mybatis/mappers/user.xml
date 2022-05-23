@@ -4,7 +4,7 @@
 	<select id="Userlist" resultType="memberdto">
 		SELECT * FROM member_table
 	</select>
-	
+	 
 	<select id="readUser" parameterType="String" resultType="memberdto">
 		SELECT * FROM member_table WHERE m_mail = #{m_mail}
 	</select>

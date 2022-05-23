@@ -1,7 +1,7 @@
 package com.health.common.exception;
 
 import com.health.common.ErrorCode;
-
+ 
 @SuppressWarnings("serial")
 public class HandlableException extends RuntimeException{
 	

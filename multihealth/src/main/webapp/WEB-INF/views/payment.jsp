@@ -32,7 +32,7 @@
 .modal_wrap {
     display: none;
     width: 100%;
-    height: 30%; /* 모달 내리는 높이 조절 */
+    height: 100%; /* 모달 내리는 높이 조절 */
     position: absolute;
     top:0;
     left:0;
@@ -69,9 +69,9 @@ header {
 	top:0;
 	left:0;
 	right:0;
-	z-index: 1;
+	z-index:1;
 }
-nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important;; font-size:17px !important;}
+nav {text-align:center; margin:0 auto;font-family: 'Aldrich', sans-serif !important; font-size:17px !important;}
 nav > ul > li {float:left; line-height:100px; width:12%; margin:0 auto; color:white;}
 nav > ul > .side{float:left; width:26%;}
 nav > ul > .logo img{margin-top:20px; width:150px;}
@@ -94,18 +94,18 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	nav > ul > li > input[type="radio"]:checked ~ .submenu {display: block; background:rgba(33,41,51,0.7);}
 	nav > ul > li > label{display:inline-block; width:100%;}
 	nav > ul > li ul{display:none;}
+	nav > ul > .icon {width:20%;margin:20px 10px 0 0; }
 }
 </style>
 </head>
 <body>
-
 <header>
 	<nav>
 			<ul class="clearfix mainmenu">
 			<li  class="side logo">
 			
 				<a href="/"><img src="<%=request.getContextPath()%>/resources/img/logowhite.png" style="padding-bottom: 30px;"></a>
-				<span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
+			    <span id="mobilebtn"><img src="<%=request.getContextPath()%>/resources/img/menubar.png" width="50px"></span>
 			</li>
 				<li class="menutitle"><input type="radio" id="menuBtn1" name="menuBtn"><label for="menuBtn1">SHOP</label>
 					    <ul class="submenu">
@@ -121,37 +121,37 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				</li>
 				<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
 						<ul class="submenu">
-							<li><a href="#">REVIEW</a></li>
+							<li><a href="/review/reviewlist">REVIEW</a></li>
 							<li><a href="#">FAQ</a></li>
 						</ul>
 				</li>
-				<!-- <li class="menutitle"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
+				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 						<ul class="submenu">
 							<li><a href="/login">2nd menu</a></li>
-							<li><a href="#">2nd menu</a></li>
 						</ul>
-				</li> -->
-				<li class="side icon" style="padding-left: 84px;">
+				</li>
+				<li class="side icon">
 				    <a href="/user/loginPage" style="padding-right: 20px;">log in</a>
 				    <a href="/agreement" style="padding-right: 20px;">sign up</a>
 					<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 					<a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a>
 					<a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a>
-				</li>													
+				</li>											
 			</ul>
 			
 	</nav>
+	
+	
 </header>
 <!-- Modal -->
 <div class="modal_wrap">
-    <div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png" style="height: 30px;"></div>
+    <div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div>
     <div class="text">
     <form name="" action="/" method="get">
        <input type="text">
     </form>
     </div>
 </div>
-
 
 	<div id="wrap">
 		<div class="container">
@@ -414,7 +414,12 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 
 	<script>
 		$("#check_module").click(function() {
+		 
+				var msg = '결제가 완료되었습니다.';
 
+			alert(msg);
+				location.href="http://localhost:8081/"
+		/* 	
 			let inputQuantity = $("#inputQuantity").val();
 			let price = parseInt($("#totalPrice").text());
 			var IMP = window.IMP;
@@ -422,7 +427,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			IMP.request_pay({
 				pg : 'inicis',
-				/*
+				 
 				 'kakao':카카오페이,
 				 html5_inicis':이니시스(웹표준결제)
 				 'nice':나이스페이
@@ -432,16 +437,16 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				 'payco':페이코
 				 'syrup':시럽페이
 				 'paypal':페이팔
-				 */
+				  
 
 				pay_method : 'card',
-				/*
+				
 				 'samsung':삼성페이,
 				 'card':신용카드,
 				 'trans':실시간계좌이체,
 				 'vbank':가상계좌,
 				 'phone':휴대폰소액결제
-				 */
+				  
 				merchant_uid : 'merchant_' + new Date().getTime(),
 
 				name : `${cartList.size() }` + "개의 상품",
@@ -455,7 +460,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				buyer_postcode : `${user.m_add2}`,
 				m_redirect_url : 'http://localhost:8081/cart'
 
-			}, function(rsp) {
+			},  function(rsp) {
 				console.log(rsp);
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
@@ -469,79 +474,12 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 					$("#submit").click(); //테스트용
 				}
 				alert(msg);
-			});
+			});*/
 		});
 	</script>
 
 
 
-	<!-- jQuery -->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<!-- iamport.payment.js -->
-	<script type="text/javascript"
-		src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-
-	<script>
-		$("#check_module").click(function() {
-			var IMP = window.IMP;
-			IMP.init('imp26042582');
-			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-			IMP.request_pay({
-				pg : 'inicis',
-				/*
-				 'kakao':카카오페이,
-				 html5_inicis':이니시스(웹표준결제)
-				 'nice':나이스페이
-				 'jtnet':제이티넷
-				 'uplus':LG유플러스
-				 'danal':다날
-				 'payco':페이코
-				 'syrup':시럽페이
-				 'paypal':페이팔
-				 */
-
-				pay_method : 'card',
-				/*
-				 'samsung':삼성페이,
-				 'card':신용카드,
-				 'trans':실시간계좌이체,
-				 'vbank':가상계좌,
-				 'phone':휴대폰소액결제
-				 */
-				merchant_uid : 'merchant_' + new Date().getTime(),
-
-				name : `${cartList.size()}` + "개의 상품",
-				//결제창에서 보여질 이름
-				amount : `${totalPrice}`,
-				//가격
-				buyer_email : 'junwoo0909@naver.com',
-				buyer_name : '구매자이름',
-				buyer_tel : '010-1234-5678',
-				buyer_addr : '서울특별시 강남구 삼성동',
-				buyer_postcode : '123-456',
-				m_redirect_url : 'http://localhost:8081/cart'
-
-			}, function(rsp) {
-				console.log(rsp);
-				if (rsp.success) {
-					var msg = '결제가 완료되었습니다.';
-					msg += '고유ID : ' + rsp.imp_uid;
-					msg += '상점 거래ID : ' + rsp.merchant_uid;
-					msg += '결제 금액 : ' + rsp.paid_amount;
-					msg += '카드 승인번호 : ' + rsp.apply_num;
-					window.location.href = "/";
-
-				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-				}
-				alert(msg);
-
-				$("form input[type='submit']").click();
-			});
-		});
-	</script>
 
 
 	<script>
@@ -578,12 +516,25 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 	<%@include file="../views/include/footer.jsp"%>
 	<!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
 	
-	<script>
+<script>
+const menutitles=document.querySelectorAll('.menutitle');
+const admin=document.querySelector('#admin');
 const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
 //웹상 메뉴 
+for(let i = 0; i < menutitles.length; i++)  {
+	let windowWidth = window.outerWidth;
+    if (windowWidth >720){
+		if(admin.style.display=="none"){
+			menutitles[i].style.width = 15+ '%';
+		}else{
+			menutitles[i].style.width = 12 + '%';
+		}
+    }
+  }
+  
 nav.addEventListener('mouseover', function(){
 	let windowWidth = window.outerWidth;
     if (windowWidth >720) {

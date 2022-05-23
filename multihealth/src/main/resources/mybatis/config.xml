@@ -8,10 +8,10 @@
 	<typeAlias type="com.health.dto.ExercisetypeDTO" alias="exercisetypedto"/>
 	<typeAlias type="com.health.dto.PtroutineDTO" alias="ptroutinedto"/>
 	<typeAlias type="com.health.dto.PtuserDTO" alias="ptuserdto"/>
+	<typeAlias type="com.health.dto.SpecialptDTO" alias="specialptdto"/>
 	<typeAlias type="com.health.dto.PtroutineoneDTO" alias="ptroutineonedto"/>
 	<typeAlias type="com.health.dto.WorkoutDTO" alias="Workoutdto"/>
 	<typeAlias type="com.health.dto.BmiDTO" alias="bmidto"/>
-	<typeAlias type="com.health.dto.SpecialptDTO" alias="specialptdto"/>
 	<typeAlias type="com.health.dto.AdminDTO" alias="admindto"/>
 	<typeAlias type="com.health.dto.ProductDTO" alias="productDTO"/>
 	<typeAlias type="com.health.dto.CategoryDTO" alias="categorydto"/>

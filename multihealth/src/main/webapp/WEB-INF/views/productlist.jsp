@@ -7,13 +7,15 @@
 <meta charset="UTF-8">
 <title>MultiHealth</title>
 
+<<<<<<< HEAD
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
 <%@include file ="../views/include/sub_header.jsp" %>
 
 </head>
-<body>
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css"> 
+
+<body>
 
     <!-- Start Content -->
     <div class="container py-5">
@@ -264,7 +266,7 @@
 						<!--End Controls-->
 
 						<!--Carousel Wrapper-->
-						<div class="col">
+						<div class="col" style="display:none;">
 							<div class="carousel slide carousel-multi-item pt-2 pt-md-0"
 								id="multi-item-example" data-bs-ride="carousel">
 								<!--Slides-->
@@ -413,9 +415,8 @@
 	  };
 	
 	</script>
-<<<<<<< HEAD
+
 	<!-- End Script -->
-=======
->>>>>>> refs/remotes/origin/seoa
+
 </body>
 </html>

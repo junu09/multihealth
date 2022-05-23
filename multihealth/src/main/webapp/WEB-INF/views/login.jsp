@@ -22,7 +22,6 @@
 	
 </head>
 
-
 <body style="background-color:white">
 
     <!-- Modal -->
@@ -41,6 +40,7 @@
             </form>
         </div>
     </div>
+
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center text-dark">

@@ -36,11 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
-			.antMatchers("/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result", "/productlist" ).permitAll()
-			.antMatchers("/user/admin/**", "/admin/**", "/ptservice/**", "/cart", "/announce/announceinsertform"
-					).access("hasAuthority('ADMIN')")
-			.antMatchers("/user/**", "/ptservice/**", "/cart" 
-					).access("hasAuthority('USER')") // 페이지 권한 설정				
+			.antMatchers("/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result", "/productlist").permitAll()
+			.antMatchers("/user/admin/**", "/admin/**", "/ptservice/ptmain", "/cart", "/announce/announceinsertform").access("hasAuthority('ADMIN')")
+			.antMatchers("/user/**", "/ptservice/**", "/cart").access("hasAuthority('USER')") // 페이지 권한 설정				
 		
 			//.anyRequest().permitAll()//authenticated()
 			.and()

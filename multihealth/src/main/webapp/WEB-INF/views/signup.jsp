@@ -180,8 +180,8 @@
  window.onload = function loadingSocial(){
 	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	  var email = $('#email').val(); 
-	var GName = sessionStorage.getItem("GName");
-	var GEmail = sessionStorage.getItem("GEmail");
+	var GName = localStorage.getItem("GName");
+	var GEmail = localStorage.getItem("GEmail");
 	var NName = localStorage.getItem("NName");
 	var NEmail = localStorage.getItem("NEmail");
 	var KEmail = localStorage.getItem("KEmail");	
@@ -216,7 +216,7 @@
 		document.getElementById('email').value = KEmail;
 	}
 	
-	if(KEmail != null && NEmail != null ||KEmail != null && GEmail != null){
+	if(KEmail != null && NEmail != null || KEmail != null && GEmail != null){
 	$.ajax({
 		url: '/checkEmail',
 		data: {"m_mail" : KEmail},
@@ -225,10 +225,10 @@
 		success: function(data) {
 			if(data == 1) {
 				document.getElementById('email').value = KEmail;
-			}else if(data == 0 && emailReg.test($("#email").val()) && GEmail != null) {
+			}else if(data == 0 && GEmail != null) {
 				document.getElementById('email').value = GEmail;
 				
-			}else if(data == 0 && emailReg.test($("#email").val()) && NEmail != null) {
+			}else if(data == 0 && NEmail != null) {
 				document.getElementById('email').value = NEmail;
 			}
 		}
@@ -249,7 +249,7 @@
 			success: function(data) {
 				if(data == 1) {
 					document.getElementById('name').value = GName;
-				}else if(data == 0 && emailReg.test($("#email").val())) {
+				}else if(data == 0) {
 					document.getElementById('name').value = NName;					
 				}else {
 					document.getElementById('name').value = "";
@@ -259,6 +259,9 @@
 	}
 		
 	}
+
+	
+	
 	
 	
 	

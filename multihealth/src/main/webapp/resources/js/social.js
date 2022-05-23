@@ -17,9 +17,8 @@ function onSignIn(googleUser) {
 			}else if(data == 0){
 				var GmailResult = confirm("구글계정과 연동된 계정이 없습니다. 회원가입 하시겠습니까?");
 				if(GmailResult == true){					
-						sessionStorage.setItem("GEmail", googleEmail);
-						sessionStorage.setItem("GName", googleName);	
-						$('#id').val(googleEmail);
+						localStorage.setItem("GEmail", googleEmail);
+						localStorage.setItem("GName", googleName);						
 						location.href = "/agreement";
 				}else{
 					return false;
@@ -59,11 +58,10 @@ function onSignIn(googleUser) {
 								else if(data == 0){
 									var GmailResult = confirm("카카오계정과 연동된 계정이 없습니다. 회원가입 하시겠습니까?");
 									if(GmailResult == true){					
-										sessionStorage.setItem("GEmail", googleEmail);
-										sessionStorage.setItem("GName", googleName);	
-										$('#id').val(googleEmail);
+										localStorage.setItem("KEmail", kakaoEmail);											
 										location.href = "/agreement";					
 									}else{
+										$('#id').val(googleEmail);
 										return false;				
 									}
 								}

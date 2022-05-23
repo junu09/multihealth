@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
  

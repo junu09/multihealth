@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr"> 
 <head>
     <title>MultiHealth</title>
     <meta charset="utf-8">

@@ -7,15 +7,13 @@
 <meta charset="UTF-8">
 <title>MultiHealth</title>
 
-<<<<<<< HEAD
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
-<%@include file ="../views/include/sub_header.jsp" %>
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-
-
 <body>
+<%@include file ="../views/include/sub_header.jsp" %>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css"> 
 
     <!-- Start Content -->
     <div class="container py-5">
@@ -415,7 +413,16 @@
 	  };
 	
 	</script>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/junu09
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> refs/remotes/origin/erioll1
+>>>>>>> refs/remotes/origin/junu09
 	<!-- End Script -->
 
 </body>

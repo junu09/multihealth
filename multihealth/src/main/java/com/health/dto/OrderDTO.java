@@ -1,7 +1,7 @@
 package com.health.dto;
 
 import java.sql.Date;
-
+ 
 public class OrderDTO {
 	
 	int o_num;

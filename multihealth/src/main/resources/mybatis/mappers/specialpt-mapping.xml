@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.health.dao.SpecialptDAO" >
-
+ 
 <insert  id="insertspecialpt" parameterType="specialptdto">
 insert into specialpt_table(specialpt_score,m_name,pu_num)values(#{specialpt_score},#{m_name},#{pu_num})
 </insert>

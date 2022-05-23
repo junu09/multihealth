@@ -9,7 +9,7 @@ import com.health.dto.ReviewDTO;
 
 public interface ReviewService {
 
-	
+	 
 	public List<ReviewDTO> reviewlist(); //매핑sql id 동일하지 않아도 된다
 
 	

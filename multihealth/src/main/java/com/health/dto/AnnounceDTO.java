@@ -1,7 +1,7 @@
 package com.health.dto;
 
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 public class AnnounceDTO {
 	String a_num;
 	String a_title;

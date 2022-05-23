@@ -1,7 +1,7 @@
 package com.health.dto;
 
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 public class ReviewDTO {
 	String r_num;
 	String m_num;

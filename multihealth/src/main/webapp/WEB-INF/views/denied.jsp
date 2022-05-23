@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>접근 거부</title>
     <%@include file ="../views/include/sub_header.jsp" %>
-</head>
+</head> 
 <body>
 
 

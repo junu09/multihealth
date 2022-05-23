@@ -1,5 +1,5 @@
 package com.health.dto;
-
+ 
 
 public class ExercisetypeDTO {
 	String et_name,et_ename,et_img1,et_img2,et_img3,et_description,et_part;

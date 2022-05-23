@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.health.dao.PtuserDAO" >
-
+ 
 <insert  id="insertptuser" parameterType="ptuserdto">
 insert into ptuser_table(pu_cm,pu_kg,m_num,pu_target,pu_birthday,pu_img)
 values(#{pu_cm},#{pu_kg},#{m_num},#{pu_target},#{pu_birthday},#{pu_img})

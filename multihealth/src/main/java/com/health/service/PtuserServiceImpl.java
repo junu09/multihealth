@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.health.dao.PtuserDAO;
 import com.health.dto.PtuserDTO;
-
+ 
 
 @Service("ptuserservice")
 public class PtuserServiceImpl implements PtuserService {

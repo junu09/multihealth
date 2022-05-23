@@ -13,7 +13,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-
+ 
 @Configuration
 public class CustomAuthFailureHandler implements AuthenticationFailureHandler{
 

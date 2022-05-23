@@ -1,6 +1,6 @@
 package com.health.dto;
 
-
+ 
 public class WorkoutDTO{
 	int workout_num, workout_point,pu_num,pr_num;
 	String workout_time,pr_info;

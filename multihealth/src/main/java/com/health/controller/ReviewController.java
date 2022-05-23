@@ -95,7 +95,7 @@ public class ReviewController {
 		rdto.setM_num(Integer.toString(m_num));
 		
 		MultipartFile mf1 = rdto.getR_image();
-		String savePath = "c:/upload/";
+		String savePath = "c:/Users/junu9/upload/";
 		String loadPath = "http://localhost:8081/upload/";
 		
 		if(!mf1.isEmpty()) {

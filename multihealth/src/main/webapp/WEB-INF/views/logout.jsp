@@ -5,8 +5,8 @@
 
 <!DOCTYPE html>
 <html lang="kr">
-<head>
-    <title>MultiHealth</title>
+<head> 
+    <title>MultiHeath</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="google-signin-scope" content="profile email">

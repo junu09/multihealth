@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Special PT</title>
-<head>
+<head> 
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">

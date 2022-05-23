@@ -9,7 +9,7 @@ import com.health.dto.AdminDTO;
 import com.health.dto.AnnounceDTO;
 import com.health.dto.ProductDTO;
 import com.health.dto.ReviewDTO;
-
+ 
 @Mapper
 @Repository("announcedao") 
 public interface AnnounceDAO {

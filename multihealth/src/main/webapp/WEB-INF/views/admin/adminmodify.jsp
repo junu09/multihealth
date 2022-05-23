@@ -11,9 +11,14 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 
 <%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
+=======
+<%@include file ="../include/sub_header.jsp" %>
+ 
+>>>>>>> refs/remotes/origin/junu09
 	<!-- Start Content -->
 	<div class="container py-5">
 		<div class="row">

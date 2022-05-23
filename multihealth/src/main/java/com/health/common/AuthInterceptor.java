@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.health.common.ErrorCode;
 import com.health.common.exception.HandlableException;
-
+ 
 public class AuthInterceptor implements HandlerInterceptor {
 	
 	@Override

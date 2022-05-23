@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
-
+ 
 @Configuration
 public class Validator {
 	

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>로그인 성공</title>
 </head>
-<body>
+<body> 
 	<h1>로그인 성공!!</h1>
 	<hr>
 	<p>

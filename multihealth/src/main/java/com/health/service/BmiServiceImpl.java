@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.health.dao.BmiDAO;
 import com.health.dto.BmiDTO;
-
+ 
 
 @Service("bmiservice")
 public class BmiServiceImpl implements  BmiService{

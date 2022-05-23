@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.health.dao.MemberDAO;
 import com.health.dto.MemberDTO;
-
+ 
 @Service
 public class MemberServiceImpl implements MemberService {
 

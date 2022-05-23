@@ -32,7 +32,7 @@ import com.health.dto.MemberDTO;
 import com.health.service.ExercisetypeService;
 import com.health.service.MemberServiceImpl;
 import com.health.valid.Validator;
-
+ 
 @Controller
 public class MemberController {
 

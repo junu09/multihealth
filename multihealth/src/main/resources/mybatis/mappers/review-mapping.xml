@@ -4,7 +4,7 @@
   
 <mapper namespace="com.health.dao.ReviewDAO">
 
-
+ 
 <select id="reviewlist" resultType="reviewdto">
 	select * from review_table
 </select>

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.health.dto.AdminDTO;
 import com.health.dto.ProductDTO;
-
+ 
 @Mapper
 @Repository("admindao") 
 public interface AdminDAO {

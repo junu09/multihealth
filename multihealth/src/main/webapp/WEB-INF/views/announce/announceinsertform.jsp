@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

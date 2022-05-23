@@ -115,7 +115,7 @@ nav > ul > li ul li a:hover{color:#cfcfcf; background-size: 100% 100%; backgroun
 				<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
 						<ul class="submenu">
 							<li><a href="/review/reviewlist">REVIEW</a></li>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="/announce/announcelist">FAQ</a></li>
 						</ul>
 				</li>
 				<li  class="menutitle"id="admin" style="display:none"; ><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>

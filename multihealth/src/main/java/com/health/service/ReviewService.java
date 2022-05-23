@@ -14,4 +14,16 @@ public interface ReviewService {
 
 	
 	public int execute(Model model,String pagenum, String contentnum, String categorynum);
+	
+	public int ablereviewlist(Model model, String pagenum, String contentnum, int m_num);
+	
+	public int ablereviewmod(Model model, String pagenum, String contentnum, int m_num);
+	
+	public int ablereviewdel(Model model, String pagenum, String contentnum, int m_num);
+	
+	public int insertreviewform(Model model, String prod_num, int m_num);
+	
+	public int insertreview(ReviewDTO rdto);
+	
+	public int deletereview(ReviewDTO rdto);
 }

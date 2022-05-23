@@ -59,14 +59,14 @@
 					</li></sec:authorize>
 					<li class="menutitle"><input type="radio" id="menuBtn3" name="menuBtn"><label for="menuBtn3">COMMUNITY</label>
 							<ul class="submenu">
-								<li><a href="#">REVIEW</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="/review/reviewlist">REVIEW</a></li>
+								<li><a href="/announce/announcelist">ANNOUNCEMENT</a></li>
 							</ul>
 					</li>
 					<sec:authorize access="hasAuthority('ADMIN')"><li  class="menutitle"id="admin"><input type="radio" id="menuBtn4" name="menuBtn"><label for="menuBtn4">ADMIN</label>
 							<ul class="submenu">
-								<li><a href="/login">2nd menu</a></li>
-								<li><a href="#">2nd menu</a></li>
+								<li><a href="/admin/admininsert">상품 등록</a></li>
+								<li><a href="/admin/adminselect">상품 조회 및 수정 삭제</a></li>
 							</ul>
 					</li></sec:authorize>
 					<li class="side icon">

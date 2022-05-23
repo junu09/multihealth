@@ -164,12 +164,7 @@ public class MemberController {
 		out.println("<script> alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/'; </script>");
 		out.flush();		
 	}
-	
-	// 로그인 페이지
-	@RequestMapping(value = "/user/naverLogin")
-	public String naverLogin() {
-		return "naverLogin";
-	}
+
 	
 		
 }

@@ -6,12 +6,6 @@ function onSignIn(googleUser) {
 	var id_token = googleUser.getAuthResponse().id_token;
 	//console.log("ID Token: " + id_token);
 	
-	
-	if(googleEmail != null && googleName != null){
-		sessionStorage.setItem("GEmail", googleEmail);
-		sessionStorage.setItem("GName", googleName);	
-	}
-	
 	$.ajax({
 		url: '/checkEmail',
 		data: {"m_mail" : googleEmail},
@@ -21,11 +15,23 @@ function onSignIn(googleUser) {
 			if(data == 1) {
 				$('#id').val(googleEmail);
 			}else if(data == 0){
-				location.href = "/agreement";
+				var GmailResult = confirm("구글계정과 연동된 계정이 없습니다. 회원가입 하시겠습니까?");
+				if(GmailResult == true){					
+						sessionStorage.setItem("GEmail", googleEmail);
+						sessionStorage.setItem("GName", googleName);	
+						$('#id').val(googleEmail);
+						location.href = "/agreement";
+				}else{
+					return false;
+				}
+				
+				
 			}
 		}
 	});	
 }
+
+
 
 
     
@@ -37,34 +43,34 @@ function onSignIn(googleUser) {
     				url:'/v2/user/me',
     				success: res => {
     					const kakao_account = res.kakao_account;
-    					var kakaoEmail = kakao_account.email;
-    					sessionStorage.setItem("KEmail", kakaoEmail);
-    					sessionStorage.setItem("KEmailCon", kakaoEmail);	
-    				}
-    				
-    			});    				
-    	kakaoEmail = sessionStorage.getItem("KEmailCon");
-    	
-    	$.ajax({
-			url: '/checkEmail',
-			data: {"m_mail" : kakaoEmail},
-			type: 'post',
-			dataType: 'json',
-			success: function(data) {
-				if(data == 1){
-					$('#id').val(kakaoEmail);
-									
-				}
-				else if(data == 0){
-					location.href = '/agreement';
-				}
-			}
-		});
+    					var kakaoEmail = kakao_account.email;	   														
+	   					localStorage.setItem("KEmail", kakaoEmail);
+	   					    						
+				    	var kakaoEmail = localStorage.getItem("KEmail");
+				    	$.ajax({
+							url: '/checkEmail',
+							data: {"m_mail" : kakaoEmail},
+							type: 'post',
+							dataType: 'json',
+							success: function(data) {
+								if(data == 1){					
+									$('#id').val(kakaoEmail);
+								}
+								else if(data == 0){
+									var GmailResult = confirm("카카오계정과 연동된 계정이 없습니다. 회원가입 하시겠습니까?");
+									if(GmailResult == true){					
+										sessionStorage.setItem("GEmail", googleEmail);
+										sessionStorage.setItem("GName", googleName);	
+										$('#id').val(googleEmail);
+										location.href = "/agreement";					
+									}else{
+										return false;				
+									}
+								}
+							}
+						});
+    				}    				
+    			});  	
     		}
     	});
 }
-
-
-
-
-

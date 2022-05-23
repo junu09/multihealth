@@ -75,8 +75,8 @@
 										class="fab fa-linkedin fa-lg fa-fw text-light"></i></a>
 								</li>
 							</ul>
-						</div>						
-					</div>
+						</div>
+					</div>				
 				</div>
 
 				<div class="w-100 bg-black py-3">

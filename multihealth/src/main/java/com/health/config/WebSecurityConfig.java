@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result", "/productlist" ).permitAll()
 			.antMatchers("/user/admin/**", "/admin/**", "/ptservice/**", "/cart" ).access("hasAuthority('ADMIN')")			
 			.antMatchers("/user/**", "/ptservice/**", "/cart" ).access("hasAuthority('USER')") // 페이지 권한 설정				
-						
+		
 			//.anyRequest().permitAll()//authenticated()
 			.and()
 			

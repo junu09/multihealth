@@ -9,9 +9,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+ 	<%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 </head>
 <body>
-<%@include file ="../include/sub_header.jsp" %>
+
+
  
 	<div class="container py-5">
 		<div class="row">

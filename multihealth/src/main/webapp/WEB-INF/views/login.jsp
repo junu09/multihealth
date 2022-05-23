@@ -23,9 +23,7 @@
 </head>
 
 
-
-<body style="background-color:white;">
-
+<body style="background-color:white">
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,8 +41,6 @@
             </form>
         </div>
     </div>
-
-
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center text-dark">

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
 </head>
 <body>
- <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+ <%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 	<div class="container py-5">
         <div class="row">
         	<div class="col-lg-3 leftlayout">
@@ -29,6 +29,7 @@
 	                    </li>
 	                    <li class="spicalpt_delete">
 	                    	<a class="btn btn-dark btn-lg px-3 text-light" onclick="location.href='ptmain';">취소하기</a>
+	                    	<a class="btn btn-dark btn-lg px-3 text-light finish_btn pt_btn" style='display:none; float:left;' href="specialpt">랭킹등록하기</a>
 	                    </li>
 	                </ul>
 		   		</div>
@@ -54,6 +55,9 @@
 							   	</div>
 							</div>    
 						 </div>
+						 <div class="finishimg" id="p-${pick[0].pr_num}" style ="display:none">
+		                	<img src="<%=request.getContextPath() %>/resources/images/finish.jpg" width="100%">
+		                 </div>
 					 </div>
 	         	</div>
         	</div>
@@ -67,13 +71,30 @@
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+		//티처블 머신관련 
         const URL = "<%=request.getContextPath() %>/resources/my_model/";
         let model, webcam, ctx, labelContainer, maxPredictions;
 
         var status = "stand";//처음 서있는 상태를 변수로
         var number = ${ptcount};//갯수를 변수로 만들어줌 
         var count = ${ptcount};//갯수를 변수로 만들어줌 
+        var count2 = ${ptcount};//갯수를 변수로 만들어줌 
         var progress = 327;
+        
+		//기록관련 
+		let start = new Date();
+		let end = 0;
+		$(document).on("click", ".finish_btn", function(){
+	   		  let time = end-start;
+	    	   $.ajax({
+	   			url:'specialroutinesave',
+	   			type : 'post',
+	   			data : {'time':time, 'count':${ptcount}} , 
+	   			dataType: 'json',
+	   			success : function(){
+	   			}
+	   		});
+	       });
         
         async function init() {
             const modelURL = URL + "model.json";
@@ -113,11 +134,17 @@
                 if (status == "squat") {
                 	if(count != 0){
                     	count-- //스쿼트 상태였다가 스탠드 상태로 갔을때 카운터를 하나 올려준다
+                    	count2--
                     	progress = progress-(327/number);
                     	$('.progress').css('stroke-dashoffset', progress);
-                	}else{
-                		alert("운동이 완료되었습니다");
-                		window.location.href = "ptmain";
+	                	if(count2 == 0){
+	                		count2--
+	                		end = new Date();
+	    	   				$(".finish_btn").css('display','block');
+	    	   				$(".finishimg").css('display','block');
+	    	   				$("#canvas").css('display','none');
+	    	   				$(".squat_counter").css('display','none');
+                		}
                 	}
                     status == "stand";
                     $("#counter").html(count);
@@ -153,19 +180,7 @@
             }
         }
        init();
-       /* 
-       function test() {
-    	   let sum = 0;
-    	   for (let i = 1; i <= 1000000; i++) {
-    	     sum = sum + i;
-    	   }
-    	 }
-
-    	 let start = new Date();  // 시작
-    	 test();
-    	 let end = new Date();  // 종료
-
-    	 document.write(end - start); // 경과시간(밀리초) */
+       
 </script>
 </body>
 </html>

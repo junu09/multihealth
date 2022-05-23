@@ -16,7 +16,7 @@
     
 </head>
 <body>
- <%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+ <%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 	<div class="container py-5">
        <div class="row">
 		     <div class="col-lg-3 leftlayout">

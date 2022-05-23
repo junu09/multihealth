@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
-    <div class="container">
+<%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
+    <div class="container py-5">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">

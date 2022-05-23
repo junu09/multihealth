@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
 </head>
 <body>
- <%@include file ="../include/header.jsp" %>
+ <%@include file ="../include/sub_header.jsp" %>
   <!-- 공통헤더 삽입 -->
  
 	<div class="container py-5">
@@ -167,8 +167,8 @@
 					+ "<td>"+list[i].et_time * pick[list[i].et_ename]+"분</td><td><a class='deletept' id='d-"+list[i].et_ename+"'>삭제 <i class='bi bi-x-circle'></i></a></td>";
 				}
 				table +="</tr>"
-					+"<input type='hidden' name='pr_allkcal' value="+add_kcal+"><tr><td></td><td></td><td></td><th>total</th><th>"+add_kcal+"kcal</th>"
-					+"<input type='hidden' name='pr_alltime' value="+add_time+"><th>"+add_time+"분</th></tr></table>"
+					+"<input type='hidden' name='pr_allkcal' value="+add_kcal+"><tr><td></td><td></td><td></td><td class='ex_result'>total</td><td class='ex_result'>"+add_kcal+"kcal</td>"
+					+"<input type='hidden' name='pr_alltime' value="+add_time+"><td class='ex_result'>"+add_time+"분</td></tr></table>"
 					+"<br><input type='submit' class='btn btn-dark' id='insertptroutine' value='루틴등록하기'></form><br>";
 				$("#picklist").html(table);
 			},

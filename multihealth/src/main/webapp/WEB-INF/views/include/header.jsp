@@ -7,6 +7,7 @@
 			<sec:authentication property="principal" var="user" />
 	</sec:authorize>
  
+ 
     <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/resources/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/resources/img/favicon.ico">
 

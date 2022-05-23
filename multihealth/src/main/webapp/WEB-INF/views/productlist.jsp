@@ -7,14 +7,13 @@
 <meta charset="UTF-8">
 <title>MultiHealth</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<%@include file ="../views/include/sub_header.jsp" %>
 
 </head>
 <body>
-<%@include file ="include/sub_header.jsp" %>
 
-<%-- 	<%@include file ="../views/include/header.jsp" %> --%> <!-- 공통헤더 삽입 -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css"> 
 
     <!-- Start Content -->
     <div class="container py-5">
@@ -253,7 +252,7 @@
 					<h1 class="h1">PT Routine</h1>
 					<p>건강한 운동습관은 즐거운 하루를 보낼수 있도록 도와줍니다.<br> 운동을 시작하고 루틴을 지키는 것 에 어려움을 느낀다면<br> 운동루틴 서비스를 통해 건강을 지켜가세요.</p>
 				</div>
-				<div class="col-lg-9 m-auto tempaltemo-carousel">
+				<div class="col-lg-9 m-auto tempaltemo-carousel" style="display:none">
 					<div class="row d-flex flex-row">
 						<!--Controls-->
 						<div class="col-1 align-self-center">
@@ -414,6 +413,9 @@
 	  };
 	
 	</script>
+<<<<<<< HEAD
 	<!-- End Script -->
+=======
+>>>>>>> refs/remotes/origin/seoa
 </body>
 </html>

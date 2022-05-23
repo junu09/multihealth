@@ -11,9 +11,9 @@
 	
 </head>
 
+<%@include file ="../include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
 <body>
-<%@include file ="../include/sub_header.jsp" %>
 
 	<!-- Start Content -->
 	<div class="container py-5">

@@ -19,9 +19,12 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
+
 </head>
 <body style="background-color:white;"> 
-    <!-- Modal -->
+
+
+   <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">

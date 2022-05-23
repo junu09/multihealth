@@ -6,30 +6,25 @@
 
 
 <select id="announcelist" resultType="announcedto">
-	select * from announcement_table
+	select * from announcement_table order by a_num desc limit #{pagenum}, #{contentnum}
 </select>
 
 <select id="product" resultType="productDTO" parameterType="int">
 	select * from product_table where prod_num = #{code} 
 </select>
-<!-- <select id="testlist" resultType="reviewdto"> -->
-<!-- 	select * from product_table -->
-<!-- 	order by category_num limit #{pagenum}, #{contentnum} -->
-<!-- </select> -->
-
-<!-- <select id="testlist2" resultType="reviewdto"> -->
-<!-- 	select * from product_table -->
-<!-- 	where category_num=#{categorynum} order by prod_num limit #{pagenum}, -->
-<!-- 	#{contentnum} -->
-<!-- </select> -->
 
 <select id="announcecount" resultType="int">
 	select count(*) from
 	announcement_table
 </select>
-<!-- <select id="testcount2" resultType="int"> -->
-<!-- 	select count(*) from -->
-<!-- 	product_table where category_num = #{categorynum} -->
-<!-- </select> -->
+<select id="announcedetail" resultType="announcedto" parameterType="int">
+	select * from announcement_table where a_num = #{anum}
+</select>
 
+<insert id="insertAnnounce" parameterType="announcedto">
+	insert into announcement_table values (null, #{a_title}, #{a_content}, NOW(), #{a_count})
+</insert>
+<delete id="announcedelete" parameterType="int">
+	delete from announcement_table where a_num= #{a_num}
+</delete>
 </mapper>

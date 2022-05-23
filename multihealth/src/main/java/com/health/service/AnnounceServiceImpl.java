@@ -37,7 +37,8 @@ public class AnnounceServiceImpl implements AnnounceService {
         //dto 고쳐야함
         List<AnnounceDTO> testList = null;
        
-        List<ProductDTO> prodList = new ArrayList<ProductDTO>();
+        System.out.println("----execute------");
+        System.out.println(ccontentnum);
         
         pagemaker.setTotalcount(adao.announcecount()); // mapper 전체 게시글 개수를 지정한다
         pagemaker.setPagenum(cpagenum-1);   // 현재 페이지를 페이지 객체에 지정한다 -1 을 해야 쿼리에서 사용할수 있다
@@ -52,19 +53,44 @@ public class AnnounceServiceImpl implements AnnounceService {
         if(ccontentnum == 9){//선택 게시글 수
         	testList = adao.announcelist(pagemaker.getPagenum()*9,pagemaker.getContentnum());
         }else if(ccontentnum == 18){
-        	//testList = rdao.testlist(pagemaker.getPagenum()*18,pagemaker.getContentnum());
+        	testList = adao.announcelist(pagemaker.getPagenum()*18,pagemaker.getContentnum());
         }else if(ccontentnum ==27){ 
-        	//testList = rdao.testlist(pagemaker.getPagenum()*27,pagemaker.getContentnum());
+        	testList = adao.announcelist(pagemaker.getPagenum()*27,pagemaker.getContentnum());
         }
         
-//		model.addAttribute("test",testList);
-//        model.addAttribute("page",pagemaker);
-		
 		model.addAttribute("announcelist",testList);
         model.addAttribute("page",pagemaker);
 		return 0;
 	}
 
-	
 
+
+	@Override
+	public int detail(Model model, String anum) {
+		int ianum = Integer.parseInt(anum);
+		AnnounceDTO detail = adao.announcedetail(ianum);
+		
+		model.addAttribute("detail", detail);
+		
+		return 0;
+	}
+
+
+
+	@Override
+	public int announceinsert(AnnounceDTO adto) {
+		return adao.insertAnnounce(adto);
+	}
+
+
+
+	@Override
+	public int announcedelete(String a_num) {
+		int ianum = Integer.parseInt(a_num);
+	
+		return adao.announcedelete(ianum);
+	}
+	
+	
+	
 }

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.health.dto.AdminDTO;
 import com.health.dto.CategoryDTO;
 import com.health.dto.MemberDTO;
+import com.health.dto.ReviewDTO;
 import com.health.service.AdminService;
 import com.health.service.CategoryService;
 import com.health.service.ReviewService;
@@ -47,22 +48,83 @@ public class ReviewController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/review/reviewinsert", method=RequestMethod.GET)
-	public ModelAndView reviewinsert(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum) throws Exception{
+	@RequestMapping(value="/review/reviewinsertform", method=RequestMethod.GET)
+	public ModelAndView reviewinsertform(Model model, String prod_num) throws Exception{
 		ModelAndView mv= new ModelAndView();
 		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int m_num = principal.getM_num();
 		
-		System.out.println("-----controller---");
-		System.out.println(model);
-		System.out.println(pagenum);
-		System.out.println(contentnum);
-		System.out.println(categorynum);
 		
-		service.execute(model, pagenum, contentnum, categorynum);
-		List<CategoryDTO> clist = cservice.categorylistnotall();
-		mv.addObject("categorylist", clist);
-		mv.setViewName("review/reviewinsert");
+		service.insertreviewform(model, prod_num, m_num);
+		mv.setViewName("review/reviewinsertform");
+		return mv;
+	}
+	@RequestMapping(value="/review/ablereviewlist", method=RequestMethod.GET)
+	public ModelAndView ablereviewlist(Model model, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		service.ablereviewlist(model, pagenum, contentnum, m_num);
+		mv.setViewName("review/ablereviewlist");
+		return mv;
+	}
+	@RequestMapping(value="/review/ablereviewmod", method=RequestMethod.GET)
+	public ModelAndView ablereviewmod(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		service.ablereviewmod(model, pagenum, contentnum, m_num);
+		mv.setViewName("review/ablereviewmod");
+		return mv;
+	}
+	@RequestMapping(value="/review/ablereviewdel", method=RequestMethod.GET)
+	public ModelAndView ablereviewdel(Model model,@RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		service.ablereviewdel(model, pagenum, contentnum, m_num);
+		mv.setViewName("review/ablereviewdel");
+		return mv;
+	}
+	@RequestMapping(value="/review/reviewinsertresult", method=RequestMethod.POST)
+	public ModelAndView reviewinsertresult(@ModelAttribute ReviewDTO rdto, Model model, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		
+		rdto.setM_num(Integer.toString(m_num));
+		
+		MultipartFile mf1 = rdto.getR_image();
+		String savePath = "c:/upload/";
+		String loadPath = "http://localhost:8081/upload/";
+		
+		if(!mf1.isEmpty()) {
+			String originname1 = mf1.getOriginalFilename();
+			String beforeext1 = originname1.substring(0, originname1.indexOf("."));
+			String ext1 = originname1.substring(originname1.indexOf("."));
+			String route1 = beforeext1+"("+UUID.randomUUID().toString()+")"+ext1;
+			File serverfile1 = new File(savePath + route1); 
+			mf1.transferTo(serverfile1);
+			rdto.setR_image_name("<p><img class='card-img rounded-0 review-fluid' src=" + loadPath + route1 + "></p>");
+		}
+
+		int result = service.insertreview(rdto);
+		service.ablereviewlist(model, pagenum, contentnum, m_num);
+		mv.setViewName("review/ablereviewlist");
+		return mv;
+	}
+	@RequestMapping(value="/review/reviewdelete", method=RequestMethod.GET)
+	public ModelAndView reviewdelete(@ModelAttribute ReviewDTO rdto, Model model, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, String rnum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		rdto.setR_num(rnum);
+		System.out.println("delete controller");
+		System.out.println(rdto.getR_num());
+
+		int result = service.deletereview(rdto);
+		service.ablereviewdel(model, pagenum, contentnum, m_num);
+		mv.setViewName("review/ablereviewdel");
 		return mv;
 	}
 }

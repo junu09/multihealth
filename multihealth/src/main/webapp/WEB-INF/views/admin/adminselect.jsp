@@ -13,7 +13,7 @@
 
 
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+<%@include file ="../include/sub_header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/testboot.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -8,12 +8,12 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 </head>
 
 
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+<%@include file ="../include/sub_header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/review.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,9 +42,9 @@
 						href="#"> 리뷰 <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
 					</a>
 						<ul class="collapse show list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="admininsert">리뷰
+							<li><a class="text-decoration-none" href="/review/reviewinsert">리뷰
 									등록</a></li>
-							<li><a class="text-decoration-none" href="adminselect">리뷰
+							<li><a class="text-decoration-none" href="/review/reviewlist">리뷰
 									조회 및 수정 삭제</a></li>
 						</ul></li>
 				</ul>
@@ -68,7 +68,7 @@
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)">
+								onchange="chageLangSelect(1)" style="visibility:hidden;">
 								<c:forEach items="${categorylist }" var="cdto"
 									varStatus="status">
 									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
@@ -77,7 +77,7 @@
 						</div>
 					</div>
 					<div class="col-md-3 pb-4">
-						<div class="d-flex">
+						<div class="d-flex" style="visibility:hidden;">
 								<!-- 이거 9 18 27 -->
 							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)">
 								<option value="9"
@@ -97,61 +97,42 @@
 								<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-10">
-							<form class="form-horizontal" action="/admin/insertresult" method="post"
+							<form class="form-horizontal" action="/review/reviewinsertresult" method="post"
 								enctype="multipart/form-data">
-								<input type=hidden name=p_num value=null><br>
-								<div class="form-group">
-									<label for="category_num" class="col-sm-2 control-label">카테고리</label>
-									<div class="col-sm-10">
-										<select class="form-control" id="category_num"
-											name="category_num" onchange="chageLangSelect(1)">
-											<c:forEach items="${categorylist }" var="cdto"
-												varStatus="status">
-												<option value="${cdto.category_num}"
-													<c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
-											</c:forEach>
-										</select>
-									</div>
-								</div>
+								<input type=hidden name=r_num value=null><br>
+								<input type=hidden name=prod_num value= ${product.prod_num }>
 								<br>
 								<div class="form-group">
-									<label for="prod_title" class="col-sm-2 control-label">타이틀</label>
+									<label for="prod_title" class="col-sm-2 control-label">상품명</label>
 									<div class="col-sm-10">
 										<input type=text class="form-control" id=prod_title
-											name=prod_title><br>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="prod_price" class="col-sm-2 control-label">가격</label>
-									<div class="col-sm-10">
-										<input type=text class="form-control" id=prod_price
-											name=prod_price><br>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="prod_inventory" class="col-sm-2 control-label">재고</label>
-									<div class="col-sm-10">
-										<input type=text class="form-control" id=prod_inventory
-											name=prod_inventory><br>
+											name=prod_title value="${product.prod_title}" readonly><br>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="prod_img" class="col-sm-2 control-label">이미지</label>
 									<div class="col-sm-10">
-										<input type=file class="form-control" id=prod_img
-											name="prod_img"><br>
+										<input type=file class="form-control" id=r_image
+											name="r_image"><br>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="prod_description" class="col-sm-2 control-label">설명</label>
+									<label for="prod_inventory" class="col-sm-2 control-label">별점</label>
 									<div class="col-sm-10">
-										<input type=file class="form-control" id=prod_description
-											name=prod_description><br>
+										<input type=text class="form-control" id=r_point
+											name=r_point><br>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="prod_inventory" class="col-sm-2 control-label">내용</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="15" id=r_content
+											name=r_content style="resize: none; background-color: #fff;"></textarea><br>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
-										<button type=submit class="btn btn-primary">상품 등록</button>
+										<button type=submit class="btn btn-primary">리뷰 등록</button>
 									</div>
 								</div>
 							</form>

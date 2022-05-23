@@ -8,12 +8,13 @@
 	<meta charset="UTF-8">
 	<title>MultiHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	
 </head>
 
 
 <body>
-<%@include file ="../include/header.jsp" %> <!-- 공통헤더 삽입 -->
+<%@include file ="../include/sub_header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/review.css">
         <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,10 +43,14 @@
 						href="#"> 리뷰 <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
 					</a>
 						<ul class="collapse show list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="reviewinsert">리뷰
-									등록</a></li>
 							<li><a class="text-decoration-none" href="reviewlist">리뷰
-									조회 및 수정 삭제</a></li>
+									조회</a></li>
+							<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewlist">리뷰
+										등록</a></li></sec:authorize>
+										<sec:authorize access="hasAuthority('USER')">
+								<li><a class="text-decoration-none" href="ablereviewdel">리뷰
+										삭제</a></li></sec:authorize>
 						</ul></li>
 				</ul>
 			</div>

@@ -4,6 +4,9 @@ const header=document.querySelector('header');
 const nav = document.querySelector('nav');
 const mobilebtn = document.querySelector('#mobilebtn');
 const check = document.getElementsByName("menuBtn");
+
+
+
 //웹상 메뉴 
 for(let i = 0; i < menutitles.length; i++)  {
 	let windowWidth = window.outerWidth;
@@ -48,16 +51,69 @@ mobilebtn.addEventListener('click', () => {
     }
 });
 
-function modalOpen() {
-    document.querySelector('.modal_wrap').style.display = 'block';
-}
+// modal
+var $button         = $('.button'),
+    $modalContainer = $('#modal-container'),
+    $modal_close    = $('.modal_close'),
+    $body           = $('body'),
+    $content        = $('.content'),
+    btnId;
 
-// 모달 끄기
-function modalClose() {
-    document.querySelector('.modal_wrap').style.display = 'none';
-}
+$button.on('click', function () {
+  btnId = $(this).attr('id');
+  
+  $modalContainer
+      .removeAttr('class')
+      .addClass(btnId);
+  $content
+      .removeAttr('class')
+      .addClass('content');
+  
+  $body.addClass('modal-active');
+  
+  if (btnId == 'two' || btnId == 'three'|| btnId == 'four') {
+    $content.addClass(btnId);
+  }
+  
+});
 
+$modal_close.on('click', function () {
+	
+  $modalContainer.addClass('out');
+  $body.removeClass('modal-active');
+  if ($(this).hasClass(btnId)) {
+    
+    $content.addClass('out');
+    
+  }
+});
 
-//버튼 클릭리스너 달기
-document.querySelector('#modal_btn').addEventListener('click', modalOpen);
-document.querySelector('.modal_close').addEventListener('click', modalClose);
+// 자동 완성
+ $("#testText").autocomplete({
+ source : function(request, response) {
+ 
+ $.ajax({
+ 
+ url : "/autocomplete",
+ type : "post",
+ dataType : "json",
+ data: request,
+ 
+ success : function(data) {
+ 
+ var result = data;
+ response(result);
+ },
+ 
+ error : function(data) {
+ alert("에러가 발생하였습니다.")
+ }
+ });
+ }
+ });
+ 
+ var $btnsubmit      = $('#btnsubmit');
+ var $text = $('#testText').val();
+$btnsubmit.on('click', function(){
+	location.href="http://localhost:8081/productsearch?search="+$('#testText').val();
+})

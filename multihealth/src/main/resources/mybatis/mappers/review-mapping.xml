@@ -6,7 +6,7 @@
 
  
 <select id="reviewlist" resultType="reviewdto">
-	select * from review_table
+	select * from review_table limit #{pagenum}, #{contentnum}
 </select>
 <select id="reviewlist2" resultType="reviewdto" parameterType="int">
 	select * from review_table where m_num = #{m_num}
@@ -43,4 +43,18 @@
 <delete id="deletereview" parameterType="reviewdto">
 	delete from review_table where r_num= #{r_num}
 </delete>
+
+ <select id="listAll2" parameterType="String" resultType="productDTO">
+ select prod_title from product_table where prod_title like concat('%',concat(UPPER(#{b}),'%')) or 
+                                            prod_title like concat('%',concat(LOWER(#{b}),'%'))
+ </select>
+
+<select id="searchcount" resultType="int">
+	select count(*) from
+	product_table where prod_title like CONCAT('%',#{search},'%')
+</select>
+<select id="searchlist" resultType="productDTO">
+	select * from
+	product_table where prod_title like CONCAT('%',#{search},'%')
+</select>
 </mapper>

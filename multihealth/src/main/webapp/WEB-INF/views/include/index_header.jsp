@@ -2,12 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html>
+<html>
+<head>
 	<sec:authorize access="isAuthenticated()">
 			<sec:authentication property="principal" var="user" />
 	</sec:authorize>
  
  	<!-- main styles -->
+ 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo.css">
    	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/fullpage.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/main.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/slide.css" />
@@ -15,8 +19,15 @@
  
   	<!-- nav styles -->
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/nav.css" />
+ <!-- search -->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   
+	<!-- modal style -->
+  	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/modal.css" />
+  </head>
+  <body>
     <!-- Header -->
+    
    <header>
 		<nav>
 				<ul class="clearfix mainmenu">
@@ -60,7 +71,7 @@
 					   	<sec:authorize access="isAnonymous()"><a href="/user/loginPage" style="padding-right: 20px;">log in</a></sec:authorize>
 					   	<sec:authorize access="isAuthenticated()"><a href="/user/logout" style="padding-right: 20px;">Log Out</a></sec:authorize>
 					    <sec:authorize access="isAnonymous()"><a href="/agreement" style="padding-right: 20px;">sign up</a></sec:authorize>
-						<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
+						<a id="two" href="#none" class="button"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 						<sec:authorize access="isAnonymous()"><a href="/user/loginPage"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a></sec:authorize>
 						<sec:authorize access="isAuthenticated()"><a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a></sec:authorize>
 						<sec:authorize access="isAnonymous()"><a href="/user/loginPage"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a></sec:authorize>
@@ -71,22 +82,31 @@
 		</nav>
 	</header>
     <!-- Close Header -->
-       <!-- Modal -->
-		<div class="modal_wrap">
+<div id="modal-container">
+	<div class="modal-background">
+		<div class="modal">
+			<h2>Search</h2>
 			<div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div>
-		    <div class="text">
-		    <form name="" action="/" method="get">
-		       <input type="text">
-		    </form>
-		    </div>
+			<br><br><br>
+			<form id="testform" class="form-control" name="testform">
+				<input type="text" id="testText" placeholder="이름을 입력하세요" style="width:45%;">
+				<input type="button" id="btnsubmit" class="btn btn-secondary" value="Click" />
+			</form>
 		</div>
+	</div>
+</div>
    <!-- main js -->    
-    <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script>
+
+	<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<%--     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.min.js"></script> --%>
     <script src="<%=request.getContextPath() %>/resources/js/main.js"></script>
+    
     <script src="<%=request.getContextPath() %>/resources/js/jquery.fullpage.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/slide.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/jquery.counterup.min.js"></script> 
+    
    <!-- nav js -->
    <script src="<%=request.getContextPath() %>/resources/js/nav.js"></script>
 </body>

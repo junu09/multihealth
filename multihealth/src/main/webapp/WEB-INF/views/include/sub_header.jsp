@@ -28,7 +28,14 @@
  
   	<!-- nav styles -->
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/nav.css" />
+	
+	  	  	<!-- search -->
+  	<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   
+	  	<!-- modal style -->
+  	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/modal.css" />
     <!-- Header -->
    <header>
 		<nav>
@@ -73,28 +80,44 @@
 					   	<sec:authorize access="isAnonymous()"><a href="/user/loginPage" style="padding-right: 20px;">log in</a></sec:authorize>
 					   	<sec:authorize access="isAuthenticated()"><a href="/user/logout" style="padding-right: 20px;">Log Out</a></sec:authorize>
 					    <sec:authorize access="isAnonymous()"><a href="/agreement" style="padding-right: 20px;">sign up</a></sec:authorize>
-						<a id="modal_btn" href="#"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
+						<a id="two" href="#none" class="button"><img src="<%=request.getContextPath()%>/resources/img/shchicon.png"></a>
 						<sec:authorize access="isAnonymous()"><a href="/user/loginPage"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a></sec:authorize>
 						<sec:authorize access="isAuthenticated()"><a href="/user/info"><img src="<%=request.getContextPath()%>/resources/img/user.png"></a></sec:authorize>
 						<sec:authorize access="isAnonymous()"><a href="/user/loginPage"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a></sec:authorize>
 						<sec:authorize access="isAuthenticated()"><a href="/cart"><img src="<%=request.getContextPath()%>/resources/img/cart.png"></a></sec:authorize>
-					</li>											
+					</li>										
 				</ul>
 				
 		</nav>
 	</header>
     <!-- Close Header -->
        <!-- Modal -->
-		<div class="modal_wrap">
+<!-- 		<div class="modal_wrap"> -->
+<%-- 			<div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div> --%>
+<!-- 		    <div class="text"> -->
+<!-- 			<form id="testform" name="testform"> -->
+<!-- 				<input type="text" id="testText" placeholder="이름을 입력하세요"> <input -->
+<!-- 					type="button" value="Click" /> -->
+<!-- 			</form> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+
+<div id="modal-container">
+	<div class="modal-background">
+		<div class="modal">
+			<h2>Search</h2>
 			<div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div>
-		    <div class="text">
-		    <form name="" action="/" method="get">
-		       <input type="text">
-		    </form>
-		    </div>
+			<br><br><br>
+			<form id="testform" class="form-control" name="testform" onsubmit="return false">
+				<input type="text" id="testText" placeholder="이름을 입력하세요" style="width:45%;">
+				<input type="button" id="btnsubmit" class="btn btn-secondary" value="Click" />
+			</form>
 		</div>
-		
-   <!-- nav js -->
-   <script src="<%=request.getContextPath() %>/resources/js/nav.js"></script>
+	</div>
+</div>
+
+<!-- nav js -->
+<script src="<%=request.getContextPath() %>/resources/js/nav.js"></script>
+
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.health.service;
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.bouncycastle.crypto.io.MacOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,6 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	int oldgetpage = 0;
 	int cnt = 0;
-	@Override
-	public List<ReviewDTO> reviewlist() {
-		return rdao.reviewlist();
-	}
 
 	
 	@Override
@@ -64,15 +61,23 @@ public class ReviewServiceImpl implements ReviewService {
         	
             if(ccontentnum == 9){//선택 게시글 수
             	//testList = adao.testlist(pagemaker.getPagenum()*9,pagemaker.getContentnum());
-            	testList = rdao.reviewlist();
+            	testList = rdao.reviewlist(pagemaker.getPagenum()*9,pagemaker.getContentnum());
 
             	for(int i = 0; i < testList.size(); i++) {
             		prodList.add(new ProductDTO(rdao.product(Integer.parseInt(testList.get(i).getProd_num()))));
             	}
             }else if(ccontentnum == 18){
-            	//testList = rdao.testlist(pagemaker.getPagenum()*18,pagemaker.getContentnum());
+            	testList = rdao.reviewlist(pagemaker.getPagenum()*18,pagemaker.getContentnum());
+
+            	for(int i = 0; i < testList.size(); i++) {
+            		prodList.add(new ProductDTO(rdao.product(Integer.parseInt(testList.get(i).getProd_num()))));
+            	}
             }else if(ccontentnum ==27){ 
-            	//testList = rdao.testlist(pagemaker.getPagenum()*27,pagemaker.getContentnum());
+            	testList = rdao.reviewlist(pagemaker.getPagenum()*27,pagemaker.getContentnum());
+
+            	for(int i = 0; i < testList.size(); i++) {
+            		prodList.add(new ProductDTO(rdao.product(Integer.parseInt(testList.get(i).getProd_num()))));
+            	}
             }
         }
         else {
@@ -171,9 +176,61 @@ public class ReviewServiceImpl implements ReviewService {
         		productlist.add(new ProductDTO(rdao.product(ableReviewList.get(i).getProd_num())));
         	}
         }else if(ccontentnum == 18){
-        	ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*18, pagemaker.getContentnum(), m_num);
+        	if(oldgetpage >= pagemaker.getPagenum()) {
+        		cnt = 0;
+        		ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*18, pagemaker.getContentnum(), m_num);
+        		oldgetpage = pagemaker.getPagenum();
+        		
+        	}
+        	else {
+        		ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*18 + cnt, pagemaker.getContentnum(), m_num);
+        		cnt = 0;
+        		oldgetpage = pagemaker.getPagenum();
+        	}
+        	int rcount = ableReviewList.size();
+        	
+        	 if(reviewList.size() != 0) {
+             	for(int i = 0; i < reviewList.size(); i++) {
+             		for(int j = 0; j < ableReviewList.size(); j++) {
+             			if(Integer.parseInt(reviewList.get(i).getProd_num())== ableReviewList.get(j).getProd_num() ) {
+             				ableReviewList.remove(j);
+             				ableReviewList.add(ableAllList.get(rcount++));
+             				cnt++;
+             			}
+             		}
+             	}
+             }
+        	for(int i = 0; i < ableReviewList.size(); i++) {
+        		productlist.add(new ProductDTO(rdao.product(ableReviewList.get(i).getProd_num())));
+        	}
         }else if(ccontentnum ==27){ 
-        	ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*27, pagemaker.getContentnum(), m_num);
+        	if(oldgetpage >= pagemaker.getPagenum()) {
+        		cnt = 0;
+        		ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*27, pagemaker.getContentnum(), m_num);
+        		oldgetpage = pagemaker.getPagenum();
+        		
+        	}
+        	else {
+        		ableReviewList = rdao.ablereviewlist(pagemaker.getPagenum()*27 + cnt, pagemaker.getContentnum(), m_num);
+        		cnt = 0;
+        		oldgetpage = pagemaker.getPagenum();
+        	}
+        	int rcount = ableReviewList.size();
+        	
+        	 if(reviewList.size() != 0) {
+             	for(int i = 0; i < reviewList.size(); i++) {
+             		for(int j = 0; j < ableReviewList.size(); j++) {
+             			if(Integer.parseInt(reviewList.get(i).getProd_num())== ableReviewList.get(j).getProd_num() ) {
+             				ableReviewList.remove(j);
+             				ableReviewList.add(ableAllList.get(rcount++));
+             				cnt++;
+             			}
+             		}
+             	}
+             }
+        	for(int i = 0; i < ableReviewList.size(); i++) {
+        		productlist.add(new ProductDTO(rdao.product(ableReviewList.get(i).getProd_num())));
+        	}
         }
         model.addAttribute("m_num", ableAllList.get(0).getM_num());
         model.addAttribute("ablereviewlist", ableReviewList);
@@ -277,6 +334,53 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deletereview(ReviewDTO rdto) {
 		return rdao.deletereview(rdto);
 	}
-	
+
+
+	@Override
+	public List<ProductDTO> listAll2(String result) {
+		return rdao.listAll2(result);
+	}
+
+
+	@Override
+	public int search(Model model,String pagenum, String contentnum, String categorynum, String search) {
+
+		if(categorynum.equals("0"))
+        	categorynum = "category_num";
+
+		BoardPager pagemaker = new BoardPager();
+
+        int cpagenum = Integer.parseInt(pagenum);
+        int ccontentnum = Integer.parseInt(contentnum);
+        
+        List<ProductDTO> testList = null;
+
+        if(categorynum.equals("category_num")) {
+        	categorynum="0";
+        pagemaker.setTotalcount(rdao.searchcount(search)); // mapper 전체 게시글 개수를 지정한다
+        pagemaker.setPagenum(cpagenum-1);   // 현재 페이지를 페이지 객체에 지정한다 -1 을 해야 쿼리에서 사용할수 있다
+        pagemaker.setContentnum(ccontentnum); // 한 페이지에 몇개씩 게시글을 보여줄지 지정한다.
+        pagemaker.setCurrentblock(cpagenum); // 현재 페이지 블록이 몇번인지 현재 페이지 번호를 통해서 지정한다.
+        pagemaker.setLastblock(pagemaker.getTotalcount()); // 마지막 블록 번호를 전체 게시글 수를 통해서 정한다.
+
+        pagemaker.prevnext(cpagenum);//현재 페이지 번호로 화살표를 나타낼지 정한다.
+        pagemaker.setStartPage(pagemaker.getCurrentblock()); // 시작 페이지를 페이지 블록번호로 정한다.
+        pagemaker.setEndPage(pagemaker.getLastblock(),pagemaker.getCurrentblock());
+        //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다.
+        
+        if(ccontentnum == 9){//선택 게시글 수
+        	testList = rdao.searchlist(pagemaker.getPagenum()*9,pagemaker.getContentnum(), search);
+        }else if(ccontentnum == 18){
+        	testList = rdao.searchlist(pagemaker.getPagenum()*9,pagemaker.getContentnum(), search);
+        }else if(ccontentnum == 27){
+        	testList = rdao.searchlist(pagemaker.getPagenum()*9,pagemaker.getContentnum(), search);
+        }
+        }
+		model.addAttribute("productlist",testList);
+		model.addAttribute("category", categorynum);
+        model.addAttribute("page",pagemaker);
+		return 0;
+
+	}
 	
 }

@@ -10,6 +10,7 @@
 </head>  
 <body>
 <%@include file ="../views/include/index_header.jsp" %> <!-- 공통헤더 삽입 -->
+
  <!--contents-->
       <div class="fullPageWrap">
         <div id="fullpage">

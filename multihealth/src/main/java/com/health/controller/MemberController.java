@@ -32,7 +32,7 @@ import com.health.dto.MemberDTO;
 import com.health.service.ExercisetypeService;
 import com.health.service.MemberServiceImpl;
 import com.health.valid.Validator;
-
+ 
 @Controller
 public class MemberController {
 
@@ -162,26 +162,9 @@ public class MemberController {
 		PrintWriter out;
 		out = response.getWriter();
 		out.println("<script> alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/'; </script>");
-		out.flush();
-		
-		
+		out.flush();		
 	}
-	
-	
-    // 아이디 찾기
-	@GetMapping("find/id")
-	public String findId() {
-		return "user/find_id";
-	}
-	
-	// 비밀번호 찾기
-	@GetMapping("find/password")
-	public String findPwd() {
-		return "user/find_password";
-	}
-	
-
 
 	
-	
+		
 }

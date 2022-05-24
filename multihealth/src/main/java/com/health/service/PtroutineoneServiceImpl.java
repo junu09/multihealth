@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.health.dao.PtroutineoneDAO;
 import com.health.dto.PtroutineoneDTO;
-
+ 
 
 @Service("ptroutineoneservice")
 public class PtroutineoneServiceImpl implements PtroutineoneService {

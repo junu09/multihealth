@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 각 sql 태그 태그 id와 ProductDAO 메소드 이름 동일 자동 호출 -->
 <mapper namespace="com.health.dao.ProductDAO" >
-
+ 
 <select id="selectProductCount" resultType="int">
  		<![CDATA[
  			select count(*) from(select prod_num, prod_title, prod_price from

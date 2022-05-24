@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr"> 
 <head>
     <title>MultiHealth</title>
     <meta charset="utf-8">
@@ -11,6 +11,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 function email_Check() {
 	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -48,7 +49,7 @@ self.location ="/user/update";
 });
 
 </script>
-
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 
 </head>
 
@@ -56,7 +57,7 @@ self.location ="/user/update";
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
+
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html>
 <html lang="kr">
@@ -9,6 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<%@include file ="../views/include/sub_header.jsp" %> <!-- 공통헤더 삽입 -->
 </head>
 <script src="<%=request.getContextPath() %>/resources/js/agreement.js"></script> <!-- 사용하고 싶은 커스텀된 js파일 추가 -->
 
@@ -16,7 +19,6 @@
 
 <body style="background-color:white;">
 
-<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

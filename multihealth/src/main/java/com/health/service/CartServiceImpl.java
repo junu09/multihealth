@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 import com.health.dao.CartDAO;
 import com.health.dto.CartDTO;
 import com.health.dto.ProductDTO;
-
+ 
 @Service
 public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	CartDAO cartDao;
-	
+	 
 	@Override
 	public List<CartDTO> cartQueryById(int m_num) throws Exception {
 		List<CartDTO> cartList = cartDao.cartQueryById(m_num);
@@ -55,6 +55,12 @@ public class CartServiceImpl implements CartService {
 		cartParam.put("prod_num", prod_num);
 		cartParam.put("m_num", m_num);
 		cartDao.deleteCart(cartParam);
+	}
+
+	@Override
+	public void deleteCartAll(int m_num) throws Exception {
+		cartDao.deleteCartAll(m_num);
+		
 	}
 
 

@@ -1,5 +1,5 @@
 package com.health.dto;
-
+ 
 public class ProductDTO {
 int prod_num;
 int category_num;
@@ -27,6 +27,18 @@ public ProductDTO(int prod_num, int category_num, String prod_title, int prod_pr
 	this.prod_point = prod_point;
 }
 
+
+public ProductDTO(ProductDTO product) {
+	this.prod_num = product.getProd_num();
+	this.category_num = product.getCategory_num();
+	this.prod_title = product.getProd_title();
+	this.prod_price = product.getProd_price();
+	this.prod_inventory = product.getProd_inventory();
+	this.prod_img_name = product.getProd_img_name();
+	this.prod_description_name = product.getProd_description_name();
+	this.view_count = product.getView_count();
+	this.prod_point = product.getProd_point();
+}
 
 public int getProd_num() {
 	return prod_num;

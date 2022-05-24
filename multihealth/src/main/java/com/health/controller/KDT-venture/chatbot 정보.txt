@@ -1,6 +1,0 @@
-secret key
-R2VlQnRDaW9aRnZKdWxCcmRMWk1wU2paQ3dBYlF1V08=
-
-api invoke url
-
-https://928ff5853ef24f4fb0da63d0ed9e69cc.apigw.ntruss.com/custom/v1/6784/33e7c3e5b111ac8598eb33d53fd22d96dc040fb628008c32221fe95cd227371e

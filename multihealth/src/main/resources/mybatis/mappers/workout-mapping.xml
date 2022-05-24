@@ -3,12 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.health.dao.WorkoutDAO" >
-
+ 
 <insert  id="insertworkout" parameterType="workoutdto">
-insert into workout_table(pr_info ,workout_point, workout_time, pu_num)values(#{pr_info},#{workout_point},#{workout_time},#{pu_num})
+insert into workout_table(pr_num,pr_info ,workout_point, workout_time, pu_num)values(#{pr_num},#{pr_info},#{workout_point},#{workout_time},#{pu_num})
 </insert> 
 <select id="oneweek" resultType="int">
-select count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and workout_time between date_add(now(),interval -1 week ) and now()
+select count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and day(workout_time) != date_format(now(), '%d') and workout_time between date_add(now(),interval -1 week ) and now() 
 </select>
 <select id="point" resultType="int">
 select  count(distinct day(workout_time)) from workout_table where pu_num=#{pu_num} and workout_point>0 and workout_time between date_add(now(),interval -1 week ) and now();
@@ -24,6 +24,22 @@ select distinct day(workout_time) from workout_table where
 date_format(workout_time, '%Y-%m') = date_format(now(), '%Y-%m') and pu_num = #{pu_num};
 </select>
 
+
+<select id="pr_numall" resultType="int">
+select pr_num from workout_table where
+date_format(workout_time, '%Y-%m') = date_format(now(), '%Y-%m') and pu_num = #{pu_num};
+</select>
+
+<select id="workoutpagelistcheck" resultType="int">
+select  count(*) from workout_table where pu_num=#{pu_num};
+</select>
+
+<select id="workoutpagelist" resultType="workoutdto" parameterType="hashmap">
+select * from workout_table 
+where pu_num = #{pu_num} 
+ORDER BY workout_num DESC limit 
+#{page1},#{page2}
+</select>
 
 </mapper>
 

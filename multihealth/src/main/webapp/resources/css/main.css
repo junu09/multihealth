@@ -257,7 +257,8 @@ header {
   background-color: rgba(255, 255, 255, 0);
 }
 .visual .list .textBox .tit {
-  color: #fff;
+  color: #f4efef;
+  font-family: 'Aldrich';
   font-size: 80px;
   line-height: 90px;
   letter-spacing: -1px;
@@ -273,6 +274,7 @@ header {
   font-weight: 300;
   line-height: 44px;
 }
+
 .visual .list .textBox .txt {
   margin-top: 25px;
   color: #fff;

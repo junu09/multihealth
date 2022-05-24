@@ -1,8 +1,8 @@
 package com.health.dto;
-
+ 
 
 public class ExercisetypeDTO {
-	String et_name,et_ename,et_img1,et_img2,et_img3,et_description;
+	String et_name,et_ename,et_img1,et_img2,et_img3,et_description,et_part;
 
 	int et_num, et_met,et_time,et_lv, ec_num;
 
@@ -37,6 +37,14 @@ public class ExercisetypeDTO {
 		this.et_ename = et_ename;
 	}
 	
+	public String getEt_part() {
+		return et_part;
+	}
+
+	public void setEt_part(String et_part) {
+		this.et_part = et_part;
+	}
+
 	public String getEt_img1() {
 		return et_img1;
 	}

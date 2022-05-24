@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.health.dao.ExercisetypeDAO;
 import com.health.dto.ExercisetypeDTO;
-
+ 
 
 @Service("exercisetypeservice")
 public class ExercisetypeServiceImpl implements ExercisetypeService {

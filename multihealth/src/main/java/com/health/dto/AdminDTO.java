@@ -1,7 +1,7 @@
 package com.health.dto;
 
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 public class AdminDTO {
 	String prod_num;
 	String category_num;

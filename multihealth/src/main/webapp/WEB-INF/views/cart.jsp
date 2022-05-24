@@ -4,16 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>MultiHealth</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
+</head> 
 <body>
-
-	<%@include file ="../views/include/header.jsp" %> <!-- 공통헤더 삽입 -->
-	
+<%@include file ="../views/include/sub_header.jsp" %>
 <section class="ftco-section">
 	<div class="mask d-flex align-items-center h-100 gradient-custom-3">
 		<div class="container h-100">
@@ -78,7 +72,7 @@
 					</table>
 					<div class="float-right text-right">
 						<h4 style="padding-left: 1190px;">총 금액</h4>
-						 <h1 id="totalPrice" style="border-left-width: 50px;padding-left: 1160px;">원</h1>
+						 <h1 id="totalPrice" style="border-left-width: 50px;padding-left: 1190px;">원</h1>
 					</div>
 				</div>
 			</div>
@@ -183,7 +177,6 @@ function deleteCart(id) {
 	
 
 	<%@include file ="../views/include/footer.jsp" %> <!-- 공통 푸터 삽입, css, js 파일 함유 jquery 포함-->
-
 
 	
 

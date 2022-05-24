@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.health.dto.PtroutineDTO;
 
-
+ 
 public interface PtroutineService{
 	public int insertptroutine(PtroutineDTO dto);
 	public int deleteptroutine(int pr_num);

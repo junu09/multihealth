@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.health.dao.ProductDAO;
-import com.health.dto.BoardPager;
+import com.health.BoardPager;
 import com.health.dto.ProductDTO;
-
+ 
 @Service
 public class ProductServiceImpl implements ProductService {
 

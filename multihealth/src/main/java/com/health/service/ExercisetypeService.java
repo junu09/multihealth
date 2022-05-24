@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.health.dto.ExercisetypeDTO;
 
-
+ 
 public interface ExercisetypeService{
 	public List<ExercisetypeDTO> exercisetypelist();
 	public List<ExercisetypeDTO> exercisetypemain();

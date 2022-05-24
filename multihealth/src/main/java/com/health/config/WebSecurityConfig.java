@@ -35,12 +35,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용		
-			.antMatchers("/**", "/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result").permitAll()
-			.antMatchers("/user/admin/**", "/admin/**").access("hasAuthority('ADMIN')")			
-			.antMatchers("/user/**").access("hasAuthority('USER')") // 페이지 권한 설정				
-						
-			.anyRequest().permitAll()//authenticated()
+			.antMatchers("/resources/**", "/css/**", "/js/**").permitAll()// webapp/resources/... 각종 프론트리소스 접근허용
+			.antMatchers("/user/loginPage", "/user/signup", "/user/denied", "/user/logout/result", "/productlist", "/agreement" ).permitAll()
+			.antMatchers("/user/admin/**", "/admin/**", "/ptservice", "/ptservice/ptmain", "/ptservice/exerciselist",
+					"/ptservice/picklist", "/ptservice/ptroutinelist", "/ptservice/deletepr", "/ptservice/specialpt",
+					"/cart", "/cart/**", "/announce/announceinsertform", "/user/info", "/user/info/infoupdate").access("hasAuthority('ADMIN')")
+			.antMatchers("/user/**", "/ptservice", "/ptservice/ptmain", "/ptservice/exerciselist", "/ptservice/picklist",
+					"/ptservice/ptroutinelist", "/ptservice/deletepr", "/ptservice/specialpt", "/cart", "/cart/**", "/user/info",
+					"/user/info/infoupdate").access("hasAuthority('USER')") // 페이지 권한 설정
+			//.anyRequest().permitAll()//authenticated()
 			.and()
 			
 			.formLogin().loginPage("/user/loginPage")

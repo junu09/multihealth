@@ -7,9 +7,27 @@
 <head>
     <meta charset="UTF-8">
     <title>접근 거부</title>
-</head>
+    <%@include file ="../views/include/sub_header.jsp" %>
+</head> 
 <body>
-    <h1>접근 불가 페이지입니다.</h1>
-    <hr>
+
+
+
+<div style="text-align: center;">
+		<br> <br>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<br>
+		<h1>접근 불가 페이지입니다.</h1>
+		<br>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<br> <br>
+	</div>
+    
 </body>
 </html>

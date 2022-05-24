@@ -1,8 +1,8 @@
 package com.health.dto;
-
+ 
 
 public class PtroutineDTO {
-	int pr_num, pu_num ,pr_allkcal ,pr_alltime;
+	int pr_num, pu_num ,pr_allkcal ,pr_alltime,pr_delete;
 	String pr_info;
 	
 	public PtroutineDTO(){};
@@ -42,5 +42,12 @@ public class PtroutineDTO {
 	public void setPr_info(String pr_info) {
 		this.pr_info = pr_info;
 	}
+	public int getPr_delete() {
+		return pr_delete;
+	}
+	public void setPr_delete(int pr_delete) {
+		this.pr_delete = pr_delete;
+	}
+	
 	
 }

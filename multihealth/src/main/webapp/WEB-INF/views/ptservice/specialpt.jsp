@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Special PT</title>
-<head> 
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/ptservice.css">
@@ -77,17 +77,17 @@
 						      <th scope="col">1회 평균소요시간</th>
 						    </tr>
 						  </thead>
-						  <c:if test="${page != 0}">
-						  	<tbody id="rankinglist">
-							</tbody>
+						  	<c:if test="${page != 0}">
+							  	<tbody id="rankinglist">
+								</tbody>
 							</c:if>
-							<c:if test="${page == 0}"> 
-							 <tbody id="rankinglist">
-							    <tr class="tbody">
-							      <td colspan='3'>랭킹 기록이 없습니다</td>
-							    </tr>
-							</tbody>
-							</c:if>    
+						   	<c:if test="${page == 0}">
+								 <tbody id="rankinglist">
+								    <tr class="tbody user">
+								      <td colspan='3'>랭킹 기록이 없습니다</td>
+								    </tr>
+								</tbody>
+						    </c:if>    
 							</table>
 				         	<div id="pageing"> 
 							</div>
@@ -119,9 +119,14 @@
 <%@include file ="../include/footerjsx.jsp" %> 
 <script src="<%=request.getContextPath() %>/resources/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+if (self.name != 'reload') {
+    self.name = 'reload';
+    self.location.reload(true);
+}
+else self.name = '';
 $("#spcial_menuc1").show();
 $("#spcial_menuc2").hide();
-updateranking(1);
+if(${page}!=0){updateranking(1);}
 $(document).on("click", ".spcial_menu", function category(){
 	$(".spcial_menuc").hide();
 		var c_num = $(this).attr("id")[1];
@@ -159,7 +164,6 @@ let rankinglist = document.getElementById( 'rankinglist' );
  }); 
  //유저정보 pu_num 가져옴 
  var pu_num = ${pu_num};
- 
  function updateranking(page){
 		$.ajax({
 			url: '<%=request.getContextPath() %>/ptservice/specialptranking',
@@ -170,30 +174,43 @@ let rankinglist = document.getElementById( 'rankinglist' );
 				var newpage = "";
 				var ranking =(page-1) * 20+1;
 				for(var i = 0; i < dto.length; i++){
-					if((ranking+i)==1){
+					if((ranking+i)==1 && dto[i].pu_num == pu_num){
+						newpage += "<tr class='tbody ranker'style='background:rgba(0, 0, 0, 0.075)'>"
+							+"<td style='color:#FFD700'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						}else if((ranking+i)==2 && dto[i].pu_num == pu_num){
+						newpage += "<tr class='tbody ranker'style='background:rgba(0, 0, 0, 0.075)'>"
+							+"<td style='color:#957745'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						}else if((ranking+i)==3 && dto[i].pu_num == pu_num){
+							newpage += "<tr class='tbody ranker'style='background:rgba(0, 0, 0, 0.075)'>"
+							+"<td style='color:#FFD700'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						}else if((ranking+i)==1){
 						newpage += "<tr class='tbody ranker'>"
-						+"<td style='color:#FFD700'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
-						+"<td>"+dto[i].m_name+"<span>님<span></td>"
-						+"<td>"+dto[i].specialpt_score+"<span>초<span></td></tr>"
-					}else if((ranking+i)==2){
-						newpage += "<tr class='tbody ranker'>"
-						+"<td style='color:#C0C0C0'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위</span></td>"
-						+"<td>"+dto[i].m_name+"<span>님</span></td>"
-						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
-						
-					}else if((ranking+i)==3){
-						newpage += "<tr class='tbody ranker'>"
-						+"<td style='color:#957745'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
-						+"<td>"+dto[i].m_name+"<span>님</span></td>"
-						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
-					}else if(dto[i].pu_num == pu_num){
-						newpage += "<tr class='tbody'style='background:rgba(0, 0, 0, 0.075)'>"
-						+"<td>"+(ranking+i)+"<span>위<span></td>"
-						+"<td>"+dto[i].m_name+"<span>님</span></td>"
-						+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
-						
-					}
-					else{
+							+"<td style='color:#FFD700'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님<span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초<span></td></tr>"
+						}else if((ranking+i)==2){
+							newpage += "<tr class='tbody ranker'>"
+							+"<td style='color:#C0C0C0'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위</span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+							
+						}else if((ranking+i)==3){
+							newpage += "<tr class='tbody ranker'>"
+							+"<td style='color:#957745'><i class='bi bi-award-fill'></i>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						}else if(dto[i].pu_num == pu_num){
+							newpage += "<tr class='tbody'style='background:rgba(0, 0, 0, 0.075)'>"
+							+"<td>"+(ranking+i)+"<span>위<span></td>"
+							+"<td>"+dto[i].m_name+"<span>님</span></td>"
+							+"<td>"+dto[i].specialpt_score+"<span>초</span></td></tr>"
+						}else{
 						newpage += "<tr class='tbody user'>"
 						+"<td>"+(ranking+i)+" 위</td>"
 						+"<td>"+dto[i].m_name+" 님</td>"

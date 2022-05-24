@@ -28,7 +28,7 @@ import com.health.service.CartService;
 import com.health.service.MemberService;
 import com.health.service.OrderService;
 import com.health.service.ProductService;
-	 	
+		
 @Controller	
 @RequestMapping(value = "/cart")
 public class CartController {
@@ -48,6 +48,30 @@ public class CartController {
 	@Autowired
 	OrderService orderService;
 	
+	
+	@GetMapping("/")
+	public String orderComplete(Model model) {
+		MemberDTO principal = (MemberDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int m_num = principal.getM_num();
+		try {
+			List<OrderDTO> orderList = orderService.orderDetail(m_num);
+			model.addAttribute("orderList", orderList);
+			
+			List<CartDTO> cartList = cartService.cartQueryById(m_num);
+			MemberDTO user = memberService.queryUser(m_num);
+			for (int i = 0; i < cartList.size(); i++) {
+				int prod_num = cartList.get(i).getProd_num();
+				ProductDTO prod= cartService.prodQueryByProdNum(prod_num);
+				OrderDTO order = new OrderDTO(prod.getProd_num(),m_num, cartList.get(i).getProduct_count());
+				orderService.insertCartList(order);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/";
+	}
 	
 		
 	@GetMapping("/payment")    // 유저 정보 가져오기
@@ -165,7 +189,7 @@ public class CartController {
 	@ResponseBody
 	@PostMapping("/insertcart")  //스토어에서 장바구니로 상품 담기
 	public String InsertCart
-	(@RequestParam("prod_num") int prod_num, @RequestParam(value="product_count") int product_count) { // , @RequestParam("product_count") int product_count
+	(@RequestParam("prod_num") int prod_num, @RequestParam(value="product_count") int product_count) {
 		// prod_num : 장바구니에 담을 제품 번호
 		// cart_num : 장바구니에 담을 제품 수량
 		System.out.println(prod_num);
@@ -216,7 +240,6 @@ public class CartController {
 			}
 			for(OrderDTO order: orderList) {
 				orderService.insertCartList(order);
-				orderService.cartPayment(order, order.getProd_num());
 			}
 			cartService.deleteCartAll(m_num);
 		}

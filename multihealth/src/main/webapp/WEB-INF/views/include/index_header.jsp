@@ -37,7 +37,7 @@
 								<li><a href="/user/loginPage">SPECIALT PT</a></li>
 							</ul>
 					</li></sec:authorize>
-					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><li class="menutitle"><input type="radio" id="menuBtn2" name="menuBtn"><label for="menuBtn2">PT SERVICE</label>
+					<sec:authorize access="hasAuthority('ADMIN') or hasAuthority('USER')"><li class="menutitle"><input type="radio" id="menuBtn2" name="menuBtn"><label for="menuBtn2">PT   SERVICE</label>
 							<ul class="submenu">
 								<li><a href="/ptservice/ptmain">PT ROUTIN</a></li>
 								<li><a href="/ptservice/ptroutinelist">ROUTIN LIST</a></li>

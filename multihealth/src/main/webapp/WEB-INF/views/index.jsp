@@ -38,7 +38,7 @@
               </li>
               <li
                 class="list"
-                style="background-image: url(resources/img/main_visual_01_05.jpg)"
+                style="background-image: url(resources/img/main01.jpg)"
               >
                 <div class="textBox">
                   <p class="tit"><span>PROFESSIONAL</span>MULTI HEALTH</p>
@@ -53,7 +53,7 @@
               </li>
               <li
                 class="list"
-                style="background-image: url(resources/img/main_visual_01_04.jpg)"
+                style="background-image: url(resources/img/main06.jpg)"
               >
                 <div class="textBox">
                   <p class="tit"><span>VERIFIED PRODUCT</span>MULTI HEALTH</p>
@@ -72,7 +72,7 @@
             <div class="inner">
               <p class="tit">막막하고 두려웠던 운동<br />멀티헬스와 함께.</p>
               <div class="countBox">
-                <p class="count">15</p>
+                <p class="count">1,000</p>
                 <p class="txt">멀티헬스 누적 회원수</p>
               </div>
             </div>

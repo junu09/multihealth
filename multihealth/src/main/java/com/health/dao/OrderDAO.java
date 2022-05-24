@@ -1,28 +1,24 @@
 package com.health.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.health.dto.OrderDTO;
- 
+
 @Mapper
-@Repository
-public class OrderDAO {
+@Repository("orderdao")
+public interface OrderDAO {
 
 	
-	//상품 단품 주문
-	public void insertOrder(OrderDTO order) {
-		
-	}
+	//상품 주문
+	public void insertOrder(OrderDTO order);
 
-	public void cart_payment(Map<String, Object> mapParam) {
-		
-	}
+	public List<OrderDTO> orderdetailList(@Param(value = "m_num")int m_num) throws Exception;
 
-	public void cart_payment2(Map<String, Object> mapParam) {
-		 
-	}
+
 
 }

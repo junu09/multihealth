@@ -1,13 +1,13 @@
 package com.health.service;
 
+import java.util.List;
+
 import com.health.dto.OrderDTO;
- 
+
 public interface OrderService {
 
 	void insertCartList(OrderDTO order)throws Exception;
-	
-	void cartPayment(OrderDTO order, int prod_num) throws Exception;
 
- 
+	List<OrderDTO> orderDetail(int m_num)throws Exception;
 
 }

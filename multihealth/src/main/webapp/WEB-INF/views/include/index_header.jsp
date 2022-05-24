@@ -88,7 +88,7 @@
 			<h2>Search</h2>
 			<div class="modal_close"><img src="<%=request.getContextPath()%>/resources/img/close.png"></div>
 			<br><br><br>
-			<form id="testform" class="form-control" name="testform">
+			<form id="testform" class="form-control" name="testform" onsubmit="return false">
 				<input type="text" id="testText" placeholder="이름을 입력하세요" style="width:45%;">
 				<input type="button" id="btnsubmit" class="btn btn-secondary" value="Click" />
 			</form>

@@ -72,7 +72,7 @@
 					</table>
 					<div class="float-right text-right">
 						<h4 style="padding-left: 1190px;">총 금액</h4>
-						 <h1 id="totalPrice" style="border-left-width: 50px;padding-left: 1120px;">원</h1>
+						 <h1 id="totalPrice" style="border-left-width: 50px;padding-left: 1190px;">원</h1>
 					</div>
 				</div>
 			</div>

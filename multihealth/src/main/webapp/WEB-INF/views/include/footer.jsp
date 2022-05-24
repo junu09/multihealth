@@ -103,7 +103,12 @@
 	<script src="<%=request.getContextPath() %>/resources/js/custom.js"></script>    
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
-	
+	  	
+  	<!-- search -->
+  	<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+  
     <!-- End Script -->			
 			
 </body>

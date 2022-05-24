@@ -69,7 +69,7 @@
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 								<!-- 이거 9 18 27 -->
-							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)">
+							<select class="form-control" name="contentnum" id="contentnum" onchange="page(1)" style="display:none">
 								<option value="9"
 									<c:if test="${page.getContentnum() == 9 }">selected="selected"</c:if>>9
 									개</option>
@@ -91,16 +91,12 @@
 							<thead>
 							<tr>
 								<th>상품명</th>
-								<th>mnum</th>
-								<th>prod_num</th>
 							</tr>
 							</thead>
 							<tbody>
 							<c:forEach items="${ablereviewlist }" var="dto" varStatus="status">
 							<tr>
 								<td><a href="http://localhost:8081/review/reviewinsertform?prod_num=${dto.prod_num}" style="color:#000;">${productlist[status.index].prod_title }</a></td>
-								<td>${dto.m_num}</td>
-								<td>${productlist[status.index].prod_num }</td>
 							</tr>
 							</c:forEach>
 							</tbody>

@@ -14,12 +14,13 @@ public class MyWebConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry
 		.addResourceHandler("/upload/**")
-		//.addResourceLocations("file:///c:/upload/");
-		.addResourceLocations("file:///c:/Users/junu9/upload/");
+		.addResourceLocations("file:///c:/upload/");
+		//.addResourceLocations("file:///c:/Users/junu9/upload/");
 		
 		registry
 		.addResourceHandler("/upload2/**")
-		.addResourceLocations("file:///c:/Users/junu9/upload/");
+		//.addResourceLocations("file:///c:/Users/junu9/upload/");
+		.addResourceLocations("file:///c:/upload/");
 	}
 
 }

@@ -73,7 +73,7 @@
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)">
+								onchange="chageLangSelect(1)" style="display:none">
 								<c:forEach items="${categorylist }" var="cdto"
 									varStatus="status">
 									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
@@ -108,8 +108,6 @@
 									<div
 										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 										<ul class="list-unstyled">											
-											<li><a class="btn btn-success text-white mt-2"
-												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
 											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.r_num }"
 											    ><i class="fas fa-trash"></i></a></li>
 										</ul>
@@ -238,12 +236,12 @@
 	  var selectval = $("#selectbox option:selected").val();
 	  if(contentnum == 9){
 // 	    location.href="${pageContext.request.contextPath}/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-		  location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+		  location.href="http://localhost:8081/review/ablereviewdel?pagenum="+pagenum+"&contentnum="+contentnum
 	  }else if(contentnum == 18){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/ablereviewdel?pagenum="+pagenum+"&contentnum="+contentnum
 	
 	  }else if(contentnum == 27){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/ablereviewdel?pagenum="+pagenum+"&contentnum="+contentnum
 	
 	  }
 	}

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,10 +46,10 @@
 						<ul class="collapse show list-unstyled pl-3">
 							<li><a class="text-decoration-none" href="reviewlist">리뷰
 									조회</a></li>
-							<sec:authorize access="hasAuthority('USER')">
+							<sec:authorize access="hasAuthority('USER') OR hasAuthority('ADMIN')">
 								<li><a class="text-decoration-none" href="ablereviewlist">리뷰
 										등록</a></li></sec:authorize>
-										<sec:authorize access="hasAuthority('USER')">
+							<sec:authorize access="hasAuthority('USER') OR hasAuthority('ADMIN')">
 								<li><a class="text-decoration-none" href="ablereviewdel">리뷰
 										삭제</a></li></sec:authorize>
 						</ul></li>
@@ -70,15 +71,20 @@
 							<!--                             </li> -->
 						</ul>
 					</div>
+<!-- 												<form id="testform" name="testform"> -->
+<!-- 					 <input type="text" id="testText" placeholder="이름을 입력하세요"> -->
+<!-- 					 <input type="button" value="Click" /> -->
+<!-- 				 </form> -->
 					<div class="col-md-3 pb-4">
 						<div class="d-flex">
 							<select class="form-control" id="selectbox" " name="selectbox"
-								onchange="chageLangSelect(1)">
+								onchange="chageLangSelect(1)" style="display:none">
 								<c:forEach items="${categorylist }" var="cdto"
 									varStatus="status">
 									<option value="${cdto.category_num}" <c:if test="${cdto.category_num eq category}">selected</c:if>>${cdto.category_name}</option>
 								</c:forEach>
 							</select>
+
 						</div>
 					</div>
 					<div class="col-md-3 pb-4">
@@ -108,10 +114,7 @@
 									<div
 										class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 										<ul class="list-unstyled">											
-											<li><a class="btn btn-success text-white mt-2"
-												href="adminmodify?productnum=${dto.prod_num }"><i class="fab fa-medium-m"></i></a></li>
-											<li><a class="delete_modal btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#delete_modal" data-num="${dto.prod_num }"
-											    ><i class="fas fa-trash"></i></a></li>
+						
 										</ul>
 									</div>
 								</div>
@@ -238,12 +241,12 @@
 	  var selectval = $("#selectbox option:selected").val();
 	  if(contentnum == 9){
 // 	    location.href="${pageContext.request.contextPath}/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
-		  location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+		  location.href="http://localhost:8081/review/reviewlist?pagenum="+pagenum+"&contentnum="+contentnum
 	  }else if(contentnum == 18){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/reviewlist?pagenum="+pagenum+"&contentnum="+contentnum
 	
 	  }else if(contentnum == 27){
-	    location.href="http://localhost:8081/admin/adminselect?pagenum="+pagenum+"&contentnum="+contentnum+"&categorynum="+selectval
+	    location.href="http://localhost:8081/review/reviewlist?pagenum="+pagenum+"&contentnum="+contentnum
 	
 	  }
 	}
@@ -266,6 +269,32 @@
 	     var prod_num = $(this).data('num');
 	     $("#productnum").val(prod_num);
 	});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		 $("#testText").autocomplete({
+		 source : function(request, response) {
+		 
+		 $.ajax({
+		 
+		 url : "/autocomplete",
+		 type : "post",
+		 dataType : "json",
+		 data: request,
+		 
+		 success : function(data) {
+		 
+		 var result = data;
+		 response(result);
+		 },
+		 
+		 error : function(data) {
+		 alert("에러가 발생하였습니다.")
+		 }
+		 });
+		 }
+		 });
+		});
 	</script>
 	<!-- End Script -->
 </body>

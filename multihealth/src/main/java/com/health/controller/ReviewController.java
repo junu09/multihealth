@@ -2,8 +2,15 @@ package com.health.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,16 +21,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.health.dto.AdminDTO;
 import com.health.dto.CategoryDTO;
+import com.health.dto.ExercisetypeDTO;
 import com.health.dto.MemberDTO;
+import com.health.dto.ProductDTO;
 import com.health.dto.ReviewDTO;
 import com.health.service.AdminService;
 import com.health.service.CategoryService;
 import com.health.service.ReviewService;
+import com.nimbusds.jose.shaded.json.JSONArray;
+import com.nimbusds.jose.shaded.json.JSONObject;
 
 @Controller
 public class ReviewController {
@@ -95,7 +107,7 @@ public class ReviewController {
 		rdto.setM_num(Integer.toString(m_num));
 		
 		MultipartFile mf1 = rdto.getR_image();
-		String savePath = "c:/Users/junu9/upload/";
+		String savePath = "c:/upload/";
 		String loadPath = "http://localhost:8081/upload/";
 		
 		if(!mf1.isEmpty()) {
@@ -125,6 +137,34 @@ public class ReviewController {
 		int result = service.deletereview(rdto);
 		service.ablereviewdel(model, pagenum, contentnum, m_num);
 		mv.setViewName("review/ablereviewdel");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/autocomplete",  produces = "application/text; charset=utf8")
+	@ResponseBody
+	 public void AutoTest(Locale locale, Model model, HttpServletRequest request,
+	 HttpServletResponse resp, ProductDTO dto) throws IOException {
+	 String result = request.getParameter("term");
+	 
+	 List<ProductDTO> list = service.listAll2(result); //result값이 포함되어 있는 emp테이블의 네임을 리턴
+	 
+	 JSONArray ja = new JSONArray();
+	 for (int i = 0; i < list.size(); i++) {
+	 ja.add(list.get(i).getProd_title());
+	 }
+	 resp.setCharacterEncoding("UTF-8");
+	 PrintWriter out = resp.getWriter();
+	 
+	 out.print(ja.toString());
+	 System.out.println(ja.toString());
+	 }
+	@RequestMapping(value="/productsearch", method=RequestMethod.GET)
+	public ModelAndView productsearch(Model model, @RequestParam(defaultValue = "1") String pagenum,@RequestParam(defaultValue = "9") String contentnum, @RequestParam(defaultValue = "category_num") String categorynum, String search) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		service.search(model, pagenum, contentnum, categorynum ,search);
+		List<CategoryDTO> clist = cservice.categorylist();
+		mv.addObject("categorylist", clist);
+		mv.setViewName("/productlist");
 		return mv;
 	}
 }

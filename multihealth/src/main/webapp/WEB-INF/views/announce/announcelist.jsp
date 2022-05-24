@@ -37,9 +37,6 @@
 							<sec:authorize access="isAnonymous() OR hasAuthority('USER')">
 							<li><a class="text-decoration-none" href="announcelist">공지사항
 									조회</a></li></sec:authorize>
-							<sec:authorize access="hasAuthority('ADMIN')">
-								<li><a class="text-decoration-none" href="announcedelete">공지사항
-									삭제</a></li></sec:authorize>
 						</ul></li>
 				</ul>
 			</div>
